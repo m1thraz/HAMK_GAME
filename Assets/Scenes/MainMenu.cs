@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenue : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-
+    public GameObject settingsPanel;
 
     public void StartGame()
     {
@@ -12,12 +12,12 @@ public class MainMenue : MonoBehaviour
 
     public void OpenSettings()
     {
-
+        settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
-
+        settingsPanel.SetActive(false);
     }
 
     public void ExitGame()
