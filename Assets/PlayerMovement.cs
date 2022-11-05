@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         TakeInput();
         Move();
+       
     }
 
     private void Move()
@@ -46,10 +47,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             direction += Vector2.up;
+            
         }
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
+           
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -58,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
+            
         }
         if (Input.GetKey(KeyCode.Space) && !isShooting)
         {
@@ -82,7 +86,27 @@ public class PlayerMovement : MonoBehaviour
     {
         isShooting = true;
         GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
+
+        if(directionHistory == Vector2.up)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+        }
+
+        if (directionHistory == Vector2.down)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+        }
+
+        if (directionHistory == Vector2.right)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
+        }
+
+        if (directionHistory == Vector2.left)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, 0f);
+        }
+
 
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;

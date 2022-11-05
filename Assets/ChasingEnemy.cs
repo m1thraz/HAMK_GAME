@@ -52,5 +52,17 @@ public class ChasingEnemy : MonoBehaviour
 
             playerObject.takeDamage(damage);
         }
+
+        if (collision.gameObject.tag == "bullet")
+        {
+            //Debug.Log("Bullet hit enemy");
+            Destroy(gameObject);  
+        }
+
+
+
+
     }
+
+
 }
