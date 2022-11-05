@@ -44,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.right;
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerShoot();
+        }
+
 
     }
     private void SetAnimatorMovement(Vector2 direction)
@@ -52,4 +57,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("yDir", direction.y);
         
     }
+
+    private void playerShoot()
+    {
+
+    }
+
 }
