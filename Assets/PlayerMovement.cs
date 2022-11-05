@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Vector2 direction;
+    private Vector2 directionHistory;
     private Animator animator;
 
 
@@ -49,12 +50,16 @@ public class PlayerMovement : MonoBehaviour
             playerShoot();
         }
 
+        if (direction != Vector2.zero)
+        {
+            directionHistory = direction;
+        }
 
     }
     private void SetAnimatorMovement(Vector2 direction)
     {
-        animator.SetFloat("xDir", direction.x);
-        animator.SetFloat("yDir", direction.y);
+        animator.SetFloat("xDir", directionHistory.x);
+        animator.SetFloat("yDir", directionHistory.y);
         
     }
 
