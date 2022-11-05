@@ -9,9 +9,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 directionHistory;
     private Animator animator;
 
+    public float shootSpeed, shootTimer;
+    public Transform shootPos;
+    public GameObject bullet;
+    private bool isShooting;
+
 
     private void Start()
     {
+        isShooting = false;
         animator = GetComponent<Animator>();
     }
     // Update is called once per frame
@@ -53,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.right;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !isShooting)
         {
-            playerShoot();
+            StartCoroutine(playerShoot());
         }
 
         if (direction != Vector2.zero)
@@ -72,9 +78,14 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void playerShoot()
+    IEnumerator playerShoot()
     {
+        isShooting = true;
+        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
 
+        yield return new WaitForSeconds(shootTimer);
+        isShooting = false;
     }
 
 }
