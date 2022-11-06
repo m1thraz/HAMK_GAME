@@ -6,7 +6,7 @@ public class ChasingEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    float moveSpeed = 8;
+    float moveSpeed = 8;   
     [SerializeField] float maxHealth = 5, health;
     [SerializeField] float damage = 1;
     Rigidbody2D rb;

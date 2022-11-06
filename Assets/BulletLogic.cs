@@ -10,11 +10,6 @@ public class BulletLogic : MonoBehaviour
 
     float BulletTime = 2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,9 +21,7 @@ public class BulletLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            Destroy(gameObject);
-            
-
+            Destroy(gameObject);         
 
         }
     }
