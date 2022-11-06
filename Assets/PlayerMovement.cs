@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float shootSpeed, shootTimer;
     public Transform shootPos;
+    public Transform shootPos2;
     public GameObject bullet;
     private bool isShooting;
 
@@ -85,7 +86,17 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator playerShoot()
     {
         isShooting = true;
-        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        GameObject newBullet;
+
+        if (directionHistory == Vector2.up || directionHistory == Vector2.right)
+        {
+             newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        }
+        else
+        {
+             newBullet = Instantiate(bullet, shootPos2.position, Quaternion.identity);
+        }
+        
 
         if(directionHistory == Vector2.up)
         {
