@@ -44,19 +44,25 @@ public class ChasingEnemy : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
         if (collision.gameObject.name == "Player")
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
-            PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+            playerObject.ScoreUp();
 
             playerObject.takeDamage(damage);
+            
         }
 
         if (collision.gameObject.tag == "bullet")
         {
             //Debug.Log("Bullet hit enemy");
-            Destroy(gameObject);  
+           
+            Destroy(gameObject);
+           
+            
+           // playerObject.ScoreUp();
         }
 
 

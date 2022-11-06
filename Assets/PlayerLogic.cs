@@ -14,6 +14,7 @@ public class PlayerLogic : MonoBehaviour
         health = maxHealth;
         Physics.IgnoreLayerCollision(0, 6);
         HPText.text = "Health: " + health.ToString();
+        ScoreText.text = "Score: " + score.ToString();
     }
 
     // Update is called once per frame
@@ -25,12 +26,18 @@ public class PlayerLogic : MonoBehaviour
     public void takeDamage(float damageAmount)
     {
         health -= damageAmount;
-        HPText.text = "Health : " +health.ToString();
+        HPText.text = "Health: " +health.ToString();
         Debug.Log(string.Format("Player has now {0} health left", health));
         if (health <= 0)
         {
             Debug.Log("Player DIED");
             Destroy(gameObject);
         }
+    }
+
+    public void ScoreUp()
+    {
+        score +=  10;
+        ScoreText.text = "Score: " + score.ToString();
     }
 }

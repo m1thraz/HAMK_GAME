@@ -8,7 +8,7 @@ using UnityEngine.XR;
 public class BulletLogic : MonoBehaviour
 {
  
-    public GameManager gm;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class BulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             Destroy(gameObject);
-            gm.newEnemyKilled();
+            
 
 
         }
