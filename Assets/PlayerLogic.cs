@@ -9,6 +9,7 @@ public class PlayerLogic : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        Physics.IgnoreLayerCollision(0, 6);
     }
 
     // Update is called once per frame
