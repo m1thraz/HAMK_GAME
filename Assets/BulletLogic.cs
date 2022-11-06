@@ -7,8 +7,8 @@ using UnityEngine.XR;
 
 public class BulletLogic : MonoBehaviour
 {
- 
-    
+
+    float BulletTime = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,13 @@ public class BulletLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(BulletTime > 0)
+        {
+            BulletTime -= Time.deltaTime;
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
