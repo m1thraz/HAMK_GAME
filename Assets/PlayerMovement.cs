@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector2.zero)
         {
             directionHistory = direction;
+            Debug.Log(directionHistory);
         }
 
     }
@@ -88,6 +89,14 @@ public class PlayerMovement : MonoBehaviour
         isShooting = true;
         GameObject newBullet;
 
+        //directions
+        Vector2 rightUp = new Vector2(1.0f, 1.0f);
+        Vector2 rightDown = new Vector2(1.0f, -1.0f);
+        Vector2 leftUp = new Vector2(-1.0f, 1.0f);
+        Vector2 leftDown = new Vector2(-1.0f, -1.0f);
+
+
+
         if (directionHistory == Vector2.up || directionHistory == Vector2.right)
         {
              newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
@@ -96,24 +105,40 @@ public class PlayerMovement : MonoBehaviour
         {
              newBullet = Instantiate(bullet, shootPos2.position, Quaternion.identity);
         }
-        
 
-        if(directionHistory == Vector2.up)
+        if (directionHistory == rightUp)
         {
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
         }
-
-        if (directionHistory == Vector2.down)
+        else if (directionHistory == rightDown)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+        }
+        else if (directionHistory == leftUp)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+        }
+        else if (directionHistory == leftDown)
         {
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
         }
 
-        if (directionHistory == Vector2.right)
+        else if (directionHistory == Vector2.up)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+        }
+
+        else if (directionHistory == Vector2.down)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+        }
+
+        else if (directionHistory == Vector2.right)
         {
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
         }
 
-        if (directionHistory == Vector2.left)
+        else if (directionHistory == Vector2.left)
         {
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, 0f);
         }
