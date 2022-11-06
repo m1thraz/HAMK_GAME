@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
-using UnityEngine.UI;
+
 
 public class BulletLogic : MonoBehaviour
 {
-    private GameObject scoreboard;
+ 
+    public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreboard = GameObject.Find("Score");
+        
     }
 
     // Update is called once per frame
@@ -26,11 +27,9 @@ public class BulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             Destroy(gameObject);
-            scoreboard.GetComponent<Text>().text = "test";
+            gm.newEnemyKilled();
+
+
         }
-
-
-
-
     }
 }
