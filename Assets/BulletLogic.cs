@@ -19,13 +19,7 @@ public class BulletLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BulletTime > 0)
-        {
-            BulletTime -= Time.deltaTime;
-        } else
-        {
-            Destroy(gameObject);
-        }
+        DeleteBullet();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,6 +30,18 @@ public class BulletLogic : MonoBehaviour
             
 
 
+        }
+    }
+
+    private void DeleteBullet()
+    {
+        if (BulletTime > 0)
+        {
+            BulletTime -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
