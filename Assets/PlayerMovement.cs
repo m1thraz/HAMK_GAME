@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector2.zero)
         {
             directionHistory = direction;
-            Debug.Log(directionHistory);
+            //Debug.Log(directionHistory);
         }
 
     }

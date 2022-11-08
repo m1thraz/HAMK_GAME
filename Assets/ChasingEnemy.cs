@@ -13,6 +13,9 @@ public class ChasingEnemy : MonoBehaviour
     Transform player;
     Vector2 moveDirection;
 
+   
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +48,8 @@ public class ChasingEnemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+        PlayerLogic playerObject2 = GameObject.Find("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+
         if (collision.gameObject.name == "Player")
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
@@ -57,12 +62,13 @@ public class ChasingEnemy : MonoBehaviour
 
         if (collision.gameObject.tag == "bullet")
         {
-            //Debug.Log("Bullet hit enemy");
-           
+            Debug.Log("Bullet hit enemy");
+
+         
             Destroy(gameObject);
-           
-            
-           // playerObject.ScoreUp();
+
+
+            playerObject2.ScoreUp();
         }
 
 
