@@ -54,7 +54,7 @@ public class ChasingEnemy : MonoBehaviour
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
-            playerObject.ScoreUp();
+            
 
             playerObject.takeDamage(damage);
             
