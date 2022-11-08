@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4964471341267594889}
   - component: {fileID: 4964471341267594888}
-  - component: {fileID: 4964471341267594895}
   - component: {fileID: 4964471341267594894}
   - component: {fileID: 4964471341267594890}
+  - component: {fileID: 5904273050162168497}
   m_Layer: 0
   m_Name: SpikyBall (2)
   m_TagString: enemy
@@ -87,83 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4964471341267594895
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964471341267594893}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.14991988, y: 0.5500094}
-      - {x: 0.14870092, y: 0.6499229}
-      - {x: 0.049638942, y: 0.65042704}
-      - {x: 0.049183737, y: 0.7510301}
-      - {x: -0.051359504, y: 0.75005907}
-      - {x: -0.04985142, y: 0.6489356}
-      - {x: -0.14905271, y: 0.6488964}
-      - {x: -0.14938882, y: 0.5513877}
-      - {x: -0.34965205, y: 0.5505959}
-      - {x: -0.3489581, y: 0.44847557}
-      - {x: -0.45064437, y: 0.44990435}
-      - {x: -0.45016375, y: 0.3481215}
-      - {x: -0.5484189, y: 0.34821653}
-      - {x: -0.5488426, y: 0.14762224}
-      - {x: -0.6512341, y: 0.14801233}
-      - {x: -0.65001345, y: 0.04969043}
-      - {x: -0.75005615, y: 0.049579382}
-      - {x: -0.7493547, y: -0.050340567}
-      - {x: -0.65071696, y: -0.050863054}
-      - {x: -0.6501893, y: -0.14966819}
-      - {x: -0.54954094, y: -0.1504161}
-      - {x: -0.54973483, y: -0.35121283}
-      - {x: -0.4507506, y: -0.35004723}
-      - {x: -0.45015678, y: -0.450841}
-      - {x: -0.34924543, y: -0.4500608}
-      - {x: -0.3497348, y: -0.55129296}
-      - {x: -0.14964303, y: -0.5498943}
-      - {x: -0.15065828, y: -0.6510312}
-      - {x: -0.050398216, y: -0.6503433}
-      - {x: -0.05009393, y: -0.74958175}
-      - {x: 0.049667377, y: -0.75108284}
-      - {x: 0.048825715, y: -0.650803}
-      - {x: 0.14936614, y: -0.6511714}
-      - {x: 0.14950894, y: -0.5510393}
-      - {x: 0.3503036, y: -0.54945296}
-      - {x: 0.35044697, y: -0.4481602}
-      - {x: 0.4518302, y: -0.44877484}
-      - {x: 0.44925818, y: -0.35161534}
-      - {x: 0.5493102, y: -0.35107177}
-      - {x: 0.55042547, y: -0.14834997}
-      - {x: 0.65182614, y: -0.14914665}
-      - {x: 0.6500935, y: -0.050554827}
-      - {x: 0.75028497, y: -0.050629713}
-      - {x: 0.7517236, y: 0.049970236}
-      - {x: 0.65087885, y: 0.049144503}
-      - {x: 0.6496633, y: 0.14909023}
-      - {x: 0.5516236, y: 0.14939238}
-      - {x: 0.55039793, y: 0.34957585}
-      - {x: 0.4503918, y: 0.34868568}
-      - {x: 0.45029953, y: 0.45004714}
-      - {x: 0.34854016, y: 0.4494699}
-      - {x: 0.349442, y: 0.55015224}
 --- !u!114 &4964471341267594894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +123,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5904273050162168497
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964471341267594893}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0016853311, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.69
