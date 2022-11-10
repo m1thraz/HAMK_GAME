@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 563671693}
   - component: {fileID: 563671692}
   m_Layer: 5
-  m_Name: powerup3Text
+  m_Name: pw3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,11 +907,11 @@ RectTransform:
   m_Father: {fileID: 253370082}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 198}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &907510249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ GameObject:
   - component: {fileID: 1165230483}
   - component: {fileID: 1165230482}
   m_Layer: 5
-  m_Name: 'powerup2Text '
+  m_Name: pw2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 1926328686}
   - component: {fileID: 1926328685}
   m_Layer: 5
-  m_Name: powerup1Text
+  m_Name: pw1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
