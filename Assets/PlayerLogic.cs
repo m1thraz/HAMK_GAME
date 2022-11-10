@@ -8,8 +8,15 @@ public class PlayerLogic : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ScoreText;
+    public ProgressBar lvlbar;
     // Start is called before the first frame update
     [SerializeField] float maxHealth = 3, health, score;
+
+    private void Awake()
+    {
+        lvlbar = GameObject.Find("Progress Bar").GetComponent<ProgressBar>();
+    }
+
     void Start()
     {
         health = maxHealth;
@@ -41,5 +48,6 @@ public class PlayerLogic : MonoBehaviour
     {
         score +=  10;
         ScoreText.text = "Score: " + score.ToString();
+        lvlbar.increaseLevel(10);
     }
 }
