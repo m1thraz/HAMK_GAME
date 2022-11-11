@@ -1,5 +1,6 @@
 using UnityEngine.Audio;
 using UnityEngine;
+using System;
 
 public class AudoManager : MonoBehaviour
 {
@@ -20,8 +21,12 @@ public class AudoManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Play(string name)
     {
-        
+
+        Debug.Log("Playing sound");
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+        Debug.Log("Playing done");
     }
 }

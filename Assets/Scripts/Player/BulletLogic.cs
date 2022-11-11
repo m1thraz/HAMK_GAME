@@ -21,6 +21,7 @@ public class BulletLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
+            FindObjectOfType<AudoManager>().Play("explosion");
             Destroy(gameObject);         
 
         }
