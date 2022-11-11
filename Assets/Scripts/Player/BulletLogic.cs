@@ -9,7 +9,6 @@ public class BulletLogic : MonoBehaviour
 {
 
     float BulletTime = 2;
-    private int damage = 3;
 
 
     // Update is called once per frame
@@ -18,17 +17,26 @@ public class BulletLogic : MonoBehaviour
         DeleteBullet();
     }
 
-    private void OnCollisionEnter2D(Collider2D collider)
+    //replace this with decreasing health - Daan
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collider.GetComponent<Health>() != null)
+        if (collision.gameObject.tag == "enemy")
         {
-            Health health = collider.GetComponent<Health>();
-            FindObjectOfType<AudoManager>().Play("explosion");
-            health.Damage(damage);
-            //Destroy(gameObject);         
+            Destroy(gameObject);
 
         }
     }
+
+    //CODE FOR DECREASING HEALTH DONT DELETE
+    //private void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (collider.CompareTag("enemy"))
+    //    {
+    //        collider.GetComponent<Health>().Damage(2);
+    //        throw new System.ArgumentOutOfRangeException("Impact");
+
+    //    }
+    //}
 
     private void DeleteBullet()
     {

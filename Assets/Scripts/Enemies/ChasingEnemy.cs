@@ -60,11 +60,12 @@ public class ChasingEnemy : MonoBehaviour
             
         }
 
+        //edit this so it decreases health instead of destroying the gameobject
         if (collision.gameObject.tag == "bullet")
         {
             Debug.Log("Bullet hit enemy");
 
-         
+
             Destroy(gameObject);
 
 

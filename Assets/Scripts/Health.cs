@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
             Damage(10);
         }
     }
-
+ 
     public void SetHealth(int maxHealth, int health)
     {
         this.MAX_HEALTH = maxHealth;
@@ -65,6 +65,7 @@ public class Health : MonoBehaviour
             this.health += amount;
         }
     }
+
     private void Die()
     {
         Debug.Log("you're dead");
