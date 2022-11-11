@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
-
+    public TextMeshProUGUI levelText;
+    private int level = 1;
 
     private float targetProgress  = 0;
     [SerializeField]
@@ -50,6 +53,8 @@ public class ProgressBar : MonoBehaviour
             slider.value = 0;
             slider.maxValue = slider.maxValue + 50;
             targetProgress = 0;
+            levelUp();
+
 
         }
     }
@@ -60,5 +65,10 @@ public class ProgressBar : MonoBehaviour
 
     }
 
+    private void levelUp()
+    {
+        level++;
+        levelText.text = "Level: " + level.ToString();
+    }
 
 }
