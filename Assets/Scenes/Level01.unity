@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 303867151}
   - component: {fileID: 303867150}
   - component: {fileID: 303867153}
+  - component: {fileID: 303867154}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -682,6 +683,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc754c51266fb4f27826a504934ba9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &303867154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303867149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cb740678fdce545b56e7f87ed1e66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Player Death
+    clip: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
+    volume: 0
+    pitch: 0
 --- !u!1 &354953905
 GameObject:
   m_ObjectHideFlags: 0
