@@ -11,16 +11,27 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     public float shootSpeed, shootTimer;
-    public Transform shootPos;
-    public Transform shootPos2;
+    public Transform shootPosNorth;
+    public Transform shootPosEast;
+    public Transform shootPosWest;
+    public Transform shootPosSouth;
+
+
+
     public GameObject bullet;
     private bool isShooting;
+    public GameObject gameManager;
+    bool isPowerMenuOpen;
+    PowerUpMenu powerMenu;
+
 
 
     private void Start()
     {
         isShooting = false;
         animator = GetComponent<Animator>();
+        powerMenu = gameManager.GetComponent(typeof(PowerUpMenu)) as PowerUpMenu;
+        isPowerMenuOpen = false;
     }
     // Update is called once per frame
     void Update()
@@ -84,6 +95,30 @@ public class PlayerMovement : MonoBehaviour
             directionHistory = direction;
             //Debug.Log(directionHistory);
         }
+        
+
+        // For Debugging
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("key p pressed");
+
+            if (isPowerMenuOpen)
+            {
+                Debug.Log("resume game and close powerup");
+                powerMenu.closePowerUP();
+                //powerMenu.pauselog();
+                isPowerMenuOpen = false;
+            }
+            else
+            {
+                Debug.Log("pause game and open powerup");
+                powerMenu.openPowerUP();
+                isPowerMenuOpen = true;
+                //powerMenu.pauselog();
+
+
+            }
+        }
 
     }
     private void SetAnimatorMovement(Vector2 direction)
@@ -107,14 +142,24 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (directionHistory == Vector2.up || directionHistory == Vector2.right)
+        if (directionHistory == Vector2.up)
         {
-             newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+             newBullet = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
+        }
+        else if (directionHistory == Vector2.right)
+        {
+             newBullet = Instantiate(bullet, shootPosEast.position, Quaternion.identity);
+        }
+        else if (directionHistory == Vector2.left)
+        {
+            newBullet = Instantiate(bullet, shootPosWest.position, Quaternion.identity);
         }
         else
         {
-             newBullet = Instantiate(bullet, shootPos2.position, Quaternion.identity);
+            newBullet = Instantiate(bullet, shootPosSouth.position, Quaternion.identity);
         }
+
+
 
         if (directionHistory == rightUp)
         {
