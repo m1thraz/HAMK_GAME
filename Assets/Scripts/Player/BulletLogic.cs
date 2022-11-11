@@ -9,6 +9,7 @@ public class BulletLogic : MonoBehaviour
 {
 
     float BulletTime = 2;
+    private int damage = 3;
 
 
     // Update is called once per frame
@@ -17,12 +18,14 @@ public class BulletLogic : MonoBehaviour
         DeleteBullet();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collider.GetComponent<Health>() != null)
         {
+            Health health = collider.GetComponent<Health>();
             FindObjectOfType<AudoManager>().Play("explosion");
-            Destroy(gameObject);         
+            health.Damage(damage);
+            //Destroy(gameObject);         
 
         }
     }
