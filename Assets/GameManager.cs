@@ -23,25 +23,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Input func");
-        if (Input.GetKey(KeyCode.P))
-        {
-            Debug.Log("key p pressed");
+        //Debug.Log("Input func");
 
-            if (!powerMenu.isPaused())
-            {
-                powerMenu.closePowerUP();
-                Debug.Log("resume game and close powerup");
-
-
-            }
-            else
-            {
-                powerMenu.openPowerUP();
-                
-                Debug.Log("pause game and open powerup");
-            }
-        }
+        
 
 
     }

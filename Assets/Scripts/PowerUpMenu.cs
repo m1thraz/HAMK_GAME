@@ -18,9 +18,8 @@ public class PowerUpMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // For Debugging
+        
 
-       
     }
 
     public void openPowerUP()
@@ -28,6 +27,8 @@ public class PowerUpMenu : MonoBehaviour
         powerUpMenu.SetActive(true);
         Time.timeScale = 0f;
         isPowerMenuOpen = true;
+        Debug.Log("powerup script open");
+
     }
 
 
@@ -48,5 +49,10 @@ public class PowerUpMenu : MonoBehaviour
         {
             return false;
         }
-    } 
+    }
+
+    public void pauselog()
+    {
+        Debug.Log("powermenu workingggggg !!!!!!");
+    }
 }

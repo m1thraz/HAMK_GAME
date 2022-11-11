@@ -15,12 +15,18 @@ public class PlayerMovement : MonoBehaviour
     public Transform shootPos2;
     public GameObject bullet;
     private bool isShooting;
+    public GameObject gameManager;
+    bool isPowerMenuOpen;
+    PowerUpMenu powerMenu;
+
 
 
     private void Start()
     {
         isShooting = false;
         animator = GetComponent<Animator>();
+        powerMenu = gameManager.GetComponent(typeof(PowerUpMenu)) as PowerUpMenu;
+        isPowerMenuOpen = false;
     }
     // Update is called once per frame
     void Update()
@@ -83,6 +89,30 @@ public class PlayerMovement : MonoBehaviour
         {
             directionHistory = direction;
             //Debug.Log(directionHistory);
+        }
+        
+
+        // For Debugging
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("key p pressed");
+
+            if (isPowerMenuOpen)
+            {
+                Debug.Log("resume game and close powerup");
+                powerMenu.closePowerUP();
+                //powerMenu.pauselog();
+                isPowerMenuOpen = false;
+            }
+            else
+            {
+                Debug.Log("pause game and open powerup");
+                powerMenu.openPowerUP();
+                isPowerMenuOpen = true;
+                //powerMenu.pauselog();
+
+
+            }
         }
 
     }
