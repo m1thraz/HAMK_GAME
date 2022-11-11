@@ -36,8 +36,17 @@ public class PlayerLogic : MonoBehaviour
         health -= damageAmount;
         HPText.text = health.ToString() + "x";
         Debug.Log(string.Format("Player has now {0} health left", health));
+       
+        if(health > 0)
+        {
+            FindObjectOfType<AudoManager>().Play("player hit");
+        }
+        
         if (health <= 0)
         {
+
+            FindObjectOfType<AudoManager>().Play("player death");
+           
             Debug.Log("Player DIED");
             Destroy(gameObject);
             SceneManager.LoadScene(2);
@@ -46,6 +55,7 @@ public class PlayerLogic : MonoBehaviour
 
     public void ScoreUp()
     {
+        
         score +=  10;
         ScoreText.text = "Score: " + score.ToString();
         lvlbar.increaseLevel(10);

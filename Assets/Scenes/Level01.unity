@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -696,10 +696,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Player Death
+  - name: player death
     clip: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: explosion
+    clip: {fileID: 8300000, guid: d1698dd553af8ef4d887bc83b9687173, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: player hit
+    clip: {fileID: 8300000, guid: 558f9f56f603a954b8d45e17e89341d9, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!1 &354953905
 GameObject:

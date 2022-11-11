@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Audio;
 using UnityEngine;
 
@@ -19,9 +20,11 @@ public class AudoManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play(string name)
     {
-        
+        Debug.Log("Playing sound");
+        Sound s = Array.Find(sounds, sound=>sound.name == name);
+        s.source.Play();
+        Debug.Log("Playing done");
     }
 }
