@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5;
+    private int damage = 15;
     [SerializeField]
-    private float damage = 1.5f;
+    private float speed = 1.5f;
 
     [SerializeField]
     private EnemyData data;
@@ -17,7 +17,8 @@ public class enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("player");   
+        player = GameObject.FindGameObjectWithTag("Player");
+        SetEnemyValues(); 
     }
 
     // Update is called once per frame
@@ -30,15 +31,22 @@ public class enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    //WIP script for enemy health
-    //private void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (collider.CompareTag("Player"))
-    //    {
-    //        if (collider.GetComponent<Health>() != null)
-    //        {
-    //            collider.GetComponent<Health>().Damage(10000);
-    //        }
-    //    }
-    //}
+    private void SetEnemyValues()
+    {
+        GetComponent<Health>().SetHealth(data.hp, data.hp);
+        speed = data.speed;
+        damage = data.damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            if (collider.GetComponent<Health>() != null)
+            {
+                collider.GetComponent<Health>().Damage(damage);
+                this.GetComponent<Health>().Damage(1000);
+            }
+        }
+    }
 }

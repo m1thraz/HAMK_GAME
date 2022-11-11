@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 9004530858338900241}
   - component: {fileID: -4981579186694817949}
   - component: {fileID: -1069769969806990891}
+  - component: {fileID: -5304803153014260771}
+  - component: {fileID: 3986901058712584795}
   m_Layer: 0
   m_Name: SpikyBallBoss
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8372678237104354305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a5e21f0c5b8aa448b96eaeba250d9f7, type: 3}
   m_Name: 
@@ -133,9 +135,37 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!114 &-5304803153014260771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372678237104354305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daea06d2363fb1b46a6d6e653f6c0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  speed: 50
+  data: {fileID: 11400000, guid: 009ccd01623ecae44ac5ae71e616d451, type: 2}
+--- !u!114 &3986901058712584795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372678237104354305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e49a3b8cc71004c84337ae56f3cb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
