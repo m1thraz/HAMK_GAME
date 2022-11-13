@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class enemy : MonoBehaviour
 {
     [SerializeField]
     private int damage = 15;
@@ -13,12 +13,16 @@ public class Enemy : MonoBehaviour
     private EnemyData data;
 
     private GameObject player;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         player = GameObject.FindGameObjectWithTag("Player");
-        SetEnemyValues(); 
+        SetEnemyValues();
+
     }
 
     // Update is called once per frame
@@ -28,7 +32,16 @@ public class Enemy : MonoBehaviour
     }
     private void Swarm()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if (player)
+        {
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            Debug.Log("animator");
+            Debug.Log(animator);
+            animator.SetFloat("xDir", direction.x);
+            animator.SetFloat("yDir", direction.y);
+        }
+
     }
 
     private void SetEnemyValues()

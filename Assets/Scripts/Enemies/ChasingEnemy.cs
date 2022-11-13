@@ -32,8 +32,8 @@ public class ChasingEnemy : MonoBehaviour
         if (player)
         {
             Vector3 direction = (player.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
+            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //rb.rotation = angle;
             moveDirection = direction;
         }
     }
