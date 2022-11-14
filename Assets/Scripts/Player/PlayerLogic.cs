@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -10,7 +8,8 @@ public class PlayerLogic : MonoBehaviour
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ScoreText;
     public ProgressBar lvlbar;
-  //  float DeathTime = 5;
+    float DeathTime = 1;
+    bool alive = true;
     // Start is called before the first frame update
     [SerializeField] 
     float maxHealth = 3, health, score;
@@ -30,9 +29,14 @@ public class PlayerLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (health <= 0)
+        {
+
+            Death();
+
+        }
     }
 
     public void takeDamage(float damageAmount)
@@ -47,12 +51,7 @@ public class PlayerLogic : MonoBehaviour
             FindObjectOfType<AudoManager>().Play("player hit");
         }
         
-        if (health <= 0)
-        {
 
-            Death();
-            
-        }
     }
 
     public void ScoreUp()
@@ -64,14 +63,21 @@ public class PlayerLogic : MonoBehaviour
 
     private void Death()
     {
-      
+        DeathTime -= Time.deltaTime;
+        if (DeathTime > 0 && alive)
+        {
+            
+            FindObjectOfType<AudoManager>().Play("player death");
+            FindObjectOfType<Animator>().SetLayerWeight(2, 2);
+            Debug.Log("Player DIED");
+            alive = false;
+        }
+        if(DeathTime<=0)
+        {
 
-       //         DeathTime -= Time.deltaTime;
-                FindObjectOfType<AudoManager>().Play("player death"); 
-                Debug.Log("Player DIED");
-                Destroy(gameObject);
-                SceneManager.LoadScene(2);
-
+            Destroy(gameObject);
+            SceneManager.LoadScene(2);
+        }
         
     }
 }

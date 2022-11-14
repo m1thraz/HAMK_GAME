@@ -664,7 +664,7 @@ MonoBehaviour:
   - name: player hit
     clip: {fileID: 8300000, guid: 558f9f56f603a954b8d45e17e89341d9, type: 3}
     volume: 1
-    pitch: 1.14
+    pitch: 0.91
     source: {fileID: 0}
 --- !u!1 &354953905
 GameObject:
@@ -1844,7 +1844,7 @@ MonoBehaviour:
   HPText: {fileID: 2080538763}
   ScoreText: {fileID: 832700359}
   lvlbar: {fileID: 0}
-  maxHealth: 30
+  maxHealth: 4
   health: 0
   score: 0
 --- !u!82 &1061358760
