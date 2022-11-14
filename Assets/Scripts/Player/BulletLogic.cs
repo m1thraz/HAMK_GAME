@@ -9,6 +9,7 @@ public class BulletLogic : MonoBehaviour
 {
 
     float BulletTime = 2;
+    private float damage = 1;
 
 
     // Update is called once per frame
@@ -22,12 +23,16 @@ public class BulletLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
+            collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            
             Destroy(gameObject);
 
         }
     }
 
     //CODE FOR DECREASING HEALTH DONT DELETE
+    //might be osbelete with above lines
+
     //private void OnTriggerEnter2D(Collider2D collider)
     //{
     //    if (collider.CompareTag("enemy"))
@@ -48,5 +53,9 @@ public class BulletLogic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void setDamage(float dmgAmount)
+    {
+        damage = dmgAmount;
     }
 }

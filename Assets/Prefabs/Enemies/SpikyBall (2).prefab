@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5e21f0c5b8aa448b96eaeba250d9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 8
   maxHealth: 5
-  health: 0
   damage: 1
 --- !u!50 &4964471341267594890
 Rigidbody2D:
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4964471341267594893}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daea06d2363fb1b46a6d6e653f6c0944, type: 3}
   m_Name: 

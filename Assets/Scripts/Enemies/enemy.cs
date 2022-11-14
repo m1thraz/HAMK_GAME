@@ -36,8 +36,6 @@ public class enemy : MonoBehaviour
         {
             Vector2 direction = (player.transform.position - transform.position).normalized;
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            Debug.Log("animator");
-            Debug.Log(animator);
             animator.SetFloat("xDir", direction.x);
             animator.SetFloat("yDir", direction.y);
         }

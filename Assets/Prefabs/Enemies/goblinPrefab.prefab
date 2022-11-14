@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9217595424109373037}
   - component: {fileID: 7121636752681147047}
   - component: {fileID: 2860043713368786265}
-  - component: {fileID: 8488649153432350609}
+  - component: {fileID: -4875440282972877058}
   m_Layer: 0
   m_Name: goblinPrefab
   m_TagString: enemy
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797437056911035587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daea06d2363fb1b46a6d6e653f6c0944, type: 3}
   m_Name: 
@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5e21f0c5b8aa448b96eaeba250d9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 0
+  moveSpeed: 0.75
+  maxHealth: 1
   damage: 1
---- !u!50 &8488649153432350609
+--- !u!50 &-4875440282972877058
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
