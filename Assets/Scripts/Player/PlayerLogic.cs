@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerLogic : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ScoreText;
     public ProgressBar lvlbar;
+  //  float DeathTime = 5;
     // Start is called before the first frame update
-    [SerializeField] float maxHealth = 3, health, score;
+    [SerializeField] 
+    float maxHealth = 3, health, score;
+
 
     private void Awake()
     {
@@ -45,10 +49,9 @@ public class PlayerLogic : MonoBehaviour
         
         if (health <= 0)
         {
-            FindObjectOfType<AudoManager>().Play("player death");
-            Debug.Log("Player DIED");
-            Destroy(gameObject);
-            SceneManager.LoadScene(2);
+
+            Death();
+            
         }
     }
 
@@ -57,5 +60,18 @@ public class PlayerLogic : MonoBehaviour
         score +=  10;
         ScoreText.text = "Score: " + score.ToString();
         lvlbar.increaseLevel(10);
+    }
+
+    private void Death()
+    {
+      
+
+       //         DeathTime -= Time.deltaTime;
+                FindObjectOfType<AudoManager>().Play("player death"); 
+                Debug.Log("Player DIED");
+                Destroy(gameObject);
+                SceneManager.LoadScene(2);
+
+        
     }
 }
