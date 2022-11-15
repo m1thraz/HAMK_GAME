@@ -14,20 +14,13 @@ public class PowerUpMenu : MonoBehaviour
     public Button PowerupBtn3;
 
 
-    // Powerup Sprites
-    
-    public Sprite PowerUp1;
-    public Sprite PowerUp2;
-    public Sprite PowerUp3;
-    public Sprite PowerUp4;
-    public Sprite PowerUp5;
-    public Sprite PowerUp6;
-    public Sprite PowerUp7;
+    // Powerup Sprite Array
 
     public Sprite[] powerUpSpriteList;
 
-    //                            PowerUp Number     Available Count
-    public int[,] powerArray = { {1,2,3,4,5}, {2,3,1,4,6} };
+    // Arry with Powerup Nr | available  PowerUp Number     Available Count
+    public int[,] powerArray =          { {0,1,2,3,4}, {2,3,1,4,6} };
+
 
     public int[] minProb = { 1, 11, 41, 61, 91 };
     public int[] maxProb = { 10, 40, 60, 90, 100 };
@@ -74,9 +67,9 @@ public class PowerUpMenu : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
             Debug.Log("change sprite");
-            
-            renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPW]);
-            choosenPW++;
+            chooseRandomPowerUps();
+            //renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPW]);
+            //choosenPW++;
         } 
 
     }
@@ -155,21 +148,42 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw2search)
             {
+                int random = Random.Range(1, 100);
+                int choosenPw = checkProb(random);
 
+                if (checkAvaiable(choosenPw))
+                {
+                    chosenPower1 = choosenPw;
+                    renderPowerUpImage(pw2Image, powerUpSpriteList[choosenPw]);
+
+                }
+
+                if (choosenPw != 0)
+                {
+                    pw2search = false;
+                }
             }
 
             if (pw3search)
             {
+                int random = Random.Range(1, 100);
+                int choosenPw = checkProb(random);
 
+                if (checkAvaiable(choosenPw))
+                {
+                    chosenPower1 = choosenPw;
+                    renderPowerUpImage(pw3Image, powerUpSpriteList[choosenPw]);
+
+                }
+
+                if (choosenPw != 0)
+                {
+                    pw3search = false;
+                }
             }
 
 
         }
-        
-
-
-
-
 
     }
 
