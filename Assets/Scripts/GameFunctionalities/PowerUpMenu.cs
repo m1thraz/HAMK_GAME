@@ -20,7 +20,7 @@ public class PowerUpMenu : MonoBehaviour
     public TextMeshProUGUI pw3Text;
 
     private static string PW0DESCRIPTION = "Decrease Spellcasttime "; // Castspeed
-    private static string PW1DESCRIPTION = "Increase your max HP"; // Health potion 
+    private static string PW1DESCRIPTION = "Increase max HP"; // Health potion 
     private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
     private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed
     private static string PW4DESCRIPTION = "Shoot 2 Spells"; // shoot 2 spells at once
