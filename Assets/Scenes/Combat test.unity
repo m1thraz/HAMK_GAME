@@ -1170,6 +1170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5224996758281148848, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8372678237104354305, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
       propertyPath: m_Name
       value: SpikyBallBoss
@@ -3381,6 +3385,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpMenu: {fileID: 11465219}
   isPowerMenuOpen: 0
+  PowerupBtn1: {fileID: 0}
+  PowerupBtn2: {fileID: 0}
+  PowerupBtn3: {fileID: 0}
+  powerUpSpriteList: []
+  minProb: 010000000b000000290000003d0000005b000000
+  maxProb: 0a000000280000003c0000005a00000064000000
+  pw1Prob: 010000000a000000
+  pw2Prob: 0b00000028000000
+  pw3Prob: 290000003c000000
+  pw4Prob: 3d0000005a000000
+  pw5Prob: 5b00000064000000
 --- !u!114 &2066208274
 MonoBehaviour:
   m_ObjectHideFlags: 0

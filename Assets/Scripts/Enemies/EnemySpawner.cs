@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,13 +11,29 @@ public class EnemySpawner : MonoBehaviour
     private GameObject spikyBallPrefab;
     [SerializeField]
     private GameObject spikyBallBossPrefab;
+    [SerializeField]
+    private GameObject goblinPrefab;
 
     [SerializeField]
     private float spikyBallInterval;
     [SerializeField]
     private float spikyBallBossInterval;
+    [SerializeField]
+    private float goblinInterval;
 
     private float horMin,horMax, verMin, verMax;
+
+    // initialize stuff for waves
+    private int waveCount;
+    private int enemyCount;
+    private float waveTextTimer = 1.0f;
+    private float spawnRate = 1.0f;
+    [SerializeField]
+    private float timeBetweenWaves = 10.0f;
+    [SerializeField]
+    private bool activeWave = true;
+    [SerializeField]
+    private bool stopSpawn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
         verMax = halfHeight;
         StartCoroutine(spawnEnemy(spikyBallInterval, spikyBallPrefab));
         StartCoroutine(spawnEnemy(spikyBallBossInterval, spikyBallBossPrefab));
+        StartCoroutine(spawnEnemy(goblinInterval, goblinPrefab));
 
     }
     private ArrayList getSpawnLocation()
@@ -67,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         return returnVal;
 
     }
-    private IEnumerator spawnEnemy(float interval, GameObject enemy) 
+    public IEnumerator spawnEnemy(float interval, GameObject enemy) 
     {
         yield return new WaitForSeconds(interval);
         ArrayList pos = getSpawnLocation();
