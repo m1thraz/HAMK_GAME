@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PowerUpMenu : MonoBehaviour
 {
@@ -14,12 +15,40 @@ public class PowerUpMenu : MonoBehaviour
     public Button PowerupBtn3;
 
 
+    public TextMeshProUGUI pw1Text;
+    public TextMeshProUGUI pw2Text;
+    public TextMeshProUGUI pw3Text;
+
+    private static string PW0DESCRIPTION = "Decrease Spellcasttime "; // Castspeed
+    private static string PW1DESCRIPTION = "Increase your max HP"; // Health potion 
+    private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
+    private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed
+    private static string PW4DESCRIPTION = "Shoot 2 Spells"; // shoot 2 spells at once
+    private static string PW5DESCRIPTION = ""; // increase playerdamage
+    // boost armor / defense
+    // bigger spell bigger hitbox
+    // bouncing bullets
+    // crit dmg
+    // slowing bullets
+    // poison bullet
+    // cone style shooting
+    // bullet shooting through target
+    // aoe bullets
+
+
+    private string[] pwDescriptions = {PW0DESCRIPTION, PW1DESCRIPTION , PW2DESCRIPTION , PW3DESCRIPTION , PW4DESCRIPTION };
+    // maybe later
+    
+    private static string PW6DESCRIPTION = "";
+
+
+
     // Powerup Sprite Array
 
     public Sprite[] powerUpSpriteList;
 
     // Arry with Powerup Nr | available  PowerUp Number     Available Count
-    public int[,] powerArray =          { {0,1,2,3,4}, {2,3,1,4,6} };
+    public int[,] powerArray =          { {0,1,2,3,4}, {2,10,3,2,1} };
 
 
     public int[] minProb = { 1, 11, 41, 61, 91 };
@@ -56,9 +85,7 @@ public class PowerUpMenu : MonoBehaviour
         pw1Image = PowerupBtn1.GetComponent<Image>(); 
         pw2Image = PowerupBtn2.GetComponent<Image>(); 
         pw3Image = PowerupBtn3.GetComponent<Image>();
-     
-
-
+   
     }
 
     // Update is called once per frame
@@ -76,10 +103,11 @@ public class PowerUpMenu : MonoBehaviour
 
     public void openPowerUP()
     {
+        
         powerUpMenu.SetActive(true);
         Time.timeScale = 0f;
 
-
+        chooseRandomPowerUps();
         isPowerMenuOpen = true;
         Debug.Log("powerup script open");
 
@@ -136,10 +164,12 @@ public class PowerUpMenu : MonoBehaviour
                 {
                     chosenPower1 = choosenPw;
                     renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPw]);
+                    pw1Text.text = pwDescriptions[choosenPw];
+                    Debug.Log("pw1 chosen");
 
                 }
 
-                if(choosenPw != 0)
+                if(choosenPw != 99)
                 {
                     pw1search = false;
                 }
@@ -148,17 +178,19 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw2search)
             {
-                int random = Random.Range(1, 100);
-                int choosenPw = checkProb(random);
+                int random2 = Random.Range(1, 100);
+                int choosenPw2 = checkProb(random2);
 
-                if (checkAvaiable(choosenPw))
+                if (checkAvaiable(choosenPw2))
                 {
-                    chosenPower1 = choosenPw;
-                    renderPowerUpImage(pw2Image, powerUpSpriteList[choosenPw]);
+                    chosenPower2 = choosenPw2;
+                    renderPowerUpImage(pw2Image, powerUpSpriteList[choosenPw2]);
+                    pw2Text.text = pwDescriptions[choosenPw2];
+                    Debug.Log("pw2 chosen");
 
                 }
 
-                if (choosenPw != 0)
+                if (choosenPw2 != 99)
                 {
                     pw2search = false;
                 }
@@ -166,17 +198,19 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw3search)
             {
-                int random = Random.Range(1, 100);
-                int choosenPw = checkProb(random);
+                int random3 = Random.Range(1, 100);
+                int choosenPw3 = checkProb(random3);
 
-                if (checkAvaiable(choosenPw))
+                if (checkAvaiable(choosenPw3))
                 {
-                    chosenPower1 = choosenPw;
-                    renderPowerUpImage(pw3Image, powerUpSpriteList[choosenPw]);
+                    chosenPower3 = choosenPw3;
+                    renderPowerUpImage(pw3Image, powerUpSpriteList[choosenPw3]);
+                    pw3Text.text = pwDescriptions[choosenPw3];
+                    Debug.Log("pw3 chosen");
 
                 }
 
-                if (choosenPw != 0)
+                if (choosenPw3 != 99)
                 {
                     pw3search = false;
                 }
@@ -194,8 +228,9 @@ public class PowerUpMenu : MonoBehaviour
         if (available > 0)
         {
             Debug.Log("powerupnumber : " + powerUpNumber + " true");
-            powerArray[1, powerUpNumber] = available--;
-            Debug.Log("Only " + available + " times possible");
+            available--;
+            powerArray[1, powerUpNumber] = available;
+            Debug.Log("Only " + available + " times possible now");
             return true;
         }
         else
@@ -214,7 +249,7 @@ public class PowerUpMenu : MonoBehaviour
             }
         }
 
-        return 0;
+        return 99;
     }
 
 }
