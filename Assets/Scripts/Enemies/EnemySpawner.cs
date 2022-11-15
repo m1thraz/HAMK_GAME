@@ -10,11 +10,15 @@ public class EnemySpawner : MonoBehaviour
     private GameObject spikyBallPrefab;
     [SerializeField]
     private GameObject spikyBallBossPrefab;
+    [SerializeField]
+    private GameObject goblinPrefab;
 
     [SerializeField]
     private float spikyBallInterval;
     [SerializeField]
     private float spikyBallBossInterval;
+    [SerializeField]
+    private float goblinInterval;
 
     private float horMin,horMax, verMin, verMax;
 
