@@ -35,6 +35,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private bool stopSpawn = false;
 
+    private GameObject cloneContainer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(spawnEnemy(spikyBallInterval, spikyBallPrefab));
         StartCoroutine(spawnEnemy(spikyBallBossInterval, spikyBallBossPrefab));
         StartCoroutine(spawnEnemy(goblinInterval, goblinPrefab));
+        //goblinPrefab.transform.parent = cloneContainer.transform;
+
 
     }
     private ArrayList getSpawnLocation()
@@ -85,12 +89,21 @@ public class EnemySpawner : MonoBehaviour
         return returnVal;
 
     }
-    public IEnumerator spawnEnemy(float interval, GameObject enemy) 
+    private IEnumerator spawnEnemy(float interval, GameObject enemy) 
     {
         yield return new WaitForSeconds(interval);
         ArrayList pos = getSpawnLocation();
         GameObject newEnemy = Instantiate(enemy, new Vector2((float)pos[0],(float)pos[1]), Quaternion.identity);
         //GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval, enemy));
+        
+    }
+    private IEnumerator waveSpawner()
+    {
+        while (activeWave = true && stopSpawn == false)
+        {
+            spawnEnemy(goblinInterval, goblinPrefab);
+        }
+        yield return new WaitForSeconds(10);
     }
 }
