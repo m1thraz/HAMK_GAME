@@ -24,7 +24,7 @@ public class PlayerLogic : MonoBehaviour
     {
         health = maxHealth;
         Physics.IgnoreLayerCollision(0, 6);
-        HPText.text = health.ToString() + "x";
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
         ScoreText.text = "Score: " + score.ToString();
     }
 
@@ -43,7 +43,7 @@ public class PlayerLogic : MonoBehaviour
     {
         
         health -= damageAmount;
-        HPText.text = health.ToString() + "x";
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
         Debug.Log(string.Format("Player has now {0} health left", health));
         
         if(health > 0)
