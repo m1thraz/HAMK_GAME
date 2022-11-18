@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   HPText: {fileID: 2080538763}
   ScoreText: {fileID: 832700359}
   lvlbar: {fileID: 0}
-  maxHealth: 1000
+  maxHealth: 4
   health: 0
   score: 0
 --- !u!82 &1061358760
@@ -2032,59 +2032,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268178562}
   m_CullTransparentMesh: 1
---- !u!1 &1284159653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1284159654}
-  - component: {fileID: 1284159655}
-  m_Layer: 0
-  m_Name: CloneContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1284159654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284159653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284159655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284159653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f752599eba167354fbcc82383f4f2f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikyBallPrefab: {fileID: 0}
-  spikyBallBossPrefab: {fileID: 0}
-  goblinPrefab: {fileID: 0}
-  spikyBallInterval: 0
-  spikyBallBossInterval: 0
-  goblinInterval: 0
-  timeBetweenWaves: 10
-  activeWave: 1
-  stopSpawn: 0
 --- !u!1 &1337037218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,17 +2157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spikyBallPrefab: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
   spikyBallBossPrefab: {fileID: 8372678237104354305, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
-<<<<<<< HEAD
-  goblinPrefab: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
-  spikyBallInterval: 50
-  spikyBallBossInterval: 50
-  goblinInterval: 2
-=======
   goblinPrefab: {fileID: 0}
   spikyBallInterval: 1
   spikyBallBossInterval: 50
   goblinInterval: 0
->>>>>>> ca02e94b91f99f3f72c4fac9814e6b938c085a5a
   timeBetweenWaves: 10
   activeWave: 1
   stopSpawn: 0
