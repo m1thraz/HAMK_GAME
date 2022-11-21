@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5904273050162168497}
   - component: {fileID: -8198177543509193999}
   - component: {fileID: -2764968807426862222}
+  - component: {fileID: -2970199954779478192}
   m_Layer: 0
   m_Name: SpikyBall (2)
   m_TagString: enemy
@@ -169,3 +170,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!95 &-2970199954779478192
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964471341267594893}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1c30ea1147a34787a64cc0ded55ac4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

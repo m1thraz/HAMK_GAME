@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &11465220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   HPText: {fileID: 2080538763}
   ScoreText: {fileID: 832700359}
   lvlbar: {fileID: 0}
-  maxHealth: 10
+  maxHealth: 50
   health: 0
   score: 0
 --- !u!82 &1061358760
