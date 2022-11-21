@@ -75,12 +75,20 @@ public class PowerUpMenu : MonoBehaviour
 
     private int choosenPW = 0;
 
+    PlayerLogic playerLogic;
+    PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
         powerUpMenu.SetActive(false);
         isPowerMenuOpen = false;
         Debug.Log("Start powerupmenu script");
+
+
+        playerLogic = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerMovement)) as PlayerMovement;
+
 
         pw1Image = PowerupBtn1.GetComponent<Image>(); 
         pw2Image = PowerupBtn2.GetComponent<Image>(); 
@@ -94,10 +102,21 @@ public class PowerUpMenu : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
             Debug.Log("change sprite");
+            
+            
             chooseRandomPowerUps();
             //renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPW]);
             //choosenPW++;
-        } 
+        }
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            Debug.Log("test Powerup");
+
+            //playerMovement.increaseSpeed();
+
+    
+        }
 
     }
 
@@ -250,6 +269,63 @@ public class PowerUpMenu : MonoBehaviour
         }
 
         return 99;
+    }
+
+
+    public void Buttonclicked(int buttonNumber)
+    {
+        switch (buttonNumber)
+        {
+            case 1:
+                activatePowerUp(chosenPower1);
+                break;
+
+            case 2:
+                activatePowerUp(chosenPower2);
+                break;
+
+            case 3:
+                activatePowerUp(chosenPower3);
+                break;
+
+        }
+    }
+
+    public void activatePowerUp(int pwnumber)
+    {
+        switch(pwnumber)
+        {
+            case 0:
+                    Debug.Log("pw0 activated");
+                    break;
+            case 1:
+                    Debug.Log("pw1 activated max hp");
+                    playerLogic.increaseMaxHP();
+                    break;
+
+            case 2:
+                    Debug.Log("pw2 activated");
+                    break;
+
+            case 3:
+                    Debug.Log("pw3 activated");
+                    playerMovement.increaseSpeed();
+                    break;
+
+            case 4:
+                    Debug.Log("pw4 activated");
+                    break;
+
+            case 5:
+                    Debug.Log("pw5 activated");
+                    break;
+
+
+
+
+        }
+
+        closePowerUP();
     }
 
 }

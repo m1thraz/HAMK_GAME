@@ -203,4 +203,9 @@ public class PlayerMovement : MonoBehaviour
         isShooting = false;
     }
 
+
+    public void increaseSpeed()
+    {
+        speed *= 1.1f;
+    }
 }

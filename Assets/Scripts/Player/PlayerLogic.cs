@@ -80,4 +80,15 @@ public class PlayerLogic : MonoBehaviour
         }
         
     }
+
+    public void increaseMaxHP()
+    {
+        maxHealth++;
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
+    }
+
+    public void increasePlayerSpeed()
+    {
+
+    }
 }
