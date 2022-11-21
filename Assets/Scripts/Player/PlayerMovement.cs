@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gameManager;
     bool isPowerMenuOpen;
     PowerUpMenu powerMenu;
+    public GameObject pauseMenu;
 
 
 
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            Application.Quit();
+            pauseMenu.SetActive(true);
         }
 
         if (direction != Vector2.zero)

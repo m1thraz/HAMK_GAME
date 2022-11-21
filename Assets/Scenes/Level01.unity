@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &107665527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2197,6 +2197,7 @@ MonoBehaviour:
   shootPosSouth: {fileID: 968802736}
   bullet: {fileID: 4063584610609680336, guid: fba53bed76f53419283a2ba14bd88111, type: 3}
   gameManager: {fileID: 2066208270}
+  pauseMenu: {fileID: 107665526}
 --- !u!61 &1061358757
 BoxCollider2D:
   m_ObjectHideFlags: 0
