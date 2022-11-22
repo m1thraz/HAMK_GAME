@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        // For Debugging
+        // For Debugging POWER UP MENU
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("key p pressed");

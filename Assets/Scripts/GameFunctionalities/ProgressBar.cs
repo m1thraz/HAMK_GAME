@@ -15,7 +15,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField]
     private float fillSpeed = 10f;
 
-
+    PowerUpMenu powerupMenu;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class ProgressBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerupMenu = GameObject.FindGameObjectWithTag("GameManager").GetComponent(typeof(PowerUpMenu)) as PowerUpMenu;
     }
 
     // Update is called once per frame
@@ -69,6 +69,7 @@ public class ProgressBar : MonoBehaviour
     {
         level++;
         levelText.text = "Level: " + level.ToString();
+        powerupMenu.openPowerUP();
     }
 
 }

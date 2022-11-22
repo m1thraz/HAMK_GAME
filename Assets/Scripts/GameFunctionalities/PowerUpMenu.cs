@@ -19,11 +19,11 @@ public class PowerUpMenu : MonoBehaviour
     public TextMeshProUGUI pw2Text;
     public TextMeshProUGUI pw3Text;
 
-    private static string PW0DESCRIPTION = "Decrease Spellcasttime "; // Castspeed
-    private static string PW1DESCRIPTION = "Increase max HP"; // Health potion 
+    private static string PW0DESCRIPTION = "Decrease Spellcasttime "; // Castspeed WORKING
+    private static string PW1DESCRIPTION = "Increase max HP"; // Health potion   WORKING
     private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
-    private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed
-    private static string PW4DESCRIPTION = "Shoot 2 Spells"; // shoot 2 spells at once
+    private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed WORKING
+    private static string PW4DESCRIPTION = "Shoot 2 Spells"; // shoot 2 spells at once WORKING
     private static string PW5DESCRIPTION = ""; // increase playerdamage
     // boost armor / defense
     // bigger spell bigger hitbox
@@ -140,9 +140,6 @@ public class PowerUpMenu : MonoBehaviour
 
     public void openPowerUP()
     {
-
-        
-
         // powerUpMenu.SetActive(true);
         canvasGroup.alpha = 1.0f;
         canvasGroup.interactable = true;
