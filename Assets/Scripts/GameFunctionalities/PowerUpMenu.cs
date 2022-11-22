@@ -325,6 +325,7 @@ public class PowerUpMenu : MonoBehaviour
         {
             case 0:
                     Debug.Log("pw0 activated");
+                    playerMovement.increaseShootSpeed();
                     break;
             case 1:
                     Debug.Log("pw1 activated max hp");

@@ -209,4 +209,9 @@ public class PlayerMovement : MonoBehaviour
     {
         speed *= 1.1f;
     }
+
+    public void increaseShootSpeed()
+    {
+        shootTimer *= 0.9f;
+    }
 }
