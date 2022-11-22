@@ -134,13 +134,14 @@ GameObject:
   - component: {fileID: 11465220}
   - component: {fileID: 11465222}
   - component: {fileID: 11465221}
+  - component: {fileID: 11465223}
   m_Layer: 5
   m_Name: PowerupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &11465220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -203,6 +204,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11465219}
   m_CullTransparentMesh: 1
+--- !u!225 &11465223
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11465219}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &137856416
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +228,7 @@ GameObject:
   - component: {fileID: 137856420}
   - component: {fileID: 137856419}
   - component: {fileID: 137856418}
+  - component: {fileID: 137856421}
   m_Layer: 5
   m_Name: Powerup3
   m_TagString: Untagged
@@ -287,14 +301,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 303867149}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2066208273}
+        m_TargetAssemblyTypeName: PowerUpMenu, Assembly-CSharp
+        m_MethodName: Buttonclicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -337,6 +351,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137856416}
   m_CullTransparentMesh: 1
+--- !u!114 &137856421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137856416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed057b0df514748adfe77b035fbafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNr: 3
 --- !u!1 &253370081
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +704,7 @@ GameObject:
   - component: {fileID: 510545792}
   - component: {fileID: 510545791}
   - component: {fileID: 510545790}
+  - component: {fileID: 510545793}
   m_Layer: 5
   m_Name: Powerup1
   m_TagString: Untagged
@@ -748,19 +776,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 510545791}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303867153}
-        m_TargetAssemblyTypeName: log, Assembly-CSharp
-        m_MethodName: giveMessageInConsole
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 20
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &510545791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +815,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510545788}
   m_CullTransparentMesh: 1
+--- !u!114 &510545793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510545788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed057b0df514748adfe77b035fbafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNr: 1
 --- !u!1 &563671690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1348,7 @@ MonoBehaviour:
   shootPosSouth: {fileID: 968802736}
   bullet: {fileID: 4063584610609680336, guid: fba53bed76f53419283a2ba14bd88111, type: 3}
   gameManager: {fileID: 2066208270}
+  pauseMenu: {fileID: 0}
 --- !u!61 &1061358757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1834,6 +1864,7 @@ GameObject:
   - component: {fileID: 1260393597}
   - component: {fileID: 1260393596}
   - component: {fileID: 1260393595}
+  - component: {fileID: 1260393598}
   m_Layer: 5
   m_Name: Powerup2
   m_TagString: Untagged
@@ -1906,14 +1937,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 303867149}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2066208273}
+        m_TargetAssemblyTypeName: PowerUpMenu, Assembly-CSharp
+        m_MethodName: Buttonclicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1956,6 +1987,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260393593}
   m_CullTransparentMesh: 1
+--- !u!114 &1260393598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260393593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed057b0df514748adfe77b035fbafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNr: 2
 --- !u!1 &1268178562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2645,7 @@ GameObject:
   - component: {fileID: 2066208274}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2666,6 +2710,9 @@ MonoBehaviour:
   pw3Prob: 290000003c000000
   pw4Prob: 3d0000005a000000
   pw5Prob: 5b00000064000000
+  Button1: {fileID: 510545790}
+  Button2: {fileID: 1260393595}
+  Button3: {fileID: 137856418}
 --- !u!114 &2066208274
 MonoBehaviour:
   m_ObjectHideFlags: 0

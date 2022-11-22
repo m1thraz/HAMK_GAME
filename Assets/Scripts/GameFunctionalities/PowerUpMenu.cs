@@ -48,7 +48,7 @@ public class PowerUpMenu : MonoBehaviour
     public Sprite[] powerUpSpriteList;
 
     // Arry with Powerup Nr | available  PowerUp Number     Available Count
-    public int[,] powerArray =          { {0,1,2,3,4}, {2,10,3,2,1} };
+    public int[,] powerArray =          { {0,1,2,3,4}, {20,100,30,20,10} };
 
 
     public int[] minProb = { 1, 11, 41, 61, 91 };
@@ -78,10 +78,19 @@ public class PowerUpMenu : MonoBehaviour
     PlayerLogic playerLogic;
     PlayerMovement playerMovement;
 
-    // Start is called before the first frame update
-    void Start()
+    CanvasGroup canvasGroup;
+
+
+    [SerializeField] private Button Button1 = null;
+    [SerializeField] private Button Button2 = null;
+    [SerializeField] private Button Button3 = null;
+
+    
+
+        // Start is called before the first frame update
+        void Start()
     {
-        powerUpMenu.SetActive(false);
+        //powerUpMenu.SetActive(false);
         isPowerMenuOpen = false;
         Debug.Log("Start powerupmenu script");
 
@@ -93,7 +102,16 @@ public class PowerUpMenu : MonoBehaviour
         pw1Image = PowerupBtn1.GetComponent<Image>(); 
         pw2Image = PowerupBtn2.GetComponent<Image>(); 
         pw3Image = PowerupBtn3.GetComponent<Image>();
-   
+
+        canvasGroup = powerUpMenu.GetComponent<CanvasGroup>();
+
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.interactable = false;
+
+       
+
+
+
     }
 
     // Update is called once per frame
@@ -117,13 +135,17 @@ public class PowerUpMenu : MonoBehaviour
 
     
         }
-
+        
     }
 
     public void openPowerUP()
     {
+
         
-        powerUpMenu.SetActive(true);
+
+        // powerUpMenu.SetActive(true);
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.interactable = true;
         Time.timeScale = 0f;
 
         chooseRandomPowerUps();
@@ -135,7 +157,9 @@ public class PowerUpMenu : MonoBehaviour
 
     public void closePowerUP()
     {
-        powerUpMenu.SetActive(false);
+        // powerUpMenu.SetActive(false);
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.interactable = false;
         Time.timeScale = 1f;
         isPowerMenuOpen = false;
     }
@@ -278,14 +302,17 @@ public class PowerUpMenu : MonoBehaviour
         {
             case 1:
                 activatePowerUp(chosenPower1);
+                Debug.Log("button1 clicked");
                 break;
 
             case 2:
                 activatePowerUp(chosenPower2);
+                Debug.Log("button2 clicked");
                 break;
 
             case 3:
                 activatePowerUp(chosenPower3);
+                Debug.Log("button3 clicked");
                 break;
 
         }
@@ -293,6 +320,7 @@ public class PowerUpMenu : MonoBehaviour
 
     public void activatePowerUp(int pwnumber)
     {
+        Debug.Log("activatepowerUP nr. " + pwnumber );
         switch(pwnumber)
         {
             case 0:
@@ -301,6 +329,7 @@ public class PowerUpMenu : MonoBehaviour
             case 1:
                     Debug.Log("pw1 activated max hp");
                     playerLogic.increaseMaxHP();
+                    closePowerUP();
                     break;
 
             case 2:
@@ -310,6 +339,7 @@ public class PowerUpMenu : MonoBehaviour
             case 3:
                     Debug.Log("pw3 activated");
                     playerMovement.increaseSpeed();
+                    closePowerUP();
                     break;
 
             case 4:
