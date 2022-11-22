@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2198,6 +2198,7 @@ MonoBehaviour:
   bullet: {fileID: 4063584610609680336, guid: fba53bed76f53419283a2ba14bd88111, type: 3}
   gameManager: {fileID: 2066208270}
   pauseMenu: {fileID: 107665526}
+  isDoubleCast: 0
 --- !u!61 &1061358757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3169,15 +3170,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f752599eba167354fbcc82383f4f2f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikyBallPrefab: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
-  spikyBallBossPrefab: {fileID: 8372678237104354305, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
-  goblinPrefab: {fileID: 0}
-  spikyBallInterval: 1
-  spikyBallBossInterval: 50
-  goblinInterval: 0
+  enemyPrefab1: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
+  enemyPrefab2: {fileID: 0}
+  enemyPrefab3: {fileID: 0}
+  enemyPrefab4: {fileID: 0}
+  enemyPrefab5: {fileID: 0}
+  bossPrefab: {fileID: 0}
+  enemyInterval1: 1
+  enemyInterval2: 0
+  enemyInterval3: 0
+  enemyInterval4: 0
+  enemyInterval5: 0
   timeBetweenWaves: 10
   activeWave: 1
   stopSpawn: 0
+  waveCountText: {fileID: 0}
 --- !u!4 &1355760093
 Transform:
   m_ObjectHideFlags: 0
@@ -3949,6 +3956,9 @@ MonoBehaviour:
   pw3Prob: 290000003c000000
   pw4Prob: 3d0000005a000000
   pw5Prob: 5b00000064000000
+  Button1: {fileID: 0}
+  Button2: {fileID: 0}
+  Button3: {fileID: 0}
 --- !u!114 &2066208274
 MonoBehaviour:
   m_ObjectHideFlags: 0
