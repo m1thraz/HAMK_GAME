@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     PowerUpMenu powerMenu;
     public GameObject pauseMenu;
 
+    public bool isDoubleCast = false;
+
 
 
     private void Start()
@@ -79,7 +81,18 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !isShooting || Input.GetKey(KeyCode.Mouse0) && !isShooting)
         {
-            StartCoroutine(playerShoot());
+            //maybe adjust duration between?
+            if (isDoubleCast)
+            {
+                StartCoroutine(playerShoot());
+                StartCoroutine(playerShoot());
+            }
+            else
+            {
+                StartCoroutine(playerShoot());
+            }
+
+
         }
         if (Input.GetKey(KeyCode.R))
         {
@@ -213,5 +226,10 @@ public class PlayerMovement : MonoBehaviour
     public void increaseShootSpeed()
     {
         shootTimer *= 0.9f;
+    }
+
+    public void activateDoubleCast()
+    {
+        isDoubleCast = true;
     }
 }

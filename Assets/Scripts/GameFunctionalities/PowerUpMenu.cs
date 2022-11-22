@@ -120,9 +120,9 @@ public class PowerUpMenu : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
             Debug.Log("change sprite");
-            
-            
-            chooseRandomPowerUps();
+
+
+           
             //renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPW]);
             //choosenPW++;
         }
@@ -345,6 +345,7 @@ public class PowerUpMenu : MonoBehaviour
 
             case 4:
                     Debug.Log("pw4 activated");
+                    playerMovement.activateDoubleCast();
                     break;
 
             case 5:
