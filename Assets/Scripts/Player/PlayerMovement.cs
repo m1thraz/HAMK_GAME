@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Vector2 direction;
-    private Vector2 directionHistory;
+    private Vector2 directionHistory = Vector2.right;
     private Animator animator;
 
     public float shootSpeed, shootTimer;
@@ -82,18 +82,20 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !isShooting || Input.GetKey(KeyCode.Mouse0) && !isShooting)
         {
-            //maybe adjust duration between?
-            if (isDoubleCast)
+            if (!gamePaused)
             {
-                StartCoroutine(playerShoot());
-                StartCoroutine(playerShoot());
-            }
-            else
-            {
-                StartCoroutine(playerShoot());
-            }
+                //maybe adjust duration between?
+                if (isDoubleCast)
+                {
+                    StartCoroutine(playerShoot());
+                    StartCoroutine(playerShoot());
+                }
+                else
+                {
+                    StartCoroutine(playerShoot());
+                }
 
-
+            }
         }
         if (Input.GetKey(KeyCode.R))
         {
