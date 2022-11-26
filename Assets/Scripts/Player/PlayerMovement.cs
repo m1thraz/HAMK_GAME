@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     bool isPowerMenuOpen;
     PowerUpMenu powerMenu;
     public GameObject pauseMenu;
+    bool gamePaused = false;
 
     public bool isDoubleCast = false;
 
@@ -101,7 +102,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            pauseMenu.SetActive(true);
+            if (!gamePaused)
+            {
+                Time.timeScale = 0f;
+                pauseMenu.SetActive(true);
+                gamePaused = true;
+            } else
+            {
+                Time.timeScale = 1f;
+                pauseMenu.SetActive(false);
+                gamePaused = false;
+            }
+
         }
 
         if (direction != Vector2.zero)
