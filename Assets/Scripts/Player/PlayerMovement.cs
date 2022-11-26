@@ -82,8 +82,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !isShooting || Input.GetKey(KeyCode.Mouse0) && !isShooting)
         {
-           // if (!gamePaused)
-          //  {
+            if (!gamePaused)
+            {
                 //maybe adjust duration between?
                 if (isDoubleCast)
                 {
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(playerShoot());
                 }
 
-          //  }
+            }
         }
         if (Input.GetKey(KeyCode.R))
         {
@@ -104,18 +104,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!gamePaused)
-            {
-                Time.timeScale = 0f;
-                pauseMenu.SetActive(true);
-                gamePaused = true;
-            } else
-            {
-                Time.timeScale = 1f;
-                pauseMenu.SetActive(false);
-                gamePaused = false;
-            }
 
+            Pause();
         }
 
         if (direction != Vector2.zero)
@@ -245,5 +235,20 @@ public class PlayerMovement : MonoBehaviour
     public void activateDoubleCast()
     {
         isDoubleCast = true;
+    }
+    public void Pause()
+    {
+        if (!gamePaused)
+        {
+            Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
+            gamePaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
+            gamePaused = false;
+        }
     }
 }
