@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsMenu;
     PlayerMovement controlls;
     public GameObject Player;
+    private bool muted = false;
 
 
     public void Start()
@@ -42,16 +43,22 @@ public class PauseMenu : MonoBehaviour
         // Time.timeScale = 1f;
         controlls.Pause();
     }
-    public void Mute(bool muted)
+    public void Mute()
     {
         if(muted)
         {
-            AudioListener.volume = 0;
-        } else
-        {
-            AudioListener.volume = 1;
+            AudioListener.pause = true;
+            muted = false;
         }
+
+        else
+        {
+            AudioListener.pause = false;
+            muted = true;
+        }
+
     }
+
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);

@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     PowerUpMenu powerMenu;
     public GameObject pauseMenu;
     bool gamePaused = false;
+    public GameObject settingsMenu;
 
     public bool isDoubleCast = false;
 
@@ -42,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
     {
         TakeInput();
         Move();
-       
+        AlternativShot();
+
+
     }
 
     private void Move()
@@ -249,6 +252,28 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
             gamePaused = false;
+            settingsMenu.SetActive(false);
         }
+    }
+    public void AlternativShot()
+    {
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+           // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+           // GameObject spell = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+            
+            Vector2 myPos = transform.position;
+            Vector2 direct = (mousePos - myPos).normalized;
+
+            GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+
+            Debug.Log(direct);
+            newBullet.GetComponent<Rigidbody2D>().velocity = direct * 5; 
+                
+         }
     }
 }

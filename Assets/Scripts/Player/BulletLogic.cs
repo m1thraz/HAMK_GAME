@@ -10,10 +10,9 @@ public class BulletLogic : MonoBehaviour
 
     float BulletTime = 2;
     private float damage = 1;
-
-
+ 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         DeleteBullet();
     }
