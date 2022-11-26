@@ -74,7 +74,7 @@ public class PlayerLogic : MonoBehaviour
         }
         if(DeathTime<=0)
         {
-
+            PlayerPrefs.SetFloat("playScore", score);
             Destroy(gameObject);
             SceneManager.LoadScene(2);
         }
