@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     // public GameObject settingsPanel;
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
@@ -29,5 +30,23 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void Mute(bool muted)
+    {
+        if(muted)
+        {
+            AudioListener.volume = 0;
+        } else
+        {
+            AudioListener.volume = 1;
+        }
+    }
+    public void OpenSettings()
+    {
+        settingsMenu.SetActive(true);
+    }
+    public void CloseSettings()
+    {
+        settingsMenu.SetActive(false);
     }
 }

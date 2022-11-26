@@ -82,8 +82,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !isShooting || Input.GetKey(KeyCode.Mouse0) && !isShooting)
         {
-            if (!gamePaused)
-            {
+           // if (!gamePaused)
+          //  {
                 //maybe adjust duration between?
                 if (isDoubleCast)
                 {
@@ -95,14 +95,14 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(playerShoot());
                 }
 
-            }
+          //  }
         }
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
         }
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!gamePaused)
             {
