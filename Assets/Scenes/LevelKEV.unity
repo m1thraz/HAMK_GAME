@@ -4105,6 +4105,8 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   score: 0
+  armor: 20
+  coins: 0
 --- !u!82 &1061358760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7574,7 +7576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1355760092
 MonoBehaviour:
   m_ObjectHideFlags: 0

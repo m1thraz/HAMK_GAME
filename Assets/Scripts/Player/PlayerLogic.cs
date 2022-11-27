@@ -17,8 +17,8 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] 
     float maxHealth = 3, health, score;
-    int armor = 0;
-    int coins = 0;
+    [SerializeField]
+    int armor = 0, coins = 0;
 
     private void Awake()
     {
@@ -46,9 +46,25 @@ public class PlayerLogic : MonoBehaviour
 
     public void takeDamage(float damageAmount)
     {
-        
+
+        while(armor > 0 && damageAmount != 0)
+        {
+            armor--;
+            damageAmount--;
+            ArmorText.text = armor.ToString();
+        }
+
+        if(damageAmount == 0)
+        {
+            //play block sound?
+            return;
+        }
+
         health -= damageAmount;
+        
+
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
+
         Debug.Log(string.Format("Player has now {0} health left", health));
         
         if(health > 0)
