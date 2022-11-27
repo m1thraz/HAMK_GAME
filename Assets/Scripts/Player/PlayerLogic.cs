@@ -23,7 +23,7 @@ public class PlayerLogic : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        Physics.IgnoreLayerCollision(0, 6);
+       // Physics.IgnoreLayerCollision(0, 6);
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
         ScoreText.text = "Score: " + score.ToString();
     }
