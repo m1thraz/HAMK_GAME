@@ -7,13 +7,18 @@ public class PlayerLogic : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI ArmorText;
+    public TextMeshProUGUI CoinText;
     public ProgressBar lvlbar;
+
+
     float DeathTime = 1;
     bool alive = true;
     // Start is called before the first frame update
     [SerializeField] 
     float maxHealth = 3, health, score;
-
+    int armor = 0;
+    int coins = 0;
 
     private void Awake()
     {
@@ -87,8 +92,26 @@ public class PlayerLogic : MonoBehaviour
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
     }
 
-    public void increasePlayerSpeed()
+    public void increaseArmor(int amount)
     {
+        armor += amount;
+        ArmorText.text = armor.ToString(); 
 
+    }
+
+    public void increaseCoin(int amount)
+    {
+        coins += amount;
+        CoinText.text = coins.ToString();
+    }
+
+    public int getCoin()
+    {
+        return coins;
+    }
+
+    public int getArmor()
+    {
+        return armor;
     }
 }
