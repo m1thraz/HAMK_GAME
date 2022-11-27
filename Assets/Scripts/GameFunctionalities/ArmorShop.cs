@@ -29,6 +29,8 @@ public class ArmorShop : MonoBehaviour
 
     void Update()
     {
+
+        // DEBUG FOR COIN INCREASE
         if (Input.GetKeyDown(KeyCode.C))
         {
             playerLogic.increaseCoin(10);
@@ -36,17 +38,9 @@ public class ArmorShop : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
-                {
-                 
-                    openArmorShop();
-                }
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            armorPanel.SetActive(false) ;
-        }
 
+        // Close Shop if not enough Coins
         if (Input.GetKeyDown(KeyCode.F) && isShopOpen)
         {
             armorPanel.SetActive(false);
@@ -63,14 +57,7 @@ public class ArmorShop : MonoBehaviour
                 armorPanel.SetActive(false);
             }
             
-
         }
-
-
-
-
-
-
 
     }
 
@@ -79,16 +66,8 @@ public class ArmorShop : MonoBehaviour
     {
 
         if (collision.gameObject.name == "Player")
-        {
-            coins = playerLogic.getCoin();
-            Debug.Log("Player coins = " + coins);
-            Debug.Log("Player coins = " + playerLogic.getArmor());
-            openArmorShop();
-            
-
-
-        }
-
+        { openArmorShop(); }
+        
     }
 
 
@@ -132,7 +111,5 @@ public class ArmorShop : MonoBehaviour
             TextPrice.SetText(string.Format("<s> {0} Coins </s>", armorCost));
         }
 
-
-        
     }
 }
