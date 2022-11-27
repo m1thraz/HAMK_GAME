@@ -122,13 +122,13 @@ public class ArmorShop : MonoBehaviour
 
         if (coins >= armorCost)
         {
-            TextPrice.color = colorYellow;
+            TextPrice.color = Color.yellow;
             TextPrice.SetText(armorCost + " Coins");
 
         }
         else
         {
-            TextPrice.color = colorRed;
+            TextPrice.color = Color.red;
             TextPrice.SetText(string.Format("<s> {0} Coins </s>", armorCost));
         }
 
