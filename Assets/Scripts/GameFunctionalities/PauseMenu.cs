@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    // public GameObject settingsPanel;
+
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     PlayerMovement controlls;
@@ -33,23 +33,14 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-/*    public void OpenSettings()
-    {
-        settingsPanel.SetActive(true);
-    }*/
 
-/*    public void CloseSettings()
-    {
-        settingsPanel.SetActive(false);
-    }*/
     public void ExitGame()
     {
         Application.Quit();
     }
     public void Return()
     {
-        //   pauseMenu.SetActive(false);
-        // Time.timeScale = 1f;
+
         controlls.Pause();
     }
     public void Mute()

@@ -271,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
 
             GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
-            Debug.Log(direct);
+           // Debug.Log(direct);
             newBullet.GetComponent<Rigidbody2D>().velocity = direct * 5; 
                 
          }
