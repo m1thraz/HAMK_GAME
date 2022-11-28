@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8198177543509193999}
   - component: {fileID: -2764968807426862222}
   - component: {fileID: -2970199954779478192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpikyBall (2)
   m_TagString: enemy
   m_Icon: {fileID: 0}

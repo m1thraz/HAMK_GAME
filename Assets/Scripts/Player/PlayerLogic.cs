@@ -115,6 +115,12 @@ public class PlayerLogic : MonoBehaviour
 
     }
 
+    public void increasePlayerHealth()
+    {
+        health = maxHealth;
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
+    }
+
     public void increaseCoin(int amount)
     {
         coins += amount;

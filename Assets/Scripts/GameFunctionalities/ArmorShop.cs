@@ -81,6 +81,7 @@ public class ArmorShop : MonoBehaviour
 
             playerLogic.increaseCoin(-armorCost);
             armorCost *= 2;
+            isShopOpen = false;
             return true;
         }
         return false;
