@@ -9,11 +9,9 @@ public class BigBulletLogic : MonoBehaviour
 {
 
     float BulletTime = 2;
-    private float damage = 1;
-    private float bigDamage = 2;
+    private float damage = 2;
     private Animator animator;
 
-    bool isBigSpell = false;
 
 
     private void Start()
@@ -32,18 +30,7 @@ public class BigBulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
 
-            if (isBigSpell)
-            {
-                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(bigDamage);
-            }
-            else
-            {
-
                 collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
-            }
-
-
-
 
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");
@@ -81,13 +68,5 @@ public class BigBulletLogic : MonoBehaviour
     public void setDamage(float dmgAmount)
     {
         damage = dmgAmount;
-    }
-
-    public void activateDeactivateBigSpell()
-    {
-        if (isBigSpell)
-            isBigSpell = false;
-        else
-            isBigSpell = true;
     }
 }

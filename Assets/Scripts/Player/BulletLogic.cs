@@ -10,10 +10,8 @@ public class BulletLogic : MonoBehaviour
 
     float BulletTime = 2;
     private float damage = 1;
-    private float bigDamage = 2;
     private Animator animator;
 
-    bool isBigSpell = false;
 
 
     private void Start()
@@ -31,24 +29,11 @@ public class BulletLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-
-            if (isBigSpell)
-            {
-                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(bigDamage);
-            }
-            else
-            {
-
-                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
-            }
-
-
-
-
+            collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");
 
-
+           
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
 
         }
@@ -81,13 +66,5 @@ public class BulletLogic : MonoBehaviour
     public void setDamage(float dmgAmount)
     {
         damage = dmgAmount;
-    }
-
-    public void activateDeactivateBigSpell()
-    {
-        if (isBigSpell)
-            isBigSpell = false;
-        else
-            isBigSpell = true;
     }
 }
