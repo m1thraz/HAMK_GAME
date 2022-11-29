@@ -99,14 +99,14 @@ public class EnemySpawner : MonoBehaviour
     {
         while (activeWave == true)
         {
-            
+
             if (waveCount == 1)
             {
-                
+
                 //spikyBall
                 for (int i = 0; i < enemyCount; i++)
                 {
-                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));                   
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
                 }
                 Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
                 enemyCount += 2;
@@ -120,7 +120,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < enemyCount; i++)
                 {
                     StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
-                    
+
                 }
                 Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
                 enemyCount += 2;
@@ -146,7 +146,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < enemyCount; i++)
                 {
                     StartCoroutine(spawnEnemy(enemyInterval1, enemyPrefab1));
-                    
+
                 }
                 Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
                 enemyCount += 2;
@@ -159,7 +159,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < enemyCount; i++)
                 {
                     StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
-                    Debug.Log("spawned" + enemyCount + "Enemies. In wave "+ waveCount);
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
                 }
                 enemyCount += 2;
                 waveCount++;
@@ -225,23 +225,12 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(10);
                 Debug.Log("spawning next wave");
             }
-            else if(waveCount == 11)
+            else if (waveCount == 11)
             {
                 Debug.Log("you won");
             }
         }
 
 
-        //als activewave ==true en stopspawn == false 
-        //spawnWave
-        //als wave == 1
-        //spawn spikyball x 10
-        //dmg++
     }
-    private void activateWaveText()
-    {
-       
-        
-    }
-
 }
