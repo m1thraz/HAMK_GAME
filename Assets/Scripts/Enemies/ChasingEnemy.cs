@@ -13,22 +13,27 @@ public class ChasingEnemy : MonoBehaviour
 
     [SerializeField]
     float moveSpeed = 8;
+    float currentMovespeed;
     [SerializeField] float maxHealth = 5;
 
     private float health;
     [SerializeField] float damage = 1;
 
-
+    [SerializeField]
+    float distance;
     private void Awake()
     {
     }
     void Start()
     {
+        currentMovespeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         health = maxHealth;
         player = GameObject.Find("Player").transform;
         animator = GetComponent<Animator>();
+        Physics.IgnoreLayerCollision(8, 7);
+
     }
 
     // Update is called once per frame
@@ -38,17 +43,28 @@ public class ChasingEnemy : MonoBehaviour
         {
             //Vector2 direction = (player.transform.position - transform.position).normalized;
             moveDirection = (player.position - transform.position).normalized;
-
             animator.SetFloat("xDir", moveDirection.x);
             animator.SetFloat("yDir", moveDirection.y);
         }
     }
     private void FixedUpdate()
     {
+        // This shoudl probalby taken out of this script and create a movement script
+        // or move all the damage logic and shit out of this script
         if (player)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
+            distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
+            if(distance <= 0.4)
+            {
+                animator.SetLayerWeight(1, 1);
+                animator.SetLayerWeight(0, 0);
+            }
+            else
+            {
+                animator.SetLayerWeight(1, 0);
+                animator.SetLayerWeight(0, 1);
+            }
         }
 
     }
@@ -56,11 +72,10 @@ public class ChasingEnemy : MonoBehaviour
     {
         PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
 
-        if (collision.gameObject.name == "Player" && health > 0)
+        if (collision.gameObject.CompareTag("Player") && health > 0)
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
-
 
             playerObject.takeDamage(damage);
 
@@ -86,12 +101,11 @@ public class ChasingEnemy : MonoBehaviour
         health -= dmgAmount;
         if (health <= 0)
         {
-            moveSpeed = 0;
+            currentMovespeed = 0;
             //damage = 0;
             Destroy(GetComponent<Collider2D>());
             animator.Play("die");
             playerObject2.ScoreUp();
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).length);
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
         }
 

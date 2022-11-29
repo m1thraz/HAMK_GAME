@@ -10,10 +10,16 @@ public class BulletLogic : MonoBehaviour
 
     float BulletTime = 2;
     private float damage = 1;
+    private Animator animator;
 
 
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         DeleteBullet();
     }
@@ -24,8 +30,11 @@ public class BulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
-            
-            Destroy(gameObject);
+            FindObjectOfType<AudoManager>().Play("explosion");
+            animator.Play("explosion");
+
+           
+            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
 
         }
     }

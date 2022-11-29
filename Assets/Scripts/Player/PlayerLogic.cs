@@ -7,13 +7,18 @@ public class PlayerLogic : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI ArmorText;
+    public TextMeshProUGUI CoinText;
     public ProgressBar lvlbar;
+
+
     float DeathTime = 1;
     bool alive = true;
     // Start is called before the first frame update
     [SerializeField] 
     float maxHealth = 3, health, score;
-
+    [SerializeField]
+    int armor = 0, coins = 0;
 
     private void Awake()
     {
@@ -23,7 +28,7 @@ public class PlayerLogic : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        Physics.IgnoreLayerCollision(0, 6);
+       // Physics.IgnoreLayerCollision(0, 6);
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
         ScoreText.text = "Score: " + score.ToString();
     }
@@ -41,9 +46,25 @@ public class PlayerLogic : MonoBehaviour
 
     public void takeDamage(float damageAmount)
     {
-        
+
+        while(armor > 0 && damageAmount != 0)
+        {
+            armor--;
+            damageAmount--;
+            ArmorText.text = armor.ToString();
+        }
+
+        if(damageAmount == 0)
+        {
+            //play block sound?
+            return;
+        }
+
         health -= damageAmount;
+        
+
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
+
         Debug.Log(string.Format("Player has now {0} health left", health));
         
         if(health > 0)
@@ -74,7 +95,7 @@ public class PlayerLogic : MonoBehaviour
         }
         if(DeathTime<=0)
         {
-
+            PlayerPrefs.SetFloat("playScore", score);
             Destroy(gameObject);
             SceneManager.LoadScene(2);
         }
@@ -87,8 +108,32 @@ public class PlayerLogic : MonoBehaviour
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
     }
 
-    public void increasePlayerSpeed()
+    public void increaseArmor(int amount)
     {
+        armor += amount;
+        ArmorText.text = armor.ToString(); 
 
+    }
+
+    public void increasePlayerHealth()
+    {
+        health = maxHealth;
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
+    }
+
+    public void increaseCoin(int amount)
+    {
+        coins += amount;
+        CoinText.text = coins.ToString();
+    }
+
+    public int getCoin()
+    {
+        return coins;
+    }
+
+    public int getArmor()
+    {
+        return armor;
     }
 }

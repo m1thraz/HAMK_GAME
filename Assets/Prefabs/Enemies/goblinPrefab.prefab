@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7121636752681147047}
   - component: {fileID: 2860043713368786265}
   - component: {fileID: -4875440282972877058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: goblinPrefab
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -441252447, guid: 9866c2c92e24e4a5f9a86dceb85f0280, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.75
   maxHealth: 10
-  damage: 1
+  damage: 4
 --- !u!50 &-4875440282972877058
 Rigidbody2D:
   serializedVersion: 4
