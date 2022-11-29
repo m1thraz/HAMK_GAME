@@ -2,37 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChasingEnemy : MonoBehaviour
+public class shootingEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     Rigidbody2D rb;
     Transform player;
     Animator animator;
     Vector2 moveDirection;
+    [SerializeField]
+    GameObject projectile;
 
     [SerializeField]
-    float moveSpeed = 8;
+    float moveSpeed;
     float currentMovespeed;
-    [SerializeField] float maxHealth = 5;
+    [SerializeField] float maxHealth;
 
     private float health;
-    [SerializeField] float damage = 1;
+    [SerializeField] float damage;
 
     [SerializeField]
-    float distance;
-    private void Awake()
-    {
-    }
+    float shotDistance;
+
+    [SerializeField]
+    float fireDelay;
+    float nextShot = 0.15f;
+    [SerializeField]
+    float projectileSpeed;
+
+    // Start is called before the first frame update
     void Start()
     {
+        Physics.IgnoreLayerCollision(8, 7);
+        Physics.IgnoreLayerCollision(7,8);
+
         currentMovespeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         health = maxHealth;
         player = GameObject.Find("Player").transform;
         animator = GetComponent<Animator>();
-        Physics.IgnoreLayerCollision(8, 7);
 
     }
 
@@ -47,33 +54,33 @@ public class ChasingEnemy : MonoBehaviour
             animator.SetFloat("yDir", moveDirection.y);
         }
     }
+
     private void FixedUpdate()
     {
-        // This shoudl probalby taken out of this script and create a movement script
-        // or move all the damage logic and shit out of this script
         if (player)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
-            distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
-            if(distance <= 0.4)
+            moveDirection = (player.position - transform.position).normalized;
+            float distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
+            Debug.Log("distance from player ");
+            Debug.Log(distance);
+            if (distance <= shotDistance && Time.time > fireDelay)
             {
-                animator.SetLayerWeight(1, 1);
-                animator.SetLayerWeight(0, 0);
+                Debug.Log("trying to shoot");
+                shootPlayer(moveDirection);
+                fireDelay += Time.time + nextShot;
             }
-            else
-            {
-                animator.SetLayerWeight(1, 0);
-                animator.SetLayerWeight(0, 1);
-            }
-        }
 
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
 
         if (collision.gameObject.CompareTag("Player") && health > 0)
         {
+            PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+
+
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
 
@@ -81,19 +88,29 @@ public class ChasingEnemy : MonoBehaviour
 
         }
 
-        //edit this so it decreases health instead of destroying the gameobject
-        //if (collision.gameObject.tag == "bullet")
-        //{
-
-        //    Debug.Log("Bullet hit enemy");
-
-
-        //    Destroy(gameObject);
-
-
-        //    playerObject2.ScoreUp();
-        //}
     }
+
+    private void shootPlayer(Vector2 shotDirection)
+    {
+
+        float speedBefore = currentMovespeed;
+        currentMovespeed = 0;
+        animator.SetLayerWeight(1, 1);
+        animator.SetLayerWeight(0, 0);
+
+        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        //newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection * projectileSpeed;
+        newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection;
+        //transform.rotation = Quaternion.LookRotation(Vector3.forward, shootDirection);
+        Vector2 dir = new Vector2(player.transform.position.x, player.transform.position.y);
+        //newProjectile.GetComponent<Rigidbody2D>().transform.rotation = Quaternion.LookRotation(Vector3.forward, shotDirection);
+
+
+        animator.SetLayerWeight(1, 0);
+        animator.SetLayerWeight(0, 1);
+        currentMovespeed = speedBefore;
+    }
+    
     public void takeDamage(float dmgAmount)
     {
         PlayerLogic playerObject2 = GameObject.Find("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;
@@ -110,4 +127,5 @@ public class ChasingEnemy : MonoBehaviour
         }
 
     }
+
 }

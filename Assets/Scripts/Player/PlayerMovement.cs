@@ -240,6 +240,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(shootTimer);
         isShootingBig = false;
     }
+    public Vector2 getDirection()
+    {
+        return direction.normalized;
+    }
 
 
     public void increaseSpeed()
