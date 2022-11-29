@@ -4594,7 +4594,10 @@ MonoBehaviour:
   gameManager: {fileID: 2066208270}
   pauseMenu: {fileID: 107665526}
   settingsMenu: {fileID: 810106283}
+  bigBullet: {fileID: 4063584610609680336, guid: bbe907457638b467f942f5d1d6f1e605, type: 3}
   isDoubleCast: 0
+  isBiggerSpell: 0
+  biggerSpellCount: 0
 --- !u!61 &1061358757
 BoxCollider2D:
   m_ObjectHideFlags: 0

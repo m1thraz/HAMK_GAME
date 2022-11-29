@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.XR;
 
 
-public class BulletLogic : MonoBehaviour
+public class BigBulletLogic : MonoBehaviour
 {
 
     float BulletTime = 2;

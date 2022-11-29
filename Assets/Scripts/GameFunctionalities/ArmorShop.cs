@@ -35,6 +35,7 @@ public class ArmorShop : MonoBehaviour
         {
             playerLogic.increaseCoin(10);
             Debug.Log("coins= " + playerLogic.getCoin());
+            
 
         }
 

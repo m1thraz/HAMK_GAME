@@ -19,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     public GameObject bullet;
-    private bool isShooting;
+    private bool isShooting, isShootingBig;
+
+
     public GameObject gameManager;
     bool isPowerMenuOpen;
     PowerUpMenu powerMenu;
@@ -27,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
     bool gamePaused = false;
     public GameObject settingsMenu;
 
+    public GameObject bigBullet;
     public bool isDoubleCast = false;
+    public bool isBiggerSpell = false;
+    public int biggerSpellCount = 0;
 
 
 
@@ -43,8 +48,12 @@ public class PlayerMovement : MonoBehaviour
     {
         TakeInput();
         Move();
-        AlternativShot();
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            activateBigSpell();
+            Debug.Log("Bigspell++ " + biggerSpellCount);
+        }
 
     }
 
@@ -83,24 +92,30 @@ public class PlayerMovement : MonoBehaviour
             direction += Vector2.right;
             
         }
-        if (Input.GetKey(KeyCode.Space) && !isShooting || Input.GetKey(KeyCode.Mouse0) && !isShooting)
+
+        // Shooting
+        if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (!gamePaused)
             {
-                //maybe adjust duration between?
-                if (isDoubleCast)
-                {
-                    StartCoroutine(playerShoot());
-                    StartCoroutine(playerShoot());
-                }
-                else
-                {
-                    StartCoroutine(playerShoot());
-                }
 
+                StartCoroutine(AlternativShot());
             }
         }
-        if (Input.GetKey(KeyCode.R))
+
+        if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellCount > 0)
+        {
+            if (!gamePaused)
+            {
+
+                StartCoroutine(playerShoot());
+                biggerSpellCount--;
+            }
+
+
+        }
+
+            if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
         }
@@ -141,7 +156,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
     }
+
     private void SetAnimatorMovement(Vector2 direction)
     {
         animator.SetLayerWeight(1, 1);
@@ -152,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator playerShoot()
     {
-        isShooting = true;
+        isShootingBig = true;
         GameObject newBullet;
 
         //directions
@@ -165,19 +182,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (directionHistory == Vector2.up)
         {
-             newBullet = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
+             newBullet = Instantiate(bigBullet, shootPosNorth.position, Quaternion.identity);
         }
         else if (directionHistory == Vector2.right)
         {
-             newBullet = Instantiate(bullet, shootPosEast.position, Quaternion.identity);
+             newBullet = Instantiate(bigBullet, shootPosEast.position, Quaternion.identity);
         }
         else if (directionHistory == Vector2.left)
         {
-            newBullet = Instantiate(bullet, shootPosWest.position, Quaternion.identity);
+            newBullet = Instantiate(bigBullet, shootPosWest.position, Quaternion.identity);
         }
         else
         {
-            newBullet = Instantiate(bullet, shootPosSouth.position, Quaternion.identity);
+            newBullet = Instantiate(bigBullet, shootPosSouth.position, Quaternion.identity);
         }
 
 
@@ -221,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         yield return new WaitForSeconds(shootTimer);
-        isShooting = false;
+        isShootingBig = false;
     }
 
 
@@ -255,14 +272,12 @@ public class PlayerMovement : MonoBehaviour
             settingsMenu.SetActive(false);
         }
     }
-    public void AlternativShot()
+    IEnumerator AlternativShot()
     {
-        
-        if (Input.GetMouseButtonDown(1))
-        {
-           // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-           // GameObject spell = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        isShooting = true;
+        // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        // GameObject spell = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
             
@@ -272,8 +287,20 @@ public class PlayerMovement : MonoBehaviour
             GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
            // Debug.Log(direct);
-            newBullet.GetComponent<Rigidbody2D>().velocity = direct * 5; 
-                
-         }
+            newBullet.GetComponent<Rigidbody2D>().velocity = direct * 5;
+
+            yield return new WaitForSeconds(shootTimer);
+            isShooting = false;
+
+
+
+
+    }
+
+    public void activateBigSpell()
+    {
+         biggerSpellCount += 10;
+        
+
     }
 }
