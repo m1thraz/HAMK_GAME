@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private float enemyInterval1, enemyInterval2, enemyInterval3, enemyInterval4, enemyInterval5;
 
 
-    private float horMin,horMax, verMin, verMax;
+    private float horMin, horMax, verMin, verMax;
 
     // initialize stuff for waves
     private int waveCount = 1;
@@ -88,12 +88,17 @@ public class EnemySpawner : MonoBehaviour
         return returnVal;
 
     }
-    private IEnumerator spawnEnemy(float interval, GameObject enemy) 
+    private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
         ArrayList pos = getSpawnLocation();
-        GameObject newEnemy = Instantiate(enemy, new Vector2((float)pos[0],(float)pos[1]), Quaternion.identity);
-        
+
+        Vector2 playerLocation = GameObject.Find("Player").transform.position;
+
+        GameObject newEnemy = Instantiate(enemy, new Vector2((float)pos[0]+playerLocation.x, (float)pos[1]+playerLocation.y), Quaternion.identity);
+        //GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+        StartCoroutine(spawnEnemy(interval, enemy));
+
     }
     private IEnumerator waveSpawner()
     {
@@ -234,3 +239,4 @@ public class EnemySpawner : MonoBehaviour
 
     }
 }
+

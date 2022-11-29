@@ -16,6 +16,28 @@ public class log : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Obstacle Hit by Enemy");
+
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Obstacle Hit by Player");
+
+        }
+
+
+
+
+
+    }
+
     public void giveMessageInConsole()
     {
         Debug.Log("log working");

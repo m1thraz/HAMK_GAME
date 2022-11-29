@@ -23,7 +23,7 @@ public class PowerUpMenu : MonoBehaviour
     private static string PW1DESCRIPTION = "Increase max HP"; // Health potion   WORKING
     private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
     private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed WORKING
-    private static string PW4DESCRIPTION = "Shoot 2 Spells"; // shoot 2 spells at once WORKING
+    private static string PW4DESCRIPTION = "Bigger Magicspell 10x  "; //bigger spells for 10 shoots
     private static string PW5DESCRIPTION = ""; // increase playerdamage
     // boost armor / defense
     // bigger spell bigger hitbox
@@ -92,7 +92,7 @@ public class PowerUpMenu : MonoBehaviour
     {
         //powerUpMenu.SetActive(false);
         isPowerMenuOpen = false;
-        Debug.Log("Start powerupmenu script");
+       // Debug.Log("Start powerupmenu script");
 
 
         playerLogic = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;
@@ -117,24 +117,7 @@ public class PowerUpMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            Debug.Log("change sprite");
-
-
-           
-            //renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPW]);
-            //choosenPW++;
-        }
-
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            Debug.Log("test Powerup");
-
-            //playerMovement.increaseSpeed();
-
-    
-        }
+       
         
     }
 
@@ -342,7 +325,8 @@ public class PowerUpMenu : MonoBehaviour
 
             case 4:
                     Debug.Log("pw4 activated");
-                    playerMovement.activateDoubleCast();
+
+                playerMovement.activateBigSpell();
                     break;
 
             case 5:
