@@ -3,30 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class EnemySpawner : MonoBehaviour
 {
     //Initialize prefabs here
     [SerializeField]
-    private GameObject spikyBallPrefab;
-    [SerializeField]
-    private GameObject spikyBallBossPrefab;
-    [SerializeField]
-    private GameObject goblinPrefab;
+    private GameObject enemyPrefab1, enemyPrefab2, enemyPrefab3, enemyPrefab4, enemyPrefab5, bossPrefab;
 
     [SerializeField]
-    private float spikyBallInterval;
-    [SerializeField]
-    private float spikyBallBossInterval;
-    [SerializeField]
-    private float goblinInterval;
+    private float enemyInterval1, enemyInterval2, enemyInterval3, enemyInterval4, enemyInterval5;
+
 
     private float horMin, horMax, verMin, verMax;
 
     // initialize stuff for waves
-    private int waveCount;
-    private int enemyCount;
-    private float waveTextTimer = 1.0f;
+    private int waveCount = 1;
+    private float enemyCount = 3;
+    private float SpawnModifier = 1.4f;
     private float spawnRate = 1.0f;
     [SerializeField]
     private float timeBetweenWaves = 10.0f;
@@ -35,7 +30,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private bool stopSpawn = false;
 
-    private GameObject cloneContainer;
+    [SerializeField]
+    private TextMeshProUGUI waveCountText;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +45,11 @@ public class EnemySpawner : MonoBehaviour
         horMax = halfWidth;
         verMin = -halfHeight;
         verMax = halfHeight;
-        StartCoroutine(spawnEnemy(spikyBallInterval, spikyBallPrefab));
-        StartCoroutine(spawnEnemy(spikyBallBossInterval, spikyBallBossPrefab));
-        StartCoroutine(spawnEnemy(goblinInterval, goblinPrefab));
+        StartCoroutine(waveSpawner());
+        waveCountText.text = "Wave: " + waveCount.ToString();
+        //StartCoroutine(spawnEnemy(enemyInterval1, enemyPrefab1));
+        //StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+        //StartCoroutine(spawnEnemy(enemyPrefab11, goblinPrefab));
         //goblinPrefab.transform.parent = cloneContainer.transform;
 
 
@@ -93,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         ArrayList pos = getSpawnLocation();
+
         Vector2 playerLocation = GameObject.Find("Player").transform.position;
 
         GameObject newEnemy = Instantiate(enemy, new Vector2((float)pos[0]+playerLocation.x, (float)pos[1]+playerLocation.y), Quaternion.identity);
@@ -102,10 +102,152 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator waveSpawner()
     {
-        while (activeWave = true && stopSpawn == false)
+        while (activeWave == true)
         {
-            spawnEnemy(goblinInterval, goblinPrefab);
+            
+            if (waveCount == 1)
+            {
+                
+                //spikyBall
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));                   
+                }
+                Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                enemyCount += 2;
+                waveCount++;
+                yield return new WaitForSeconds(10);
+
+            }
+            else if (waveCount == 2)
+            {
+                //more spikyballs
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    
+                }
+                Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                enemyCount += 2;
+                waveCount++;
+                yield return new WaitForSeconds(10);
+            }
+            else if (waveCount == 3)
+            {
+                //spikyball + big spikyBalls
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    StartCoroutine(spawnEnemy(enemyInterval3, enemyPrefab3));
+                }
+                Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                enemyCount += 2;
+                waveCount++;
+                yield return new WaitForSeconds(10);
+            }
+            else if (waveCount == 4)
+            {
+                //goblins
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval1, enemyPrefab1));
+                    
+                }
+                Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                enemyCount += 2;
+                waveCount++;
+                yield return new WaitForSeconds(10);
+            }
+            else if (waveCount == 5)
+            {
+                //goblins + spikyballs
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave "+ waveCount);
+                }
+                enemyCount += 2;
+                waveCount++;
+                yield return new WaitForSeconds(10);
+            }
+            else if (waveCount == 6)
+            {
+                // goblins + spikyballs + big spikyballs
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                }
+                waveCount++;
+                yield return new WaitForSeconds(10);
+                Debug.Log("spawning next wave");
+            }
+            else if (waveCount == 7)
+            {
+                //repeat untill clarified
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                }
+                waveCount++;
+                yield return new WaitForSeconds(10);
+                Debug.Log("spawning next wave");
+            }
+            else if (waveCount == 8)
+            {
+                //repeat
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                }
+                waveCount++;
+                yield return new WaitForSeconds(10);
+                Debug.Log("spawning next wave");
+            }
+            else if (waveCount == 9)
+            {
+                //repeat
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                }
+                waveCount++;
+                yield return new WaitForSeconds(10);
+                Debug.Log("spawning next wave");
+            }
+            else if (waveCount == 10)
+            {
+                //boss battle
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+                    Debug.Log("spawned" + enemyCount + "Enemies. In wave " + waveCount);
+                }
+                waveCount++;
+                yield return new WaitForSeconds(10);
+                Debug.Log("spawning next wave");
+            }
+            else if(waveCount == 11)
+            {
+                Debug.Log("you won");
+            }
         }
-        yield return new WaitForSeconds(10);
+
+
+        //als activewave ==true en stopspawn == false 
+        //spawnWave
+        //als wave == 1
+        //spawn spikyball x 10
+        //dmg++
     }
+    private void activateWaveText()
+    {
+       
+        
+    }
+
 }
+
