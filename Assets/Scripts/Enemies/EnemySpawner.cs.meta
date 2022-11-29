@@ -3,7 +3,14 @@ guid: f752599eba167354fbcc82383f4f2f5d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyPrefab1: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
+  - enemyPrefab2: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
+  - enemyPrefab3: {fileID: 8372678237104354305, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
+  - enemyPrefab4: {instanceID: 0}
+  - enemyPrefab5: {instanceID: 0}
+  - bossPrefab: {instanceID: 0}
+  - waveCountText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
