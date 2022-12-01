@@ -35,10 +35,15 @@ public class BulletLogic : MonoBehaviour
             {
                 collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
             }
-            else
+            else if(collision.gameObject.GetComponent<shootingEnemy>() != null)
             {
                 collision.gameObject.GetComponent<shootingEnemy>().takeDamage(damage);
             }
+            else
+            {
+                collision.gameObject.GetComponent<healthLogic>().takeDamage(damage); 
+            }
+
 
            
          
