@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform shootPosWest;
     public Transform shootPosSouth;
 
+    
+
 
 
     public GameObject bullet;
@@ -39,6 +41,15 @@ public class PlayerMovement : MonoBehaviour
     public int biggerSpellFreezeCount = 0;
 
 
+    public float dashSpeed;
+    private float dashCount;
+    public float startDashCount;
+    public float dashTimer;
+    public bool isPlayerDashing;
+    public Rigidbody2D rb;
+
+
+
 
 
 
@@ -48,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         powerMenu = gameManager.GetComponent(typeof(PowerUpMenu)) as PowerUpMenu;
         isPowerMenuOpen = false;
+        rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
+        dashCount = startDashCount;
+
     }
     // Update is called once per frame
     void Update()
@@ -176,7 +190,57 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlayerDashing)
+        {
+            isPlayerDashing = true;
+            StartCoroutine(playerDash());
+            
+        }
+
+
+
     }
+
+    IEnumerator playerDash()
+    {
+
+        // Dashing
+
+        gameObject.layer = LayerMask.NameToLayer("Dash");
+       
+            if (directionHistory == Vector2.up)
+            {
+                transform.Translate(direction * dashSpeed * Time.deltaTime);
+
+             }
+            if (directionHistory == Vector2.right)
+            {
+            transform.Translate(direction * dashSpeed * Time.deltaTime);
+
+            }
+
+            if (directionHistory == Vector2.left)
+            {
+                transform.Translate(direction * dashSpeed * Time.deltaTime);
+            }
+
+
+            if (directionHistory == Vector2.down)
+            {
+                transform.Translate(direction * dashSpeed * Time.deltaTime);
+            }
+
+
+
+ 
+
+        yield return new WaitForSeconds(dashTimer);
+        gameObject.layer = LayerMask.NameToLayer("Player");
+
+
+        isPlayerDashing = false;
+    }
+
 
     private void SetAnimatorMovement(Vector2 direction)
     {
@@ -351,4 +415,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
+
+
 }
