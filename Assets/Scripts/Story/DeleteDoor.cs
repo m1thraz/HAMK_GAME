@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class DeleteDoor : MonoBehaviour
 {
-    [SerializeField] GameObject Door1;
-    [SerializeField] GameObject Door2;
-    [SerializeField] GameObject Door3;
-    [SerializeField] GameObject Door4;
-    [SerializeField] GameObject Door5;
- 
-    float score;
+    [SerializeField] GameObject Door1, Door2, Door3, Door4, Door5;
+
+
+    [SerializeField] GameObject Room1, Room2, Room3, Room4, Room5, Room6;
+
+
+
 
     // Start is called before the first frame update
 
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
-        score = GetComponent<PlayerLogic>().getScore();
+     
         RemoveDoor();
+
     }
 
     void RemoveDoor()
     {
        
         
-        if (score == 100)
+        if (Room1.transform.childCount == 0)
         {
             Destroy(Door1);
-            Debug.Log("A door opened");
+            Debug.Log("Door1 opened");
         }
-        if (score == 200)
+        if (Room2.transform.childCount == 0)
         {
             Destroy(Door2);
             Debug.Log("Door2 opened");
         }
-        if (score == 300)
+        if (Room3.transform.childCount == 0)
         {
             Destroy(Door3);
             Debug.Log("Door3 opened");
         }
-        if (score == 400)
+        if (Room4.transform.childCount == 0)
         {
             Destroy(Door4);
             Debug.Log("Door4 opened");
         }
-        if (score == 500)
+        if (Room5.transform.childCount == 0)
         {
             Destroy(Door5);
             Debug.Log("Door5 opened");
