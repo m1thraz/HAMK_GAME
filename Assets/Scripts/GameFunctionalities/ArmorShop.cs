@@ -46,6 +46,7 @@ public class ArmorShop : MonoBehaviour
         {
             armorPanel.SetActive(false);
             Time.timeScale = 1f;
+            isShopOpen = false;
 
         }
 

@@ -12,7 +12,7 @@ public class ChasingEnemy : MonoBehaviour
     Vector2 moveDirection;
 
     [SerializeField]
-    float moveSpeed = 8;
+    float moveSpeed = 1;
     float currentMovespeed;
     [SerializeField] float maxHealth = 5;
 
@@ -21,6 +21,11 @@ public class ChasingEnemy : MonoBehaviour
 
     [SerializeField]
     float distance;
+
+    public GameObject droppedCoin;
+
+
+
     private void Awake()
     {
     }
@@ -107,6 +112,21 @@ public class ChasingEnemy : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+
+           
+
+            // DROP COIN 20% Chance 10-50 coins
+            int coinsProb = Random.Range(1, 100);
+
+            if (coinsProb > 1) // change %
+            {
+                GameObject coin = Instantiate(droppedCoin, transform.position, Quaternion.identity);
+
+            }
+
+            // maybe unkillable drop? mario star
+
+
         }
 
     }

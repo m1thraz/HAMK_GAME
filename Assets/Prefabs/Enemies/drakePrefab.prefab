@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -744477944, guid: 35b8c51fdcad04fa79a5caf0ddbd9a98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -138,12 +138,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2331193592429505842, guid: 69ef8e32433c7744d8b45a9eae77320c, type: 3}
-  moveSpeed: 3
+  moveSpeed: 1
   maxHealth: 10
   damage: 3
   shotDistance: 5
   fireDelay: 7
   projectileSpeed: 1
+  droppedCoin: {fileID: 2386944690914154871, guid: b729b3adcf8fe42fabcd1ea7fd3afc2f, type: 3}
 --- !u!95 &92793741379518003
 Animator:
   serializedVersion: 4

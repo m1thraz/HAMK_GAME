@@ -17,7 +17,6 @@ public class FreezeBullet : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerMovement)) as PlayerMovement;
 
     }
     // Update is called once per frame
@@ -33,7 +32,14 @@ public class FreezeBullet : MonoBehaviour
         {
 
             // FREEZE ENEMY FUNCTION IS MISSING
-            collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            if (collision.gameObject.GetComponent<ChasingEnemy>() != null)
+            {
+                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<shootingEnemy>().takeDamage(damage);
+            }
 
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");

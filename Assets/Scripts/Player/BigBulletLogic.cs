@@ -32,7 +32,14 @@ public class BigBulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
 
+            if (collision.gameObject.GetComponent<ChasingEnemy>() != null)
+            {
                 collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<shootingEnemy>().takeDamage(damage);
+            }
 
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");

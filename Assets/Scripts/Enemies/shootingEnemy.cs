@@ -28,6 +28,8 @@ public class shootingEnemy : MonoBehaviour
     [SerializeField]
     float projectileSpeed;
 
+    public GameObject droppedCoin;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,6 +126,18 @@ public class shootingEnemy : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+
+
+            // DROP COIN 20% Chance 10-50 coins
+            int coinsProb = Random.Range(1, 100);
+
+            if (coinsProb > 1) // change %
+            {
+                GameObject coin = Instantiate(droppedCoin, transform.position, Quaternion.identity);
+
+            }
+
+
         }
 
     }

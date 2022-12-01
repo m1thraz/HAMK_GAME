@@ -30,7 +30,19 @@ public class BulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "projectile")
         {
             Debug.Log(string.Format("got collision with enemy or projectile dealing {0} damage", damage));
-            collision.gameObject.GetComponent<healthLogic>().takeDamage(damage);
+
+            if(collision.gameObject.GetComponent<ChasingEnemy>() != null)
+            {
+                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<shootingEnemy>().takeDamage(damage);
+            }
+
+           
+         
+
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");
 
