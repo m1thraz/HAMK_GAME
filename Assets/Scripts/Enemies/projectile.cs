@@ -28,8 +28,6 @@ public class projectile : MonoBehaviour
     {
         angle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
         rb.rotation = angle + 180;
-
-        Debug.Log(angle);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
