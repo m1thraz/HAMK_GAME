@@ -24,14 +24,11 @@ public class PowerUpMenu : MonoBehaviour
     private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
     private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed WORKING
     private static string PW4DESCRIPTION = "Bigger Magicspell 10x  "; //bigger spells for 10 shoots
-    private static string PW5DESCRIPTION = ""; // increase playerdamage
-    // boost armor / defense
-    // bigger spell bigger hitbox
-    // bouncing bullets
-    // crit dmg
-    // slowing bullets
-    // poison bullet
-    // cone style shooting
+    private static string PW5DESCRIPTION = "Freezing Spell"; // increase playerdamage
+    // bouncing bullets count collison 2times / 3 times
+    // crit dmg ?
+    // poison bullet ?
+    // cone style shooting ?
     // bullet shooting through target
     // aoe bullets
 
@@ -326,11 +323,12 @@ public class PowerUpMenu : MonoBehaviour
             case 4:
                     Debug.Log("pw4 activated");
 
-                playerMovement.activateBigSpell();
+                    playerMovement.activateBigSpell();
                     break;
 
             case 5:
                     Debug.Log("pw5 activated");
+                    playerMovement.activateBigSpellFreeze();
                     break;
 
 
