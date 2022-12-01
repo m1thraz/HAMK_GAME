@@ -36,6 +36,7 @@ public class HealthShop : MonoBehaviour
         {
             
             healthPanel.SetActive(false);
+            isShopOpenHealth =  false;
             Time.timeScale = 1f;
 
         }
