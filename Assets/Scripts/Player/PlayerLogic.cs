@@ -136,4 +136,9 @@ public class PlayerLogic : MonoBehaviour
     {
         return armor;
     }
+
+    public float getScore()
+    {
+        return score;
+    }
 }
