@@ -52,7 +52,7 @@ public class BulletLogic : MonoBehaviour
             animator.Play("explosion");
 
            
-            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+            Destroy(gameObject);
 
         }
     }

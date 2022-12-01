@@ -10,13 +10,10 @@ public class DeleteDoor : MonoBehaviour
     [SerializeField] GameObject Door4;
     [SerializeField] GameObject Door5;
  
-    private float score;
+    float score;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        //playerLogic = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;
-    }
+
 
 
     // Update is called once per frame
@@ -30,7 +27,7 @@ public class DeleteDoor : MonoBehaviour
     void RemoveDoor()
     {
        
-        Debug.Log("score:" + score);
+        
         if (score == 100)
         {
             Destroy(Door1);

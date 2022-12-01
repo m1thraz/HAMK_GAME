@@ -17,9 +17,8 @@ public class activateRoom : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             col += 1;
-            //  GetComponent<CircleCollider2D>().enabled = false;
-            Destroy(this);
-            Room1.SetActive(true);
+              GetComponent<CircleCollider2D>().enabled = false;
+               Room1.SetActive(true);
 
         }
     }
