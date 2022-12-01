@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.XR;
 
 
-public class BigBulletLogic : MonoBehaviour
+public class FreezeBullet : MonoBehaviour
 {
 
     float BulletTime = 2;
@@ -17,7 +17,7 @@ public class BigBulletLogic : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-       
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent(typeof(PlayerMovement)) as PlayerMovement;
 
     }
     // Update is called once per frame
@@ -32,7 +32,8 @@ public class BigBulletLogic : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
 
-                collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+            // FREEZE ENEMY FUNCTION IS MISSING
+            collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
 
             FindObjectOfType<AudoManager>().Play("explosion");
             animator.Play("explosion");

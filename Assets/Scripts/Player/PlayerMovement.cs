@@ -30,9 +30,15 @@ public class PlayerMovement : MonoBehaviour
     public GameObject settingsMenu;
 
     public GameObject bigBullet;
-    public bool isDoubleCast = false;
+    public GameObject bigBulletFreeze;
+
     public bool isBiggerSpell = false;
     public int biggerSpellCount = 0;
+
+    public bool isBiggerSpellFreeze = false;
+    public int biggerSpellFreezeCount = 0;
+
+
 
 
 
@@ -103,12 +109,25 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellCount > 0)
+
+        if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellFreezeCount > 0)
         {
             if (!gamePaused)
             {
 
-                StartCoroutine(playerShoot());
+                StartCoroutine(playerShoot(1));
+                biggerSpellFreezeCount--;
+            }
+
+
+        } 
+
+        else if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellCount > 0)
+        {
+            if (!gamePaused)
+            {
+
+                StartCoroutine(playerShoot(0));
                 biggerSpellCount--;
             }
 
@@ -167,7 +186,8 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    IEnumerator playerShoot()
+    // Big Bullet 0 / freeze Bullet 1
+    IEnumerator playerShoot(int mode)
     {
         isShootingBig = true;
         GameObject newBullet;
@@ -179,25 +199,45 @@ public class PlayerMovement : MonoBehaviour
         Vector2 leftDown = new Vector2(-1.0f, -1.0f);
 
 
+        if(mode == 0)
+        {
+            if (directionHistory == Vector2.up)
+            {
+                newBullet = Instantiate(bigBullet, shootPosNorth.position, Quaternion.identity);
+            }
+            else if (directionHistory == Vector2.right)
+            {
+                newBullet = Instantiate(bigBullet, shootPosEast.position, Quaternion.identity);
+            }
+            else if (directionHistory == Vector2.left)
+            {
+                newBullet = Instantiate(bigBullet, shootPosWest.position, Quaternion.identity);
+            }
+            else
+            {
+                newBullet = Instantiate(bigBullet, shootPosSouth.position, Quaternion.identity);
+            }
+        } else { // add else if 1 after adding new poweredbullets
 
-        if (directionHistory == Vector2.up)
-        {
-             newBullet = Instantiate(bigBullet, shootPosNorth.position, Quaternion.identity);
-        }
-        else if (directionHistory == Vector2.right)
-        {
-             newBullet = Instantiate(bigBullet, shootPosEast.position, Quaternion.identity);
-        }
-        else if (directionHistory == Vector2.left)
-        {
-            newBullet = Instantiate(bigBullet, shootPosWest.position, Quaternion.identity);
-        }
-        else
-        {
-            newBullet = Instantiate(bigBullet, shootPosSouth.position, Quaternion.identity);
+            if (directionHistory == Vector2.up)
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosNorth.position, Quaternion.identity);
+            }
+            else if (directionHistory == Vector2.right)
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosEast.position, Quaternion.identity);
+            }
+            else if (directionHistory == Vector2.left)
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosWest.position, Quaternion.identity);
+            }
+            else
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosSouth.position, Quaternion.identity);
+            }
         }
 
-
+     
 
         if (directionHistory == rightUp)
         {
@@ -256,10 +296,7 @@ public class PlayerMovement : MonoBehaviour
         shootTimer *= 0.9f;
     }
 
-    public void activateDoubleCast()
-    {
-        isDoubleCast = true;
-    }
+
     public void Pause()
     {
         if (!gamePaused)
@@ -305,6 +342,13 @@ public class PlayerMovement : MonoBehaviour
     {
          biggerSpellCount += 10;
         
+
+    }
+
+    public void activateBigSpellFreeze()
+    {
+        biggerSpellFreezeCount += 5;
+
 
     }
 }
