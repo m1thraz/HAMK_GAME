@@ -38,22 +38,22 @@ public class DeleteDoor : MonoBehaviour
         }
         if (score == 200)
         {
-            Destroy(Door1);
+            Destroy(Door2);
             Debug.Log("Door2 opened");
         }
         if (score == 300)
         {
-            Destroy(Door1);
+            Destroy(Door3);
             Debug.Log("Door3 opened");
         }
         if (score == 400)
         {
-            Destroy(Door1);
+            Destroy(Door4);
             Debug.Log("Door4 opened");
         }
         if (score == 500)
         {
-            Destroy(Door1);
+            Destroy(Door5);
             Debug.Log("Door5 opened");
         }
     }
