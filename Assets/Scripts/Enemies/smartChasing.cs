@@ -9,10 +9,10 @@ public class smartChasing : MonoBehaviour
     PlayerMovement playerMovement;
     [SerializeField]
     float currentMovespeed;
+    [SerializeField] float damage;
     // Start is called before the first frame update
     void Start()
     {
-        currentMovespeed = 3;
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         Physics.IgnoreLayerCollision(8, 7, true);
@@ -48,4 +48,31 @@ public class smartChasing : MonoBehaviour
 
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(string.Format("player HIT, taking {0} damage", damage));
+            Destroy(gameObject);
+
+            playerObject.takeDamage(damage);
+
+        }
+
+        //edit this so it decreases health instead of destroying the gameobject
+        //if (collision.gameObject.tag == "bullet")
+        //{
+
+        //    Debug.Log("Bullet hit enemy");
+
+
+        //    Destroy(gameObject);
+
+
+        //    playerObject2.ScoreUp();
+        //}
+    }
+
 }

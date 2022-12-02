@@ -8,8 +8,9 @@ public class healthLogic : MonoBehaviour
     float maxHealth;
     private float health;
     float currentMovespeed;
-    [SerializeField]
     Animator animator;
+    public GameObject droppedCoin;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,18 @@ public class healthLogic : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+
+            // DROP COIN 20% Chance 10-50 coins
+            int coinsProb = Random.Range(1, 100);
+
+            if (coinsProb > 1) // change %
+            {
+                GameObject coin = Instantiate(droppedCoin, transform.position, Quaternion.identity);
+
+            }
+
+            // maybe unkillable drop? mario star
+
         }
 
     }
