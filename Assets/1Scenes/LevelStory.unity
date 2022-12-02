@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14152,9 +14152,9 @@ MonoBehaviour:
   biggerSpellCount: 0
   isBiggerSpellFreeze: 0
   biggerSpellFreezeCount: 0
-  dashSpeed: 0
+  dashSpeed: 30
   startDashCount: 0
-  dashTimer: 0
+  dashTimer: 2
   isPlayerDashing: 0
   rb: {fileID: 0}
 --- !u!61 &1061358757
