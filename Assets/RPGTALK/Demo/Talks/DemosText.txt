@@ -31,10 +31,10 @@ FunnyGuy: You can Indeed! Now go talk to my friend on the other room!
 *PlayerName*:I wonder if a dialog could follow someone or pass itself... Hum...
 
 *PlayerName*: Hi! I'm *PlayerName*!
-Girl: Hi *PlayerName*. I notice that you saw that dialogs can follow objects too. Bacause we use the Unity's Canvas, it can work nice on 3D projects as well.
-Girl: It is no problem to have multiple instances of RPGTalk on the same scene either.
-Girl: The sounds, names, photos, everything is highly customizable.
+Hi *PlayerName*. I notice that you saw that dialogs can follow objects too. Bacause we use the Unity's Canvas, it can work nice on 3D projects as well.
+It is no problem to have multiple instances of RPGTalk on the same scene either.
+The sounds, names, photos, everything is highly customizable.
 *PlayerName*: The code is really simple, too!
-Girl: Yes! But listen to me, I'm going to say something so important that the the Talk will be fixed on the screen, even when you can move again.
+Yes! But listen to me, I'm going to say something so important that the the Talk will be fixed on the screen, even when you can move again.
 *PlayerName*: *Listen Carefuly*
-Girl: Show your support by following Seize Studios on Social Media. Any doubts, check the documentation at www.seizestudios.com
+Show your support by following Seize Studios on Social Media. Any doubts, check the documentation at www.seizestudios.com
