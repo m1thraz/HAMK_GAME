@@ -28,7 +28,7 @@ public class log : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Obstacle Hit by Player");
+            Debug.Log("Obstacle Hit by Player"); 
 
         }
 
