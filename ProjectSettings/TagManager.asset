@@ -7,6 +7,7 @@ TagManager:
   - enemy
   - bullet
   - GameManager
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -19,10 +20,9 @@ TagManager:
   - Enemy
   - Shops
   - Projectile
-  - 
-  - 
-  - 
-  - 
+  - Dash
+  - BossFireball
+  - Coin
   - 
   - 
   - 
