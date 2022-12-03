@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     public GameObject bullet;
+
+
+    [SerializeField]
+    private bool inCutScene = false;
+
     private bool isShooting, isShootingBig;
 
 
@@ -113,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
+
+        if (!inCutScene) { 
         // Shooting
         if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -148,7 +155,10 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-            if (Input.GetKey(KeyCode.R))
+
+    }
+
+        if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
         }

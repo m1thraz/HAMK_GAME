@@ -40,7 +40,7 @@ public class DemoScript : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		render = GetComponent<SpriteRenderer> ();
 		//In the tagsDemo scene, we want to do something when we make a choice...
-		rpgTalk.OnMadeChoice += OnMadeChoice;
+		//rpgTalk.OnMadeChoice += OnMadeChoice;
 	}
 
 	// Update is called once per frame
