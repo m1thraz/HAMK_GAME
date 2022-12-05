@@ -8,6 +8,7 @@ using RPGTALK.Localization;
 public class MovePlayer : MonoBehaviour {
 	//The speed that our 'hero' will run
 	public float speed = 10f;
+	public GameObject pauseMenu;
 
 	
 	Rigidbody2D rigid;
@@ -112,7 +113,7 @@ public class MovePlayer : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
-            //Pause();
+			pauseMenu.SetActive(true);
         }
 
         if (direction != Vector2.zero)

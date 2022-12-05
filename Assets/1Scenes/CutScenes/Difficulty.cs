@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Difficulty : MonoBehaviour
 {
+    public GameObject pauseMenu;
     public void EasyMode()
     {
         SceneManager.LoadScene(1);
@@ -17,6 +18,10 @@ public class Difficulty : MonoBehaviour
     public void HardMode()
     {
         SceneManager.LoadScene(1);
+    }
+    public void EndPause()
+    {
+        pauseMenu.SetActive(false);
     }
 
 }
