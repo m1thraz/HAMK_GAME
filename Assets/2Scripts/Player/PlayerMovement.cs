@@ -53,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
     public bool isPlayerDashing;
     public Rigidbody2D rb;
 
-
+    private float slowTimer = 0;
+    private bool slow;
+    private float slowDuration = 2;
+    private float normalSpeed;
 
 
 
@@ -79,6 +82,16 @@ public class PlayerMovement : MonoBehaviour
             activateBigSpell();
             Debug.Log("Bigspell++ " + biggerSpellCount);
         }
+        if(slow)
+        {
+            slowTimer += Time.deltaTime;
+            if(slowTimer >= slowDuration)
+            {
+                slowTimer = 0;
+                slow = false;
+                speed = normalSpeed;
+            }
+        }
 
     }
 
@@ -94,6 +107,21 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetLayerWeight( 1, 0);
         }
+    }
+    public void slowMovement()
+    {
+        if (slow)
+        {
+            slowTimer = 0;
+        } else
+        {
+            normalSpeed = speed;
+            float slowedSpeed = 0.5f * speed;
+
+            slow = true;
+            speed = slowedSpeed;
+        }
+
     }
     private void TakeInput()
     {

@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c924ef51aa7fe441be1d85a4cef3504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMovespeed: 1
-  damage: 3
+  currentMovespeed: 0.9
+  damage: 4
 --- !u!114 &1384299028268680646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c513eb03f4962408a2890c409f4aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 7
   droppedCoin: {fileID: 0}
 --- !u!50 &7619585532632837288
 Rigidbody2D:
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &7619585532632837303
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

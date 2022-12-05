@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.3
-  maxHealth: 5
+  maxHealth: 3
   damage: 1
   distance: 0
   droppedCoin: {fileID: 2386944690914154871, guid: b729b3adcf8fe42fabcd1ea7fd3afc2f, type: 3}

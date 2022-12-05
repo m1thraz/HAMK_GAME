@@ -34,10 +34,10 @@ public class projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
-
+            PlayerMovement playerMovement = collision.gameObject.GetComponent(typeof(PlayerMovement)) as PlayerMovement;
             if (slow)
             {
-                Debug.Log("trying to slow");
+                playerMovement.slowMovement();
             }
             //Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);

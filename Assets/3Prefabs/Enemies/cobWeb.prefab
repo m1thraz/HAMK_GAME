@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2418345316747321114}
   - component: {fileID: 8926882885343179489}
   - component: {fileID: -3688638317975654588}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: cobWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slow: 1
   damage: 1
+  angle: 0

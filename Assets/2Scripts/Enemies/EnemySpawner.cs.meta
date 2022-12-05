@@ -4,12 +4,13 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - enemyPrefab1: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
-  - enemyPrefab2: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
-  - enemyPrefab3: {fileID: 8372678237104354305, guid: 3d32758c6b8f279429a92c5f8cf37688, type: 3}
-  - enemyPrefab4: {instanceID: 0}
-  - enemyPrefab5: {instanceID: 0}
-  - bossPrefab: {instanceID: 0}
+  - enemyPrefab1: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
+  - enemyPrefab2: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
+  - enemyPrefab3: {fileID: 1952976185754316259, guid: decbbe08e46e8b9469614f64d05f40b6, type: 3}
+  - enemyPrefab4: {fileID: 7619585532632837302, guid: c0624c9b23c6f384fb7c8ac92b87f6e5, type: 3}
+  - enemyPrefab5: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
+  - enemyPrefab6: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
+  - bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
   - waveCountText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

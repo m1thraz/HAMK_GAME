@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 6022985405515900612, guid: 2a88d7b2b4426b44c917938c975d5b82, type: 3}
   moveSpeed: 0.5
-  maxHealth: 5
+  maxHealth: 3
   damage: 1
   shotDistance: 2
   fireDelay: 5
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-6279116356161864102
 BoxCollider2D:
   m_ObjectHideFlags: 0

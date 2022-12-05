@@ -15,6 +15,9 @@ public class bossFireball : MonoBehaviour
     public Vector2 moveDirection;
 
     private bool follow = false;
+    private bool startFollow = false;
+    private float followTimer = 0;
+    private float startFollowTimer = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +43,13 @@ public class bossFireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        followTimer += Time.deltaTime;
+        if(followTimer >= startFollowTimer)
+        {
+            startFollow = true;
+        }
         Vector3 direction;
-        if (follow )
+        if (follow && startFollow)
         {
             direction = (player.position - transform.position).normalized;
             moveDirection = direction;

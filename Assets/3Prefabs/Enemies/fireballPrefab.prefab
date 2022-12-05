@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5573547792521371657}
   - component: {fileID: 232214298427632202}
   - component: {fileID: -3567318286862059679}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: fireballPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2014867072, guid: 79e4b3b2beb3045a488799a73f97a449, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -159,3 +159,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slow: 0
   damage: 5
+  angle: 0
