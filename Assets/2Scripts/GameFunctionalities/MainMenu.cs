@@ -3,9 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject settingsPanel;
+    [SerializeField] GameObject settingsPanel, GameSelectPanel;
 
-    public void StartGame()
+    public void StartWaves()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void StartStory()
     {
         SceneManager.LoadScene(1);
     }
@@ -18,6 +23,15 @@ public class MainMenu : MonoBehaviour
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+    }
+    public void OpenGameSelect()
+    {
+        GameSelectPanel.SetActive(true);
+    }
+
+    public void CloseGameSelect()
+    {
+        GameSelectPanel.SetActive(false);
     }
 
     public void ExitGame()
