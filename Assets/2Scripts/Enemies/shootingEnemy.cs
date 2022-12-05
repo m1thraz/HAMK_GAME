@@ -30,6 +30,11 @@ public class shootingEnemy : MonoBehaviour
 
     public GameObject droppedCoin;
 
+    private float slowTimer = 0;
+    private bool slow;
+    private float slowDuration = 2;
+    private float normalSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,11 +61,36 @@ public class shootingEnemy : MonoBehaviour
             animator.SetFloat("yDir", moveDirection.y);
         }
     }
+    public void slowMovement()
+    {
+        if (slow)
+        {
+            slowTimer = 0;
+        }
+        else
+        {
+            normalSpeed = currentMovespeed;
+            float slowedSpeed = 0.5f * currentMovespeed;
 
+            slow = true;
+            currentMovespeed = slowedSpeed;
+        }
+
+    }
     private void FixedUpdate()
     {
         if (player)
         {
+            if (slow)
+            {
+                slowTimer += Time.deltaTime;
+                if (slowTimer >= slowDuration)
+                {
+                    slowTimer = 0;
+                    slow = false;
+                    currentMovespeed = normalSpeed;
+                }
+            }
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
             moveDirection = (player.position - transform.position).normalized;
             float distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));

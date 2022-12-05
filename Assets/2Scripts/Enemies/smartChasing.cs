@@ -11,6 +11,11 @@ public class smartChasing : MonoBehaviour
     float currentMovespeed;
     [SerializeField] float damage;
     // Start is called before the first frame update
+
+    private float slowTimer = 0;
+    private bool slow;
+    private float slowDuration = 2;
+    private float normalSpeed;
     void Start()
     {
         player = GameObject.Find("Player");
@@ -46,6 +51,36 @@ public class smartChasing : MonoBehaviour
             animator.SetFloat("yDir", movingDirection.y);
         }
 
+
+    }
+    public void FixedUpdate()
+    {
+        if (slow)
+        {
+            slowTimer += Time.deltaTime;
+            if (slowTimer >= slowDuration)
+            {
+                slowTimer = 0;
+                slow = false;
+                currentMovespeed = normalSpeed;
+            }
+        }
+
+    }
+    public void slowMovement()
+    {
+        if (slow)
+        {
+            slowTimer = 0;
+        }
+        else
+        {
+            normalSpeed = currentMovespeed;
+            float slowedSpeed = 0.5f * currentMovespeed;
+
+            slow = true;
+            currentMovespeed = slowedSpeed;
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

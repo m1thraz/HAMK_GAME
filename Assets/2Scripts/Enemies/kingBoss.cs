@@ -27,6 +27,10 @@ public class kingBoss : MonoBehaviour
     [SerializeField]
     bossFireball projectile;
 
+    private float slowTimer = 0;
+    private bool slow;
+    private float slowDuration = 2;
+    private float normalSpeed;
     private void Awake()
     {
     }
@@ -58,12 +62,38 @@ public class kingBoss : MonoBehaviour
         // or move all the damage logic and shit out of this script
         if (player)
         {
+            if (slow)
+            {
+                slowTimer += Time.deltaTime;
+                if (slowTimer >= slowDuration)
+                {
+                    slowTimer = 0;
+                    slow = false;
+                    currentMovespeed = normalSpeed;
+                }
+            }
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
             if (Time.time > fireDelay)
             {
                 shootPlayer();
                 fireDelay += Time.time + nextShot;
             }
+        }
+
+    }
+    public void slowMovement()
+    {
+        if (slow)
+        {
+            slowTimer = 0;
+        }
+        else
+        {
+            normalSpeed = currentMovespeed;
+            float slowedSpeed = 0.5f * currentMovespeed;
+
+            slow = true;
+            currentMovespeed = slowedSpeed;
         }
 
     }

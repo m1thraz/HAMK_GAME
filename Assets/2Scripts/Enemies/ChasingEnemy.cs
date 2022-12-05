@@ -25,7 +25,10 @@ public class ChasingEnemy : MonoBehaviour
     public GameObject droppedCoin;
 
 
-
+    private float slowTimer = 0;
+    private bool slow;
+    private float slowDuration = 2;
+    private float normalSpeed;
     private void Awake()
     {
     }
@@ -52,12 +55,38 @@ public class ChasingEnemy : MonoBehaviour
             animator.SetFloat("yDir", moveDirection.y);
         }
     }
+    public void slowMovement()
+    {
+        if (slow)
+        {
+            slowTimer = 0;
+        }
+        else
+        {
+            normalSpeed = currentMovespeed;
+            float slowedSpeed = 0.5f * currentMovespeed;
+
+            slow = true;
+            currentMovespeed = slowedSpeed;
+        }
+
+    }
     private void FixedUpdate()
     {
         // This shoudl probalby taken out of this script and create a movement script
         // or move all the damage logic and shit out of this script
         if (player)
         {
+            if (slow)
+            {
+                slowTimer += Time.deltaTime;
+                if (slowTimer >= slowDuration)
+                {
+                    slowTimer = 0;
+                    slow = false;
+                    currentMovespeed = normalSpeed;
+                }
+            }
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
             distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
             if(distance <= 0.4)
