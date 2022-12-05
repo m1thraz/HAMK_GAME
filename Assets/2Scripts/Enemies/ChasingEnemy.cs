@@ -144,10 +144,10 @@ public class ChasingEnemy : MonoBehaviour
 
            
 
-            // DROP COIN 20% Chance 10-50 coins
+            // DROP COIN 30% Chance 10-50 coins
             int coinsProb = Random.Range(1, 100);
 
-            if (coinsProb > 1) // change %
+            if (coinsProb > 69) // change %
             {
                 GameObject coin = Instantiate(droppedCoin, transform.position, Quaternion.identity);
 

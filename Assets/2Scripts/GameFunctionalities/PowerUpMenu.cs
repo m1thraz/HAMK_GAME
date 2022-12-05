@@ -21,7 +21,7 @@ public class PowerUpMenu : MonoBehaviour
 
     private static string PW0DESCRIPTION = "Decrease Spellcasttime "; // Castspeed WORKING
     private static string PW1DESCRIPTION = "Increase max HP"; // Health potion   WORKING
-    private static string PW2DESCRIPTION = "XP Boost "; // XP Boost
+    private static string PW2DESCRIPTION = "Lower Dashtimer "; // Dash timer lower
     private static string PW3DESCRIPTION = "Increase Playerspeed"; // Feather speed WORKING
     private static string PW4DESCRIPTION = "Bigger Magicspell 10x  "; //bigger spells for 10 shoots
     private static string PW5DESCRIPTION = "Freezing Spell"; // increase playerdamage
@@ -35,9 +35,6 @@ public class PowerUpMenu : MonoBehaviour
 
     private string[] pwDescriptions = {PW0DESCRIPTION, PW1DESCRIPTION , PW2DESCRIPTION , PW3DESCRIPTION , PW4DESCRIPTION };
     // maybe later
-    
-    private static string PW6DESCRIPTION = "";
-
 
 
     // Powerup Sprite Array
@@ -312,6 +309,7 @@ public class PowerUpMenu : MonoBehaviour
 
             case 2:
                     Debug.Log("pw2 activated");
+                    // Dashtimer lower
                     break;
 
             case 3:
