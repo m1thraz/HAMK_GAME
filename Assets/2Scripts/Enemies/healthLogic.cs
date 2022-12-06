@@ -33,7 +33,11 @@ public class healthLogic : MonoBehaviour
         if (health <= 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, transform.position, 0);
-            currentMovespeed = 0;
+            
+            if (GetComponent<smartChasing>())
+            {
+                GetComponent<smartChasing>().currentMovespeed = 0;
+            }
             //damage = 0;
             Destroy(GetComponent<Collider2D>());
             animator.Play("die");

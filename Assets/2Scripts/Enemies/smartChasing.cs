@@ -8,7 +8,7 @@ public class smartChasing : MonoBehaviour
     Animator animator;
     PlayerMovement playerMovement;
     [SerializeField]
-    float currentMovespeed;
+    public float currentMovespeed;
     [SerializeField] float damage;
     // Start is called before the first frame update
 
@@ -21,6 +21,7 @@ public class smartChasing : MonoBehaviour
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         Physics.IgnoreLayerCollision(8, 7, true);
+        animator = GetComponent<Animator>();
 
     }
 
