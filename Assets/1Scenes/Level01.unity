@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &11465220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2973,7 +2973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &739359579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3952,7 +3952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelText: {fileID: 2047975842}
-  fillSpeed: 5
+  fillSpeed: 10
 --- !u!1 &964904453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,8 +4603,8 @@ MonoBehaviour:
   isBiggerSpellFreeze: 0
   biggerSpellFreezeCount: 2
   dashSpeed: 30
-  startDashCount: 10
-  dashTimer: 1
+  startDashCount: 1
+  dashTimer: 2
   isPlayerDashing: 0
   rb: {fileID: 0}
 --- !u!61 &1061358757
@@ -17009,7 +17009,7 @@ Camera:
   far clip plane: 1000
   field of view: 9
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

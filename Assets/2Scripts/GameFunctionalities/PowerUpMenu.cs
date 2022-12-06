@@ -309,7 +309,8 @@ public class PowerUpMenu : MonoBehaviour
 
             case 2:
                     Debug.Log("pw2 activated");
-                    // Dashtimer lower
+
+                    playerMovement.lowerDashTimer();
                     break;
 
             case 3:

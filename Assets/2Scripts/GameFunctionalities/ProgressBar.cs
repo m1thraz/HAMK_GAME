@@ -34,7 +34,7 @@ public class ProgressBar : MonoBehaviour
         // Debug function
         if (Input.GetKey(KeyCode.L))
         {
-            increaseLevel(50);
+            increaseLevel(100);
             Debug.Log("slider.value " + slider.value + " slidermax " + slider.maxValue);
         }
 

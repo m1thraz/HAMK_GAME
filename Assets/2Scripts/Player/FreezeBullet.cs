@@ -30,15 +30,17 @@ public class FreezeBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-
+           
             // FREEZE ENEMY FUNCTION IS MISSING
             if (collision.gameObject.GetComponent<ChasingEnemy>() != null)
             {
                 collision.gameObject.GetComponent<ChasingEnemy>().takeDamage(damage);
+                collision.gameObject.GetComponent<ChasingEnemy>().slowMovement();
             }
             else if (collision.gameObject.GetComponent<shootingEnemy>() != null)
             {
                 collision.gameObject.GetComponent<shootingEnemy>().takeDamage(damage);
+                collision.gameObject.GetComponent<shootingEnemy>().slowMovement();
             }
             else
             {

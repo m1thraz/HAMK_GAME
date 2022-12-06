@@ -268,10 +268,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.Translate(direction * dashSpeed * Time.deltaTime);
             }
 
-
-
- 
-        
         yield return new WaitForSeconds(dashTimer);
         gameObject.layer = LayerMask.NameToLayer("Player");
 
@@ -454,6 +450,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
+    public void lowerDashTimer()
+    {
+        dashTimer *= 0.9f;
+    }
 
 }
