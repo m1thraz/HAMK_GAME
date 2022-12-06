@@ -7,12 +7,12 @@ public class MainMenu : MonoBehaviour
 
     public void StartWaves()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void StartStory()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(4);
     }
 
     public void OpenSettings()

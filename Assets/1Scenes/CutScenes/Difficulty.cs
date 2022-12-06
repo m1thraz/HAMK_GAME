@@ -8,16 +8,16 @@ public class Difficulty : MonoBehaviour
     public GameObject pauseMenu;
     public void EasyMode()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void NormalMode()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void HardMode()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void EndPause()
     {
