@@ -11,7 +11,8 @@ public class GameOver : MonoBehaviour
 
     public void Start()
     {
-        Score.text = "Score: " + PlayerPrefs.GetFloat("playScore"); 
+        if (PlayerPrefs.HasKey("playScore"))
+            Score.text = "Score: " + PlayerPrefs.GetFloat("playScore"); 
         if (!PlayerPrefs.HasKey("highScore"))
         {
             HighScore.text = "Highscore: " + PlayerPrefs.GetFloat("playScore");

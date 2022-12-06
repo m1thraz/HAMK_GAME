@@ -12,8 +12,10 @@ public class PlayerLogic : MonoBehaviour
     public ProgressBar lvlbar;
 
 
-    float DeathTime = 1;
+    float DeathTime = 0;
     bool alive = true;
+    [SerializeField] int scene;
+
     // Start is called before the first frame update
     [SerializeField] 
     float maxHealth = 3, health, score;
@@ -97,7 +99,7 @@ public class PlayerLogic : MonoBehaviour
         {
             PlayerPrefs.SetFloat("playScore", score);
             Destroy(gameObject);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(scene);
         }
         
     }
