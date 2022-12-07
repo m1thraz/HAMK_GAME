@@ -12,6 +12,12 @@ public class startStory : MonoBehaviour
     public GameObject Boss;
     public GameObject Son;
 
+
+    public GameObject scroll1;
+    public GameObject scrollOpen;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +31,14 @@ public class startStory : MonoBehaviour
     }
 
 
-    public void startEnum()
+    public void bossSpawn()
+    {
+        bigCam();
+        Boss.SetActive(true);
+
+    }
+
+    public void startStoryline()
     {
         StartCoroutine(beginStory());
     }
@@ -34,26 +47,32 @@ public class startStory : MonoBehaviour
     IEnumerator beginStory()
     {
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+
         StartCoroutine(vanish());
         
 
     }
 
 
+    public void openScroll()
+    {
+        scroll1.SetActive(false);
+        scrollOpen.SetActive(true);
+    }
+
 
     IEnumerator vanish()
     {
         Boss.SetActive(false);
         Son.SetActive(false);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         difficultyMenu.SetActive(true);
     }
 
 
     public void bigCam()
     {
-        Boss.SetActive(true);
         cam = camObject.GetComponent<Camera>();
         cam.orthographicSize = 11;
     }
