@@ -17304,12 +17304,16 @@ MonoBehaviour:
   zombie: {fileID: 7619585532632837302, guid: c0624c9b23c6f384fb7c8ac92b87f6e5, type: 3}
   drake: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
   bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
+  maxSpawningIterations: 5
+  currentSpawningIterations: 0
   timeBetweenWaves: 10
   activeWave: 1
   stopSpawn: 0
   waveCountText: {fileID: 0}
   spawnedEnemyCount: 0
   currentEnemies: 0
+  killedEnemies: 0
+  allEnemiesSpawned: 0
 --- !u!4 &1355760093
 Transform:
   m_ObjectHideFlags: 0
