@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 4964471341267594894}
   - component: {fileID: 4964471341267594890}
   - component: {fileID: 5904273050162168497}
-  - component: {fileID: -8198177543509193999}
-  - component: {fileID: -2764968807426862222}
   - component: {fileID: -2970199954779478192}
   m_Layer: 8
   m_Name: SpikyBall (2)
@@ -31,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4964471341267594893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3921, y: 0.6221, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.06845672}
+  m_LocalPosition: {x: -1.4243, y: 0.631, z: 0}
+  m_LocalScale: {x: 0.3198065, y: 0.3198065, z: 0.14595266}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a2d68081d156f704bb974b65c4ba11c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4461c87bad5222349b14c22b26d43b95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,35 +141,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0016853311, y: 0}
   serializedVersion: 2
-  m_Radius: 0.69
---- !u!114 &-8198177543509193999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964471341267594893}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daea06d2363fb1b46a6d6e653f6c0944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  speed: 50
-  data: {fileID: 11400000, guid: 63e27d03b83cc104187e00cd3bc8d168, type: 2}
---- !u!114 &-2764968807426862222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964471341267594893}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e49a3b8cc71004c84337ae56f3cb13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
+  m_Radius: 0.43
 --- !u!95 &-2970199954779478192
 Animator:
   serializedVersion: 4

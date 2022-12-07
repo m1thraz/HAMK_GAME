@@ -20,8 +20,8 @@ public class kingBoss : MonoBehaviour
     float damage;
 
     [SerializeField]
-    float fireDelay;
-    float nextShot = 0.15f;
+    float fireIntervall;
+    private float fireTimer;
     [SerializeField]
     float projectileSpeed;
     [SerializeField]
@@ -62,6 +62,7 @@ public class kingBoss : MonoBehaviour
         // or move all the damage logic and shit out of this script
         if (player)
         {
+            fireTimer += Time.deltaTime;
             if (slow)
             {
                 slowTimer += Time.deltaTime;
@@ -73,10 +74,10 @@ public class kingBoss : MonoBehaviour
                 }
             }
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
-            if (Time.time > fireDelay)
+            if (fireTimer >= fireIntervall)
             {
                 shootPlayer();
-                fireDelay += Time.time + nextShot;
+                fireTimer = 0;
             }
         }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17293,22 +17293,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355760091}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f752599eba167354fbcc82383f4f2f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
-  enemyPrefab2: {fileID: 0}
-  enemyPrefab3: {fileID: 0}
-  enemyPrefab4: {fileID: 0}
-  enemyPrefab5: {fileID: 0}
-  enemyPrefab6: {fileID: 0}
-  bossPrefab: {fileID: 0}
+  spikyBall: {fileID: 4964471341267594893, guid: c0faad3a7d3d24043959394cff31f69d, type: 3}
+  goblin: {fileID: 1797437056911035587, guid: 02e0a20c57938b54d996a2113749db25, type: 3}
+  spider: {fileID: 1952976185754316259, guid: decbbe08e46e8b9469614f64d05f40b6, type: 3}
+  zombie: {fileID: 7619585532632837302, guid: c0624c9b23c6f384fb7c8ac92b87f6e5, type: 3}
+  drake: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
+  bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
   timeBetweenWaves: 10
   activeWave: 1
   stopSpawn: 0
   waveCountText: {fileID: 0}
+  spawnedEnemyCount: 0
+  currentEnemies: 0
 --- !u!4 &1355760093
 Transform:
   m_ObjectHideFlags: 0

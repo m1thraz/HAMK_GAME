@@ -16,12 +16,16 @@ public class smartChasing : MonoBehaviour
     private bool slow;
     private float slowDuration = 2;
     private float normalSpeed;
+    EnemySpawner enemySpawner;
+
     void Start()
     {
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         Physics.IgnoreLayerCollision(8, 7, true);
         animator = GetComponent<Animator>();
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent(typeof(EnemySpawner)) as EnemySpawner;
+
 
     }
 
@@ -92,6 +96,7 @@ public class smartChasing : MonoBehaviour
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
+            enemySpawner.enemyDied();
 
             playerObject.takeDamage(damage);
 

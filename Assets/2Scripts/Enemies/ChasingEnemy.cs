@@ -29,11 +29,14 @@ public class ChasingEnemy : MonoBehaviour
     private bool slow;
     private float slowDuration = 2;
     private float normalSpeed;
+    EnemySpawner enemySpawner;
     private void Awake()
     {
     }
     void Start()
     {
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent(typeof(EnemySpawner)) as EnemySpawner;
+
         currentMovespeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
@@ -89,15 +92,18 @@ public class ChasingEnemy : MonoBehaviour
             }
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
             distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
-            if(distance <= 0.4)
+            if (animator.layerCount > 1)
             {
-                animator.SetLayerWeight(1, 1);
-                animator.SetLayerWeight(0, 0);
-            }
-            else
-            {
-                animator.SetLayerWeight(1, 0);
-                animator.SetLayerWeight(0, 1);
+                if (distance <= 0.4)
+                {
+                    animator.SetLayerWeight(1, 1);
+                    animator.SetLayerWeight(0, 0);
+                }
+                else
+                {
+                    animator.SetLayerWeight(1, 0);
+                    animator.SetLayerWeight(0, 1);
+                }
             }
         }
 
@@ -110,6 +116,7 @@ public class ChasingEnemy : MonoBehaviour
         {
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
+            enemySpawner.enemyDied();
 
             playerObject.takeDamage(damage);
 
@@ -141,8 +148,10 @@ public class ChasingEnemy : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+            enemySpawner.enemyDied();
 
-           
+
+
 
             // DROP COIN 30% Chance 10-50 coins
             int coinsProb = Random.Range(1, 100);

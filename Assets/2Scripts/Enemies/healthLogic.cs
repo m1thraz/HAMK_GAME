@@ -10,6 +10,7 @@ public class healthLogic : MonoBehaviour
     float currentMovespeed;
     Animator animator;
     public GameObject droppedCoin;
+    EnemySpawner enemySpawner;
 
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class healthLogic : MonoBehaviour
     {
         health = maxHealth;
         animator = GetComponent<Animator>();
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent(typeof(EnemySpawner)) as EnemySpawner;
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class healthLogic : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+            enemySpawner.enemyDied();
 
             // DROP COIN 20% Chance 10-50 coins
             int coinsProb = Random.Range(1, 100);

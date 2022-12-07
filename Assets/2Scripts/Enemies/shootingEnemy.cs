@@ -34,10 +34,14 @@ public class shootingEnemy : MonoBehaviour
     private bool slow;
     private float slowDuration = 2;
     private float normalSpeed;
+    EnemySpawner enemySpawner;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent(typeof(EnemySpawner)) as EnemySpawner;
+
         Physics.IgnoreLayerCollision(8, 7);
         Physics.IgnoreLayerCollision(7,8);
 
@@ -115,6 +119,7 @@ public class shootingEnemy : MonoBehaviour
 
             Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
+            enemySpawner.enemyDied();
 
             playerObject.takeDamage(damage);
 
@@ -156,6 +161,7 @@ public class shootingEnemy : MonoBehaviour
             animator.Play("die");
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+            enemySpawner.enemyDied();
 
 
             // DROP COIN 30% Chance 10-50 coins
