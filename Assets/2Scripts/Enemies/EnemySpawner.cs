@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     //Initialize prefabs here
     [SerializeField]
     private GameObject spikyBall, goblin, spider, zombie, drake, bossPrefab;
+    [SerializeField] bool waveMode = true;
+
 
 
 
@@ -41,48 +43,53 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("spawner started");
-        Camera camera = Camera.main;
-        float halfHeight = camera.orthographicSize;
-        float halfWidth = camera.aspect * halfHeight;
+        if (waveMode)
+        {
+            Debug.Log("spawner started");
+            Camera camera = Camera.main;
+            float halfHeight = camera.orthographicSize;
+            float halfWidth = camera.aspect * halfHeight;
 
-        horMin = -halfWidth;
-        horMax = halfWidth;
-        verMin = -halfHeight;
-        verMax = halfHeight;
-        //StartCoroutine(waveSpawner());
-        //StartCoroutine(spawnEnemy(enemyInterval1, enemyPrefab1));
-        //StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
-        //StartCoroutine(spawnEnemy(enemyPrefab11, goblinPrefab));
-        //goblinPrefab.transform.parent = cloneContainer.transform;
+            horMin = -halfWidth;
+            horMax = halfWidth;
+            verMin = -halfHeight;
+            verMax = halfHeight;
+            //StartCoroutine(waveSpawner());
+            //StartCoroutine(spawnEnemy(enemyInterval1, enemyPrefab1));
+            //StartCoroutine(spawnEnemy(enemyInterval2, enemyPrefab2));
+            //StartCoroutine(spawnEnemy(enemyPrefab11, goblinPrefab));
+            //goblinPrefab.transform.parent = cloneContainer.transform;
 
-
+        }
     }
     private void Update()
     {
-        enemyTimer += Time.deltaTime;
-        if (enemyTimer >= timeBetweenEnemies && currentSpawningIterations < maxSpawningIterations)
+        if (waveMode)
         {
-            Debug.Log("spawning enemeis");
-            waveSpawner();
-        }
-        if (killedEnemies == spawnedEnemyCount && allEnemiesSpawned)
-        {
-            allEnemiesSpawned = false;
-            killedEnemies = 0;
-            waveCount++;
-            maxSpawningIterations = Mathf.Floor(maxSpawningIterations * 1.2f);
-            currentSpawningIterations = 0;
-            spawnedEnemyCount = 0;
-            enemyTimer = 0;
-            currentEnemies = 0;
+            enemyTimer += Time.deltaTime;
+            if (enemyTimer >= timeBetweenEnemies && currentSpawningIterations < maxSpawningIterations)
+            {
+                Debug.Log("spawning enemeis");
+                waveSpawner();
+            }
+            if (killedEnemies == spawnedEnemyCount && allEnemiesSpawned)
+            {
+                allEnemiesSpawned = false;
+                killedEnemies = 0;
+                waveCount++;
+                maxSpawningIterations = Mathf.Floor(maxSpawningIterations * 1.2f);
+                currentSpawningIterations = 0;
+                spawnedEnemyCount = 0;
+                enemyTimer = 0;
+                currentEnemies = 0;
 
+            }
+            if (waveCount == 11)
+            {
+                Debug.Log("you won");
+            }
+            //waveCountText.text = "Wave: " + waveCount.ToString();
         }
-        if(waveCount == 11)
-        {
-            Debug.Log("you won");
-        }
-        //waveCountText.text = "Wave: " + waveCount.ToString();
     }
     private ArrayList getSpawnLocation()
     {
