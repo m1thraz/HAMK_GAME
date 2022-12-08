@@ -35,7 +35,7 @@ public class ProgressBar : MonoBehaviour
         if (Input.GetKey(KeyCode.L))
         {
             increaseLevel(100);
-            Debug.Log("slider.value " + slider.value + " slidermax " + slider.maxValue);
+            //Debug.Log("slider.value " + slider.value + " slidermax " + slider.maxValue);
         }
 
         if (slider.value < targetProgress)
@@ -51,7 +51,7 @@ public class ProgressBar : MonoBehaviour
         {
             Debug.Log("Level UP");
             slider.value = 0;
-            slider.maxValue = slider.maxValue + 50;
+            slider.maxValue = slider.maxValue + 20;
             targetProgress = 0;
             levelUp();
 

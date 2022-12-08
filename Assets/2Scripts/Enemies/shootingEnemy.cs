@@ -98,8 +98,8 @@ public class shootingEnemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
             moveDirection = (player.position - transform.position).normalized;
             float distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
-            Debug.Log("distance from player ");
-            Debug.Log(distance);
+  //          Debug.Log("distance from player ");
+//            Debug.Log(distance);
             if (distance <= shotDistance && Time.time > fireDelay)
             {
                 Debug.Log("trying to shoot");

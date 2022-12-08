@@ -81,7 +81,13 @@ public class PlayerLogic : MonoBehaviour
     {
         score +=  10;
         ScoreText.text = "Score: " + score.ToString();
-        lvlbar.increaseLevel(10);
+
+
+        lvlbar.increaseLevel(20);
+
+
+
+
     }
 
     private void Death()
@@ -106,7 +112,7 @@ public class PlayerLogic : MonoBehaviour
 
     public void increaseMaxHP()
     {
-        maxHealth++;
+        maxHealth+= 5;
         HPText.text = health.ToString() + "/" + maxHealth.ToString();
     }
 

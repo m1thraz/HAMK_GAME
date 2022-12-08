@@ -33,7 +33,7 @@ public class PowerUpMenu : MonoBehaviour
     // aoe bullets
 
 
-    private string[] pwDescriptions = {PW0DESCRIPTION, PW1DESCRIPTION , PW2DESCRIPTION , PW3DESCRIPTION , PW4DESCRIPTION };
+    private string[] pwDescriptions = {PW0DESCRIPTION, PW1DESCRIPTION , PW2DESCRIPTION , PW3DESCRIPTION , PW4DESCRIPTION, PW5DESCRIPTION };
     // maybe later
 
 
@@ -42,20 +42,11 @@ public class PowerUpMenu : MonoBehaviour
     public Sprite[] powerUpSpriteList;
 
     // Arry with Powerup Nr | available  PowerUp Number     Available Count
-    public int[,] powerArray =          { {0,1,2,3,4}, {20,100,30,20,10} };
+    public int[,] powerArray =          { {0,1,2,3,4,5}, {100,100,3,2,100,100} };
 
 
-    public int[] minProb = { 1, 11, 41, 61, 91 };
-    public int[] maxProb = { 10, 40, 60, 90, 100 };
-
-    //never used
-    public int[] pw1Prob = { 1, 10 }; // 10%
-    public int[] pw2Prob = { 11, 40 }; // 30%
-    public int[] pw3Prob = { 41, 60 }; // 20%
-    public int[] pw4Prob = { 61, 90 }; // 30%
-    public int[] pw5Prob = { 91, 100 }; // 10%
-
-
+    int[] minProb = { 1, 21, 41, 52, 57, 78 };
+    int[] maxProb = { 20, 40, 51, 56, 77, 100};
 
     // Image of the Buttons
     private Image pw1Image;
@@ -174,7 +165,9 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw1search)
             {
+                print($"<color=#00FF00> PWCHOOSE 1.</color>");
                 int random = Random.Range(1, 100);
+                print("RandomNumber1 = " + random);
                 int choosenPw = checkProb(random);
 
                 if (checkAvaiable(choosenPw))
@@ -182,7 +175,7 @@ public class PowerUpMenu : MonoBehaviour
                     chosenPower1 = choosenPw;
                     renderPowerUpImage(pw1Image, powerUpSpriteList[choosenPw]);
                     pw1Text.text = pwDescriptions[choosenPw];
-                    Debug.Log("pw1 chosen");
+                    //Debug.Log("pw1 chosen");
 
                 }
 
@@ -195,7 +188,9 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw2search)
             {
+                print($"<color=#00FF00> PWCHOOSE 2.</color>");
                 int random2 = Random.Range(1, 100);
+                print("RandomNumber = " + random2);
                 int choosenPw2 = checkProb(random2);
 
                 if (checkAvaiable(choosenPw2))
@@ -203,7 +198,7 @@ public class PowerUpMenu : MonoBehaviour
                     chosenPower2 = choosenPw2;
                     renderPowerUpImage(pw2Image, powerUpSpriteList[choosenPw2]);
                     pw2Text.text = pwDescriptions[choosenPw2];
-                    Debug.Log("pw2 chosen");
+                    //Debug.Log("pw2 chosen");
 
                 }
 
@@ -215,7 +210,9 @@ public class PowerUpMenu : MonoBehaviour
 
             if (pw3search)
             {
+                print($"<color=#00FF00> PWCHOOSE 3.</color>");
                 int random3 = Random.Range(1, 100);
+                print("RandomNumber = " + random3);
                 int choosenPw3 = checkProb(random3);
 
                 if (checkAvaiable(choosenPw3))
@@ -223,7 +220,7 @@ public class PowerUpMenu : MonoBehaviour
                     chosenPower3 = choosenPw3;
                     renderPowerUpImage(pw3Image, powerUpSpriteList[choosenPw3]);
                     pw3Text.text = pwDescriptions[choosenPw3];
-                    Debug.Log("pw3 chosen");
+                    //Debug.Log("pw3 chosen");
 
                 }
 
@@ -258,11 +255,17 @@ public class PowerUpMenu : MonoBehaviour
 
     public int checkProb(int number)
     {
-        for(int i = 0; i< 5; i++)
+        for(int i = 0; i< 6; i++)
         {
-            if (minProb[i] <= number && maxProb[i] >= number)
+            print($"<color=#02FF00> CheckPROB.</color>");
+            Debug.Log("minProbI = " + minProb[i]);
+            Debug.Log("maxProbI = " + maxProb[i]);
+            if (number >= minProb[i] && number <= maxProb[i] )
             {
+                
+                Debug.Log("Matched Prob for pwnumber" + i);
                 return i;
+                
             }
         }
 
