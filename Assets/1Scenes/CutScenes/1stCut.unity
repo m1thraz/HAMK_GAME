@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.3, y: -0.3475}
+  m_AnchoredPosition: {x: 11.4, y: -0.3475}
   m_SizeDelta: {x: 30.695, y: 30.695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &3023393
@@ -579,7 +579,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57477630
 GameObject:
@@ -1104,7 +1104,7 @@ RectTransform:
   - {fileID: 1233752299}
   - {fileID: 3023392}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1283,7 +1283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290059731
 GameObject:
@@ -2257,7 +2257,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728337446
 GameObject:
@@ -3300,7 +3300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.6, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233752300
@@ -3336,7 +3336,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press       to talk
+  m_Text: 'Press       '
 --- !u!222 &1233752301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3577,7 +3577,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1320826751
 GameObject:
@@ -10628,6 +10628,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPGTalk Holder To Follow
       objectReference: {fileID: 0}
+    - target: {fileID: 913559163925135088, guid: 546e057efe3dc45c3a03c0cd3b4b053f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 913559163925135089, guid: 546e057efe3dc45c3a03c0cd3b4b053f, type: 3}
+      propertyPath: passAudio
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 913559163925135089, guid: 546e057efe3dc45c3a03c0cd3b4b053f, type: 3}
+      propertyPath: textAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: cc75df7006e4c45549af2f88cbe73811, type: 3}
     - target: {fileID: 913559163925135089, guid: 546e057efe3dc45c3a03c0cd3b4b053f, type: 3}
       propertyPath: characters.Array.data[0].follow
       value: 
@@ -10769,7 +10781,16 @@ PrefabInstance:
       propertyPath: secondsAutoPass
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5651208774278824459, guid: 1aae0236ca6374d3faf108caa8609a65, type: 3}
+      propertyPath: passWithInputButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651208774278824469, guid: 1aae0236ca6374d3faf108caa8609a65, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5651208774278824469, guid: 1aae0236ca6374d3faf108caa8609a65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aae0236ca6374d3faf108caa8609a65, type: 3}
 --- !u!1001 &5912085041963679267
 PrefabInstance:
