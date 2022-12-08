@@ -414,8 +414,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45.9624}
-  m_SizeDelta: {x: 1080, y: 165.7572}
+  m_AnchoredPosition: {x: 0, y: 4}
+  m_SizeDelta: {x: 1080, y: 485.1758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079351596
 MonoBehaviour:
@@ -437,17 +437,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEMON HORDES
+  m_text: "Thank you for playing\n\nGame created by Team Guderian\n\nKevin Th\xF6lken\n\nRobert
+    Nor\n\nNicolas J\xE4rmann\n\nDaan Slurink"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26bdacb2b859645209743642123c2fcd, type: 2}
-  m_sharedMaterial: {fileID: -5712027597911966254, guid: 26bdacb2b859645209743642123c2fcd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -464,10 +465,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.81
+  m_fontSize: 41.45
   m_fontSizeBase: 67.81
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -570,8 +571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45.9624}
-  m_SizeDelta: {x: 1080, y: 165.7572}
+  m_AnchoredPosition: {x: 0, y: -333}
+  m_SizeDelta: {x: 1080, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593838248
 MonoBehaviour:
@@ -593,7 +594,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Team Guderian presents
+  m_text: 'You were able to successfully save your son and cure him of his disease.
+
+    With
+    the defeat of the Demonking, the gates between the worlds were closed and there
+    is no more danger for you and your village.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -656,7 +661,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.000061035156, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.000061035156, w: 588.3787}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -870,8 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81ecf676a6bd3140899448a677e6e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTime: 10
-  scene: 1
+  changeTime: 15
+  scene: 6
 --- !u!4 &1947165824
 Transform:
   m_ObjectHideFlags: 0
