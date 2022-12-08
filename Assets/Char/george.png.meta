@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -451,7 +451,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      george_4: 1924500699
+      george_10: 1718942188
       george_13: 1746870079
       george_12: 1812596379
       george_6: -1462268590
@@ -466,7 +466,7 @@ TextureImporter:
       george_15: 889568489
       george_2: 2011774606
       george_14: 419026732
-      george_10: 1718942188
+      george_4: 1924500699
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
