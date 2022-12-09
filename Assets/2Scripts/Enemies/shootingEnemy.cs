@@ -44,7 +44,7 @@ public class shootingEnemy : MonoBehaviour
 
         Physics.IgnoreLayerCollision(8, 7);
         Physics.IgnoreLayerCollision(7,8);
-
+        shotTimer = fireDelay;
         currentMovespeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;

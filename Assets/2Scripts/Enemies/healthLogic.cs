@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class healthLogic : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class healthLogic : MonoBehaviour
     Animator animator;
     public GameObject droppedCoin;
     EnemySpawner enemySpawner;
+
+    [SerializeField]
+    GameObject endGameAdds;
 
 
     // Start is called before the first frame update
@@ -35,7 +40,22 @@ public class healthLogic : MonoBehaviour
         if (health <= 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, transform.position, 0);
-            
+
+            if (GetComponent<kingBoss>())
+            {
+
+                GameObject[] spiders = GameObject.FindGameObjectsWithTag("spider");
+                if (spiders.Length > 0)
+                {
+
+
+                    foreach (GameObject spider in spiders)
+                    {
+                        Destroy(spider);
+                    }
+                }
+
+            }
             if (GetComponent<smartChasing>())
             {
                 GetComponent<smartChasing>().currentMovespeed = 0;
@@ -46,6 +66,7 @@ public class healthLogic : MonoBehaviour
             playerObject2.ScoreUp();
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
             enemySpawner.enemyDied();
+
 
             // DROP COIN 20% Chance 10-50 coins
             int coinsProb = Random.Range(1, 100);

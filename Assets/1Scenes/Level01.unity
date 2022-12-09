@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4586,7 +4586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   shootSpeed: 300
-  shootTimer: 0
+  shootTimer: 0.75
   shootPosNorth: {fileID: 1108919599}
   shootPosEast: {fileID: 1735607349}
   shootPosWest: {fileID: 1894707026}
@@ -4671,7 +4671,7 @@ MonoBehaviour:
   CoinText: {fileID: 2019102165}
   lvlbar: {fileID: 907510250}
   scene: 3
-  maxHealth: 1000
+  maxHealth: 10
   health: 0
   score: 0
   armor: 0

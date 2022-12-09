@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class kingBoss : MonoBehaviour
 {
@@ -26,6 +28,9 @@ public class kingBoss : MonoBehaviour
     float projectileSpeed;
     [SerializeField]
     bossFireball projectile;
+
+    [SerializeField]
+    int scene;
 
     private float slowTimer = 0;
     private bool slow;
@@ -55,6 +60,10 @@ public class kingBoss : MonoBehaviour
             animator.SetFloat("xDir", moveDirection.x);
             animator.SetFloat("yDir", moveDirection.y);
         }
+    }
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(scene);
     }
     private void FixedUpdate()
     {
@@ -125,17 +134,6 @@ public class kingBoss : MonoBehaviour
         {
             playerObject.takeDamage(damage);
         }
-    }
-    private Vector3 RotateZ(Vector3 v, float angle)
-    {
-        float sin = Mathf.Sin(angle);
-        float cos = Mathf.Cos(angle);
-
-        float tx = v.x;
-        float ty = v.y;
-        v.x = (cos * tx) - (sin * ty);
-        v.y = (cos * ty) + (sin * tx);
-        return v;
     }
 }
 

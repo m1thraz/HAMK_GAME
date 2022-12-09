@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   droppedCoin: {fileID: 2386944690914154871, guid: b729b3adcf8fe42fabcd1ea7fd3afc2f, type: 3}
+  endGameAdds: {fileID: 0}
 --- !u!114 &5217664033842275879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +121,7 @@ MonoBehaviour:
   fireIntervall: 3
   projectileSpeed: 0
   projectile: {fileID: 7216518824089519427, guid: 881a4b5cbf019ec4faf46a7f26613300, type: 3}
+  scene: 7
 --- !u!50 &-5820903834531262059
 Rigidbody2D:
   serializedVersion: 4
