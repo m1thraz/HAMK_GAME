@@ -24,7 +24,7 @@ public class shootingEnemy : MonoBehaviour
 
     [SerializeField]
     float fireDelay;
-    float nextShot = 0.15f;
+    float shotTimer;
     [SerializeField]
     float projectileSpeed;
 
@@ -95,16 +95,14 @@ public class shootingEnemy : MonoBehaviour
                     currentMovespeed = normalSpeed;
                 }
             }
+            shotTimer += Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, currentMovespeed * Time.deltaTime);
-            moveDirection = (player.position - transform.position).normalized;
             float distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
-  //          Debug.Log("distance from player ");
-//            Debug.Log(distance);
-            if (distance <= shotDistance && Time.time > fireDelay)
+            if (distance <= shotDistance && shotTimer >= fireDelay)
             {
-                Debug.Log("trying to shoot");
+                moveDirection = (player.position - transform.position).normalized;
                 shootPlayer(moveDirection);
-                fireDelay += Time.time + nextShot;
+                shotTimer = 0;
             }
 
         }
@@ -115,34 +113,22 @@ public class shootingEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && health > 0)
         {
             PlayerLogic playerObject = collision.gameObject.GetComponent(typeof(PlayerLogic)) as PlayerLogic;
-
-
-            Debug.Log(string.Format("player HIT, taking {0} damage", damage));
             Destroy(gameObject);
             enemySpawner.enemyDied();
-
             playerObject.takeDamage(damage);
-
         }
-
     }
 
     private void shootPlayer(Vector2 shotDirection)
     {
-
         float speedBefore = currentMovespeed;
         currentMovespeed = 0;
         animator.SetLayerWeight(1, 1);
         animator.SetLayerWeight(0, 0);
 
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        //newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection * projectileSpeed;
         newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection;
-        //transform.rotation = Quaternion.LookRotation(Vector3.forward, shootDirection);
         Vector2 dir = new Vector2(player.transform.position.x, player.transform.position.y);
-        //newProjectile.GetComponent<Rigidbody2D>().transform.rotation = Quaternion.LookRotation(Vector3.forward, shotDirection);
-
-
         animator.SetLayerWeight(1, 0);
         animator.SetLayerWeight(0, 1);
         currentMovespeed = speedBefore;
@@ -156,7 +142,6 @@ public class shootingEnemy : MonoBehaviour
         if (health <= 0)
         {
             currentMovespeed = 0;
-            //damage = 0;
             Destroy(GetComponent<Collider2D>());
             animator.Play("die");
             playerObject2.ScoreUp();
