@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/1Scenes/YouWonStory.unity
     guid: 4e40d0d6338d6574eb3f16e6816d1754
   - enabled: 1
+    path: Assets/1Scenes/Outro Wave.unity
+    guid: 6d7c4d7c6c6e24d47869918e97164432
+  - enabled: 1
     path: Assets/1Scenes/Outro.unity
     guid: 2ca10cf932d294d6e9851cb6b59fbd74
   - enabled: 0
