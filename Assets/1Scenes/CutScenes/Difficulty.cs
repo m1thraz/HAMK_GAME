@@ -8,7 +8,7 @@ public class Difficulty : MonoBehaviour
     public GameObject pauseMenu;
     public void EasyMode()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 
     public void NormalMode()

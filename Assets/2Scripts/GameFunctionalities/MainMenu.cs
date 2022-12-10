@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartStory()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(9);
     }
 
     public void OpenSettings()
