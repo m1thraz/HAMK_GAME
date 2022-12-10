@@ -121,7 +121,7 @@ MonoBehaviour:
   fireIntervall: 3
   projectileSpeed: 0
   projectile: {fileID: 7216518824089519427, guid: 881a4b5cbf019ec4faf46a7f26613300, type: 3}
-  scene: 7
+  winScene: 7
 --- !u!50 &-5820903834531262059
 Rigidbody2D:
   serializedVersion: 4

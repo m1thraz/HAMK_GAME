@@ -50,7 +50,7 @@ public class healthLogic : MonoBehaviour
             }
             if (GetComponent<kingBoss>())
             {
-
+                animator.Play("die");
                 GameObject[] spiders = GameObject.FindGameObjectsWithTag("spider");
                 if (spiders.Length > 0)
                 {
@@ -61,7 +61,8 @@ public class healthLogic : MonoBehaviour
                         Destroy(spider);
                     }
                 }
-
+                kingBoss boss = GetComponent(typeof(kingBoss)) as kingBoss;
+                boss.onDeath();
             }
             if (GetComponent<smartChasing>())
             {

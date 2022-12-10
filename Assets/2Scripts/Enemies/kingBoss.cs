@@ -30,7 +30,7 @@ public class kingBoss : MonoBehaviour
     bossFireball projectile;
 
     [SerializeField]
-    int scene;
+    int winScene;
 
     private float slowTimer = 0;
     private bool slow;
@@ -61,9 +61,10 @@ public class kingBoss : MonoBehaviour
             animator.SetFloat("yDir", moveDirection.y);
         }
     }
-    private void OnDestroy()
+    public void onDeath()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(winScene);
+        
     }
     private void FixedUpdate()
     {

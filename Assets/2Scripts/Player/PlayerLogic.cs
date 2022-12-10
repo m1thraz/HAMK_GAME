@@ -38,6 +38,7 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (health <= 0)
         {
 
@@ -92,22 +93,9 @@ public class PlayerLogic : MonoBehaviour
 
     private void Death()
     {
-        DeathTime -= Time.deltaTime;
-        if (DeathTime > 0 && alive)
-        {
-            
-            FindObjectOfType<AudoManager>().Play("player death");
-            FindObjectOfType<Animator>().SetLayerWeight(2, 2);
-            Debug.Log("Player DIED");
-            alive = false;
-        }
-        if(DeathTime<=0)
-        {
-            PlayerPrefs.SetFloat("playScore", score);
-            Destroy(gameObject);
-            SceneManager.LoadScene(scene);
-        }
-        
+        FindObjectOfType<AudoManager>().Play("player death");
+        PlayerPrefs.SetFloat("playScore", score);
+        SceneManager.LoadScene(scene);
     }
 
     public void increaseMaxHP()
