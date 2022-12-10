@@ -27,7 +27,7 @@ public class BulletLogic : MonoBehaviour
     //replace this with decreasing health - Daan
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "projectile")
+        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "projectile" || collision.gameObject.tag == "spider")
         {
             Debug.Log(string.Format("got collision with enemy or projectile dealing {0} damage", damage));
 
