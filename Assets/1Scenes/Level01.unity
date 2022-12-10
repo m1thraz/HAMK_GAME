@@ -4586,7 +4586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   shootSpeed: 300
-  shootTimer: 0.75
+  shootTimer: 0.5
   shootPosNorth: {fileID: 1108919599}
   shootPosEast: {fileID: 1735607349}
   shootPosWest: {fileID: 1894707026}
@@ -4602,7 +4602,7 @@ MonoBehaviour:
   biggerSpellCount: 0
   isBiggerSpellFreeze: 0
   biggerSpellFreezeCount: 0
-  dashSpeed: 30
+  dashSpeed: 2
   startDashCount: 1
   dashTimer: 2
   isPlayerDashing: 0
@@ -17305,6 +17305,7 @@ MonoBehaviour:
   drake: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
   bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
   waveMode: 1
+  waveCount: 1
   maxSpawningIterations: 5
   currentSpawningIterations: 0
   timeBetweenWaves: 10
@@ -17342,7 +17343,7 @@ GameObject:
   - component: {fileID: 1438090372}
   - component: {fileID: 1438090371}
   - component: {fileID: 1438090370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
