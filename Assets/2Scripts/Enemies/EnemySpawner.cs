@@ -18,7 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private float horMin, horMax, verMin, verMax;
 
     // initialize stuff for waves
-    private int waveCount = 1;
+    [SerializeField]
+    int waveCount = 1;
     public float maxSpawningIterations = 5;
     public float currentSpawningIterations = 0;
     private float SpawnModifier = 1.4f;
@@ -260,7 +261,6 @@ public class EnemySpawner : MonoBehaviour
             if (spawnedEnemyCount % 3 == 1)
             {
                 spawnEnemy(spider);
-
                 spawnEnemy(zombie);
                 spawnedEnemyCount+=2;
                 currentEnemies+=2;
@@ -280,9 +280,11 @@ public class EnemySpawner : MonoBehaviour
             //boss battle
 
                 spawnEnemy(spider);
+                spawnedEnemyCount++;
                 if (spawnedEnemyCount % 3 == 1)
                 {
                     spawnEnemy(zombie);
+                    spawnedEnemyCount++;
                 }
                 enemyTimer = 0;
                 

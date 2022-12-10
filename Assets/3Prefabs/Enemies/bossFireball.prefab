@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   droppedCoin: {fileID: 2386944690914154871, guid: b729b3adcf8fe42fabcd1ea7fd3afc2f, type: 3}
+  endGameAdds: {fileID: 0}
 --- !u!95 &463206857420963008
 Animator:
   serializedVersion: 4
@@ -135,7 +136,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
