@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         TakeInput();
-        Move();
+       
 
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -96,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+    }
+    void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()
