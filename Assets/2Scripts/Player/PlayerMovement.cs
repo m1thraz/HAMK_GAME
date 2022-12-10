@@ -53,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isPlayerDashing;
     public Rigidbody2D rb;
 
+
+
+
     private float slowTimer = 0;
     private bool slow;
     private float slowDuration = 2;
@@ -248,30 +251,57 @@ public class PlayerMovement : MonoBehaviour
        
             if (directionHistory == Vector2.up)
             {
-                transform.Translate(direction * dashSpeed * Time.deltaTime);
+                rb.velocity = new Vector2(0f, 1.0f * dashSpeed);
 
-             }
+                yield return new WaitForSeconds(0.25f);
+                rb.velocity = Vector2.zero;
+                gameObject.layer = LayerMask.NameToLayer("Player");
+
+
+        
+
+        }
             if (directionHistory == Vector2.right)
             {
-            transform.Translate(direction * dashSpeed * Time.deltaTime);
 
-            }
+            
+            rb.velocity = new Vector2(1.0f * dashSpeed, 0f);
+
+                yield return new WaitForSeconds(0.25f);
+                rb.velocity = Vector2.zero;
+                gameObject.layer = LayerMask.NameToLayer("Player");
+
+           
+
+        }
 
             if (directionHistory == Vector2.left)
             {
-                transform.Translate(direction * dashSpeed * Time.deltaTime);
-            }
+
+                rb.velocity = new Vector2(-1.0f * dashSpeed, 0f);
+
+                yield return new WaitForSeconds(0.25f);
+                rb.velocity = Vector2.zero;
+                gameObject.layer = LayerMask.NameToLayer("Player");
+
+        }
 
 
             if (directionHistory == Vector2.down)
             {
-                transform.Translate(direction * dashSpeed * Time.deltaTime);
-            }
+            rb.velocity = new Vector2(0f, -1.0f * dashSpeed);
+
+            yield return new WaitForSeconds(0.25f);
+            rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+
+
+
+
+    
+        }
 
         yield return new WaitForSeconds(dashTimer);
-        gameObject.layer = LayerMask.NameToLayer("Player");
-
-
         isPlayerDashing = false;
     }
 
