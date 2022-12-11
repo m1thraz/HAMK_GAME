@@ -11,14 +11,19 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     public float shootSpeed, shootTimer;
-    public Transform shootPosNorth;
-    public Transform shootPosEast;
-    public Transform shootPosWest;
-    public Transform shootPosSouth;
+    public Transform shootPosCentral;
 
-    
+    Vector2 dirUp = Vector2.up;
+    Vector2 dirDown = Vector2.down;
+    Vector2 dirRight = Vector2.right;
+    Vector2 dirLeft = Vector2.left;
 
+    Vector2 dirUpRight = new Vector2(1,1);
+    Vector2 dirUpLeft = new Vector2(1, -1);
+    Vector2 dirDownRight = new Vector2(-1, 1);
+    Vector2 dirDownLeft = new Vector2(-1, -1);
 
+    public bool newShootControls;
 
     public GameObject bullet;
 
@@ -153,42 +158,92 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
+        
+        if (!inCutScene) {
 
-        if (!inCutScene) { 
-        // Shooting
-        if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (!gamePaused)
+            // newControls ON
+            if (newShootControls)
             {
+                // Shooting
+                if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return) )
+                {
+                    if (!gamePaused)
+                    {
 
-                StartCoroutine(AlternativShot());
+                        StartCoroutine(playerShootDirection());
+                    }
+                }
+
+
+                if (!isShootingBig && (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && biggerSpellFreezeCount > 0)
+                {
+                    if (!gamePaused)
+                    {
+
+                        StartCoroutine(playerShootDirection(1));
+                        biggerSpellFreezeCount--;
+                    }
+
+
+                }
+
+                else if (!isShootingBig && (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && biggerSpellCount > 0)
+                {
+                    if (!gamePaused)
+                    {
+
+                        StartCoroutine(playerShootDirection(0));
+                        biggerSpellCount--;
+                    }
+
+
+                }
+
+
+
+
+
             }
-        }
-
-
-        if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellFreezeCount > 0)
-        {
-            if (!gamePaused)
+            else // OLD Controls ON
             {
+            
+                if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    if (!gamePaused)
+                    {
 
-                StartCoroutine(playerShoot(1));
-                biggerSpellFreezeCount--;
+                        StartCoroutine(MousePointerShot());
+                    }
+                }
+
+
+                if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellFreezeCount > 0)
+                {
+                    if (!gamePaused)
+                    {
+
+                        StartCoroutine(MouseDirectionShotSpecial(1));
+                        biggerSpellFreezeCount--;
+                    }
+
+
+                }
+
+                else if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellCount > 0)
+                {
+                    if (!gamePaused)
+                    {
+
+                        StartCoroutine(MouseDirectionShotSpecial(0));
+                        biggerSpellCount--;
+                    }
+
+
+                }
             }
 
 
-        } 
-
-        else if (!isShootingBig && Input.GetKeyDown(KeyCode.Mouse1) && biggerSpellCount > 0)
-        {
-            if (!gamePaused)
-            {
-
-                StartCoroutine(playerShoot(0));
-                biggerSpellCount--;
-            }
-
-
-        }
+            
 
 
     }
@@ -211,27 +266,12 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        // For Debugging POWER UP MENU
-        if (Input.GetKeyDown(KeyCode.P))
+      
+        // For Debugging shooting
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log("key p pressed");
+            StartCoroutine(playerShootDirection());
 
-            if (isPowerMenuOpen)
-            {
-                Debug.Log("resume game and close powerup");
-                powerMenu.closePowerUP();
-                //powerMenu.pauselog();
-                isPowerMenuOpen = false;
-            }
-            else
-            {
-                Debug.Log("pause game and open powerup");
-                powerMenu.openPowerUP();
-                isPowerMenuOpen = true;
-                //powerMenu.pauselog();
-
-
-            }
         }
 
 
@@ -252,57 +292,66 @@ public class PlayerMovement : MonoBehaviour
         // Dashing
 
         gameObject.layer = LayerMask.NameToLayer("Dash");
-       
-            if (directionHistory == Vector2.up)
+
+        if (directionHistory == dirUpLeft)
+        {
+            rb.velocity = new Vector2(1.0f * dashSpeed, -1.0f * dashSpeed);
+            yield return new WaitForSeconds(0.25f);
+            rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+        if (directionHistory == dirUpRight)
+        {
+            rb.velocity = new Vector2(1.0f * dashSpeed, 1.0f * dashSpeed);
+            yield return new WaitForSeconds(0.25f);
+            rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+        if (directionHistory == dirDownLeft)
+        {
+            rb.velocity = new Vector2(-1.0f * dashSpeed, -1.0f * dashSpeed);
+            yield return new WaitForSeconds(0.25f);
+            rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+        if (directionHistory == dirDownRight)
+        {
+            rb.velocity = new Vector2(-1.0f * dashSpeed, 1.0f * dashSpeed);
+            yield return new WaitForSeconds(0.25f);
+            rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+
+        if (directionHistory == Vector2.up)
             {
                 rb.velocity = new Vector2(0f, 1.0f * dashSpeed);
-
                 yield return new WaitForSeconds(0.25f);
                 rb.velocity = Vector2.zero;
                 gameObject.layer = LayerMask.NameToLayer("Player");
-
-
-        
-
         }
-            if (directionHistory == Vector2.right)
+
+        if (directionHistory == Vector2.right)
             {
-
-            
-            rb.velocity = new Vector2(1.0f * dashSpeed, 0f);
-
+                rb.velocity = new Vector2(1.0f * dashSpeed, 0f);
                 yield return new WaitForSeconds(0.25f);
                 rb.velocity = Vector2.zero;
                 gameObject.layer = LayerMask.NameToLayer("Player");
-
-           
-
         }
 
-            if (directionHistory == Vector2.left)
-            {
-
-                rb.velocity = new Vector2(-1.0f * dashSpeed, 0f);
-
-                yield return new WaitForSeconds(0.25f);
-                rb.velocity = Vector2.zero;
-                gameObject.layer = LayerMask.NameToLayer("Player");
-
-        }
-
-
-            if (directionHistory == Vector2.down)
-            {
-            rb.velocity = new Vector2(0f, -1.0f * dashSpeed);
-
+        if (directionHistory == Vector2.left)
+        {
+            rb.velocity = new Vector2(-1.0f * dashSpeed, 0f);
             yield return new WaitForSeconds(0.25f);
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
 
-
-
-
-    
+        }
+        if (directionHistory == Vector2.down)
+        {
+        rb.velocity = new Vector2(0f, -1.0f * dashSpeed);
+        yield return new WaitForSeconds(0.25f);
+        rb.velocity = Vector2.zero;
+        gameObject.layer = LayerMask.NameToLayer("Player");
         }
 
         yield return new WaitForSeconds(dashTimer);
@@ -318,74 +367,207 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    // Big Bullet 0 / freeze Bullet 1
-    IEnumerator playerShoot(int mode)
+    // ALternative control
+    // Big Bullet 0 / freeze Bullet 1 // alternative shooting in player moving dir for Special spells
+    IEnumerator playerShootDirection(int mode)
     {
         isShootingBig = true;
         GameObject newBullet;
 
-        //directions
-        Vector2 rightUp = new Vector2(1.0f, 1.0f);
-        Vector2 rightDown = new Vector2(1.0f, -1.0f);
-        Vector2 leftUp = new Vector2(-1.0f, 1.0f);
-        Vector2 leftDown = new Vector2(-1.0f, -1.0f);
+        /*Vector2 dirUp = Vector2.up;
+        Vector2 dirDown = Vector2.down;
+        Vector2 dirRight = Vector2.right;
+        Vector2 dirLeft = Vector2.left;
+
+        Vector2 dirUpRight = new Vector2(1,1);
+        Vector2 dirUpLeft = new Vector2(1, -1);
+        Vector2 dirDownRight = new Vector2(-1, 1);
+        Vector2 dirDownLeft = new Vector2(-1, -1);*/
 
 
-        if(mode == 0)
+        if (mode == 0)
         {
             if (directionHistory == Vector2.up)
             {
-                newBullet = Instantiate(bigBullet, shootPosNorth.position, Quaternion.identity);
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
             }
             else if (directionHistory == Vector2.right)
             {
-                newBullet = Instantiate(bigBullet, shootPosEast.position, Quaternion.identity);
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
             }
             else if (directionHistory == Vector2.left)
             {
-                newBullet = Instantiate(bigBullet, shootPosWest.position, Quaternion.identity);
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
             }
-            else
+            else if ((directionHistory == Vector2.left))
             {
-                newBullet = Instantiate(bigBullet, shootPosSouth.position, Quaternion.identity);
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
             }
-        } else { // add else if 1 after adding new poweredbullets
+            // diagonal
+            else if (directionHistory == dirUpRight)
+            { // North East
 
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
+            }
+            else if (directionHistory == dirUpLeft) // North West
+            {
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
+            }
+            else if (directionHistory == dirDownRight) // South East
+            {
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
+            }
+            else  // South West
+            {
+                newBullet = Instantiate(bigBullet, shootPosCentral.position, Quaternion.identity);
+            }
+
+        }
+
+        //Freeze
+
+        else
+        {
             if (directionHistory == Vector2.up)
             {
-                newBullet = Instantiate(bigBulletFreeze, shootPosNorth.position, Quaternion.identity);
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
             }
             else if (directionHistory == Vector2.right)
             {
-                newBullet = Instantiate(bigBulletFreeze, shootPosEast.position, Quaternion.identity);
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
             }
             else if (directionHistory == Vector2.left)
             {
-                newBullet = Instantiate(bigBulletFreeze, shootPosWest.position, Quaternion.identity);
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
             }
-            else
+            else if ((directionHistory == Vector2.left))
             {
-                newBullet = Instantiate(bigBulletFreeze, shootPosSouth.position, Quaternion.identity);
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
+            }
+            // diagonal
+            else if (directionHistory == dirUpRight)
+            { // North East
+
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
+            }
+            else if (directionHistory == dirUpLeft) // North West
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
+            }
+            else if (directionHistory == dirDownRight) // South East
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
+            }
+            else  // South West
+            {
+                newBullet = Instantiate(bigBulletFreeze, shootPosCentral.position, Quaternion.identity);
             }
         }
 
-     
 
-        if (directionHistory == rightUp)
-        {
-            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+
+
+            if (directionHistory == dirUpRight)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, shootSpeed * Time.fixedDeltaTime);
+            }
+            else if (directionHistory == dirUpLeft)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, -shootSpeed * Time.fixedDeltaTime);
+            }
+            else if (directionHistory == dirDownRight)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, shootSpeed * Time.fixedDeltaTime);
+            }
+            else if (directionHistory == dirDownLeft)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, -shootSpeed * Time.fixedDeltaTime);
+            }
+
+            else if (directionHistory == Vector2.up)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+            }
+
+            else if (directionHistory == Vector2.down)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+            }
+
+            else if (directionHistory == Vector2.right)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
+            }
+
+            else if (directionHistory == Vector2.left)
+            {
+                newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, 0f);
+            }
+
+
+            yield return new WaitForSeconds(shootTimer);
+            isShootingBig = false;
         }
-        else if (directionHistory == rightDown)
+
+
+    // ALternative control normal shooting
+    IEnumerator playerShootDirection()
+    {
+        isShooting = true;
+        GameObject newBullet;
+
+       
+      
+        if (directionHistory == Vector2.up)
         {
-            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
         }
-        else if (directionHistory == leftUp)
+        else if (directionHistory == Vector2.right)
         {
-            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed * Time.fixedDeltaTime);
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
         }
-        else if (directionHistory == leftDown)
+        else if (directionHistory == Vector2.left)
         {
-            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shootSpeed * Time.fixedDeltaTime);
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+        else if ((directionHistory == Vector2.left))
+        {
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+        // diagonal
+        else if (directionHistory == dirUpRight)
+        { // North East
+
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+        else if (directionHistory == dirUpLeft) // North West
+        {
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+        else if (directionHistory == dirDownRight) // South East
+        {
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+        else  // South West
+        {
+            newBullet = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
+        }
+
+        if (directionHistory == dirUpRight)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, shootSpeed * Time.fixedDeltaTime);
+        }
+        else if (directionHistory == dirUpLeft)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, -shootSpeed * Time.fixedDeltaTime);
+        }
+        else if (directionHistory == dirDownRight)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, shootSpeed * Time.fixedDeltaTime);
+        }
+        else if (directionHistory == dirDownLeft)
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed * Time.fixedDeltaTime, -shootSpeed * Time.fixedDeltaTime);
         }
 
         else if (directionHistory == Vector2.up)
@@ -410,8 +592,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         yield return new WaitForSeconds(shootTimer);
-        isShootingBig = false;
+        isShooting = false;
     }
+
     public Vector2 getDirection()
     {
         return direction.normalized;
@@ -445,15 +628,14 @@ public class PlayerMovement : MonoBehaviour
             settingsMenu.SetActive(false);
         }
     }
-    IEnumerator AlternativShot()
+    IEnumerator MousePointerShot()
     {
         isShooting = true;
         // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        // GameObject spell = Instantiate(bullet, shootPosNorth.position, Quaternion.identity);
+        // GameObject spell = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
-            
+       
             Vector2 myPos = transform.position;
             Vector2 direct = (mousePos - myPos).normalized;
 
@@ -464,9 +646,36 @@ public class PlayerMovement : MonoBehaviour
 
             yield return new WaitForSeconds(shootTimer);
             isShooting = false;
+    }
+
+    IEnumerator MouseDirectionShotSpecial(int mode)
+    {
+        GameObject newBullet;
+        isShooting = true;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 myPos = transform.position;
+        Vector2 direct = (mousePos - myPos).normalized;
 
 
+        if (mode == 0) // big bigBullet
+        {
 
+            newBullet = Instantiate(bigBullet, transform.position, Quaternion.identity);
+
+        }
+        else // freeze bigBulletFreeze
+        {
+            newBullet = Instantiate(bigBulletFreeze, transform.position, Quaternion.identity);
+        }
+
+        // Debug.Log(direct);
+        newBullet.GetComponent<Rigidbody2D>().velocity = direct * 5;
+
+        yield return new WaitForSeconds(shootTimer);
+        isShooting = false;
+
+        // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        // GameObject spell = Instantiate(bullet, shootPosCentral.position, Quaternion.identity);
 
     }
 
@@ -480,8 +689,6 @@ public class PlayerMovement : MonoBehaviour
     public void activateBigSpellFreeze()
     {
         biggerSpellFreezeCount += 5;
-
-
     }
 
     public void lowerDashTimer()
@@ -489,4 +696,8 @@ public class PlayerMovement : MonoBehaviour
         dashTimer *= 0.9f;
     }
 
+    public void toggleControls()
+    {
+        newShootControls = !newShootControls;
+    }
 }
