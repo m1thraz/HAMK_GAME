@@ -17,9 +17,14 @@ public class smartChasing : MonoBehaviour
     private float slowDuration = 2;
     private float normalSpeed;
     EnemySpawner enemySpawner;
+    private bool hardMode;
+    [SerializeField]
+    float teleportIntervall = 7f;
+    private float teleportTimer;
 
     void Start()
     {
+        teleportTimer = 2;
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         Physics.IgnoreLayerCollision(8, 7, true);
@@ -28,18 +33,33 @@ public class smartChasing : MonoBehaviour
 
 
     }
+    public void init(float difficultyMultiplier)
+    {
+        damage *= difficultyMultiplier;
+        hardMode = true;
 
+    }
     // Update is called once per frame
     void Update()
     {
+
+
+
+    }
+    public void FixedUpdate()
+    {
         if (player)
         {
-
-
             Vector2 movingLocation;
             Vector2 playerPosition = player.transform.position;
             Vector2 playerDirection = playerMovement.getDirection();
             float distance = Vector2.Distance(transform.position, player.transform.position);
+
+            if (hardMode && teleportTimer >= teleportIntervall)
+            {
+                transform.position = playerPosition + 2 * playerDirection;
+                teleportTimer = 0;
+            }
             if (playerDirection != Vector2.zero && Mathf.Abs(distance) >= 1)
             {
                 movingLocation = playerPosition + 1 * playerDirection;
@@ -54,12 +74,8 @@ public class smartChasing : MonoBehaviour
 
             animator.SetFloat("xDir", movingDirection.x);
             animator.SetFloat("yDir", movingDirection.y);
+            teleportTimer += Time.deltaTime;
         }
-
-
-    }
-    public void FixedUpdate()
-    {
         if (slow)
         {
             slowTimer += Time.deltaTime;

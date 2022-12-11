@@ -30,6 +30,7 @@ public class ChasingEnemy : MonoBehaviour
     private float slowDuration = 2;
     private float normalSpeed;
     EnemySpawner enemySpawner;
+    private bool hardMode = false;
     private void Awake()
     {
     }
@@ -57,6 +58,13 @@ public class ChasingEnemy : MonoBehaviour
             animator.SetFloat("xDir", moveDirection.x);
             animator.SetFloat("yDir", moveDirection.y);
         }
+    }
+    public void init(float difficultyMultiplier)
+    {
+        health *= difficultyMultiplier;
+        damage *= 2;
+        hardMode = true;
+        currentMovespeed *= 2;
     }
     public void slowMovement()
     {
@@ -94,7 +102,7 @@ public class ChasingEnemy : MonoBehaviour
             distance = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
             if (animator.layerCount > 1)
             {
-                if (distance <= 0.4)
+                if (distance <= 0.3)
                 {
                     animator.SetLayerWeight(1, 1);
                     animator.SetLayerWeight(0, 0);

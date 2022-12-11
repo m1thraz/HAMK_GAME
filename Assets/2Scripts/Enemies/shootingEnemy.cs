@@ -34,6 +34,7 @@ public class shootingEnemy : MonoBehaviour
     private bool slow;
     private float slowDuration = 2;
     private float normalSpeed;
+    private bool hardMode = false;
     EnemySpawner enemySpawner;
 
 
@@ -53,7 +54,13 @@ public class shootingEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
+    public void init(float difficultyMultiplier)
+    {
+        health *= difficultyMultiplier;
+        damage *= difficultyMultiplier;
+        hardMode = true;
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -126,14 +133,50 @@ public class shootingEnemy : MonoBehaviour
         animator.SetLayerWeight(1, 1);
         animator.SetLayerWeight(0, 0);
 
-        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection;
-        Vector2 dir = new Vector2(player.transform.position.x, player.transform.position.y);
-        animator.SetLayerWeight(1, 0);
-        animator.SetLayerWeight(0, 1);
+        //hardMode spider
+        if (projectile.name == "cobWeb" && hardMode)
+        {
+            int numberOfShots = 3;
+            float maxAngle = 90;
+            float angleDeviation = maxAngle / (numberOfShots + 1);
+            for (int i = 1; i <= numberOfShots; i++)
+            {
+                float rotation = -1 * (maxAngle/2) + i * angleDeviation;
+                GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity);
+                Vector3 shotDir = Quaternion.Euler(0, 0, rotation) * shotDirection;
+                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized;
+
+            }
+
+        }
+        else if (projectile.name == "fireballPrefab" && hardMode)
+        {
+            projectileSpeed *= 3;
+            int numberOfShots = 2;
+            float maxAngle = 60;
+            float angleDeviation = maxAngle / (numberOfShots + 1);
+            for (int i = 1; i <= numberOfShots; i++)
+            {
+                float rotation = -1 * (maxAngle / 2) + i * angleDeviation;
+                GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity);
+                Vector3 shotDir = Quaternion.Euler(0, 0, rotation) * shotDirection;
+                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized;
+
+            }
+
+        }
+        else
+        {
+            GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+            newProjectile.GetComponent<Rigidbody2D>().velocity = shotDirection;
+            Vector2 dir = new Vector2(player.transform.position.x, player.transform.position.y);
+            animator.SetLayerWeight(1, 0);
+            animator.SetLayerWeight(0, 1);
+        }
         currentMovespeed = speedBefore;
+
     }
-    
+
     public void takeDamage(float dmgAmount)
     {
         PlayerLogic playerObject2 = GameObject.Find("Player").GetComponent(typeof(PlayerLogic)) as PlayerLogic;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17249,7 +17249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1355760092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17268,11 +17268,11 @@ MonoBehaviour:
   zombie: {fileID: 7619585532632837302, guid: c0624c9b23c6f384fb7c8ac92b87f6e5, type: 3}
   drake: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
   bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
-  waveMode: 1
-  waveCount: 1
-  maxSpawningIterations: 5
-  currentSpawningIterations: 0
-  timeBetweenWaves: 10
+  waveCount: 5
+  startingEnemies: 5
+  enemyGrowth: 1.4
+  enemiesInWave: 0
+  timeBetweenEnemies: 2
   activeWave: 1
   stopSpawn: 0
   waveCountText: {fileID: 0}
