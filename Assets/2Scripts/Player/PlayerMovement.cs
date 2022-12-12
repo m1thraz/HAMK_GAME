@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 dirDownRight = new Vector2(-1, 1);
     Vector2 dirDownLeft = new Vector2(-1, -1);
 
-    public bool newShootControls;
+    public int newShootControls;
 
     public GameObject bullet;
 
@@ -77,6 +77,11 @@ public class PlayerMovement : MonoBehaviour
         isPowerMenuOpen = false;
         rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
         dashCount = startDashCount;
+        if (!PlayerPrefs.HasKey("playershoot"))
+        {
+            PlayerPrefs.SetInt("playershoot", 0); 
+        } 
+       
 
     }
     // Update is called once per frame
@@ -162,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         if (!inCutScene) {
 
             // newControls ON
-            if (newShootControls)
+            if (PlayerPrefs.GetInt("shootcontrol") == 1)
             {
                 // Shooting
                 if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return) )
@@ -696,8 +701,5 @@ public class PlayerMovement : MonoBehaviour
         dashTimer *= 0.9f;
     }
 
-    public void toggleControls()
-    {
-        newShootControls = !newShootControls;
-    }
+   
 }

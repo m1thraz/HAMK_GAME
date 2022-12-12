@@ -13,9 +13,9 @@ public class EnemySpawner : MonoBehaviour
     //GameObject[] enemies;
     List<GameObject> enemies = new();
     //List<GameObject> enemies= new List<GameObject>();
-    //[SerializeField] bool waveMode = true;
-
-
+    [SerializeField] bool inStory = false;
+    
+    
 
 
     private float horMin, horMax, verMin, verMax;
@@ -68,6 +68,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
+        if (!inStory) { 
         enemyTimer += Time.deltaTime;
         if (enemyTimer >= timeBetweenEnemies && spawnedEnemyCount < enemiesInWave)
         {
@@ -109,7 +110,7 @@ public class EnemySpawner : MonoBehaviour
             spawnedEnemyCount = 0;
             enemyTimer = 0;
             currentEnemies = 0;
-
+            }
         }
         
     }

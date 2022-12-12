@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+    public GameObject controlsMenu;
     PlayerMovement controlls;
     public GameObject Player;
     private bool muted = false;
@@ -73,6 +74,15 @@ public class PauseMenu : MonoBehaviour
         SaveVolume();
     }
 
+    public void OpenControls()
+    {
+        controlsMenu.SetActive(true);
+    }
+    public void CloseControls()
+    {
+        controlsMenu.SetActive(false);
+    }
+
 
     private void LoadVolume()
     {
@@ -81,5 +91,19 @@ public class PauseMenu : MonoBehaviour
     private void SaveVolume()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+    }
+
+    public void toggleControls()
+    {
+        if (PlayerPrefs.GetInt("shootcontrol") == 0)
+        {
+            PlayerPrefs.SetInt("shootcontrol", 1);
+            
+        }
+        else
+        {
+            PlayerPrefs.SetInt("shootcontrol", 0);
+            
+        }
     }
 }
