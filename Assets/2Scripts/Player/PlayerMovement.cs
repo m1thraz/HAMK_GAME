@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             if (PlayerPrefs.GetInt("shootcontrol") == 1)
             {
                 // Shooting
-                if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return) )
+                if (!isShooting && Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return) )
                 {
                     if (!gamePaused)
                     {
@@ -206,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             else // OLD Controls ON
             {
             
-                if (!isShooting && Input.GetKeyDown(KeyCode.Mouse0))
+                if (!isShooting && Input.GetKey(KeyCode.Mouse0))
                 {
                     if (!gamePaused)
                     {

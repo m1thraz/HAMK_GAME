@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 107665526}
   settingsMenu: {fileID: 810106283}
-  controlsMenu: {fileID: 0}
+  controlsMenu: {fileID: 1107654324}
   Player: {fileID: 1061358753}
   volumeSlider: {fileID: 2043129154}
 --- !u!114 &303867156
@@ -5465,10 +5465,10 @@ MonoBehaviour:
   bigBullet: {fileID: 4063584610609680336, guid: bbe907457638b467f942f5d1d6f1e605, type: 3}
   bigBulletFreeze: {fileID: 4063584610609680336, guid: 739d51f9fafd445568778d49b60104b5, type: 3}
   isBiggerSpell: 0
-  biggerSpellCount: 10
+  biggerSpellCount: 0
   isBiggerSpellFreeze: 0
-  biggerSpellFreezeCount: 10
-  dashSpeed: 2
+  biggerSpellFreezeCount: 0
+  dashSpeed: 3
   startDashCount: 1
   dashTimer: 2
   isPlayerDashing: 0
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   CoinText: {fileID: 2019102165}
   lvlbar: {fileID: 907510250}
   scene: 3
-  maxHealth: 10
+  maxHealth: 15
   health: 0
   score: 0
   armor: 0
