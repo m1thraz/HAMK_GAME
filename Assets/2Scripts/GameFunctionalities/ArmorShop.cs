@@ -8,7 +8,7 @@ public class ArmorShop : MonoBehaviour
 {
     PlayerLogic playerLogic;
 
-    int armorCost = 10;
+    public int armorCost = 10;
     int coins;
 
     Color colorYellow = new Color(0, 255, 255);

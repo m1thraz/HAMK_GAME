@@ -1,9 +1,9 @@
-Mage: What is this place?
-Mage: I need to find my son.
+Dad: What is this place?
+Dad: I need to find my son.
 
-Son I found you!
+Dad: Son, I found you!
 Son: Father...
 Son: I...
 Son: Want...
-Mage: Are you feeling well?
+Dad: Are you feeling well?
 Son: I WANT TO KILL YOU!

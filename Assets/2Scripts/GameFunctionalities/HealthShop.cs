@@ -8,7 +8,7 @@ public class HealthShop : MonoBehaviour
 {
     PlayerLogic playerLogic;
 
-    int healthCost = 10;
+    public int healthCost = 10;
     int coins;
 
     Color colorYellow = new Color(0, 255, 255);
