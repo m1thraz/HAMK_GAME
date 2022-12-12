@@ -13,11 +13,11 @@ public class Difficulty : MonoBehaviour
 
     public void NormalMode()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(10);
     }
     public void HardMode()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(11);
     }
     public void EndPause()
     {

@@ -35,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1Scenes/CutScenes/1stCut.unity
     guid: aa579607eb0a3439a907e5d4ef852a77
+  - enabled: 1
+    path: Assets/1Scenes/LevelStoryNormal.unity
+    guid: a47598a84e27afc4e84d7ec04adbff03
+  - enabled: 1
+    path: Assets/1Scenes/LevelStoryHard.unity
+    guid: 213ff955dd7072f418460dc4ea478666
   - enabled: 0
     path: 
     guid: 7aea5756fd0b3429fb0b1cbe56e12123
