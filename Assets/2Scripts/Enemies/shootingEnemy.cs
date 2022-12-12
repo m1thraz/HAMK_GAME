@@ -60,6 +60,8 @@ public class shootingEnemy : MonoBehaviour
         health *= difficultyMultiplier;
         damage *= difficultyMultiplier;
         hardMode = true;
+        projectileSpeed *= 2;
+
 
     }
     // Update is called once per frame
@@ -145,23 +147,22 @@ public class shootingEnemy : MonoBehaviour
                 float rotation = -1 * (maxAngle/2) + i * angleDeviation;
                 GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity);
                 Vector3 shotDir = Quaternion.Euler(0, 0, rotation) * shotDirection;
-                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized;
+                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized * projectileSpeed;
 
             }
 
         }
         else if (projectile.name == "fireballPrefab" && hardMode)
         {
-            projectileSpeed *= 3;
-            int numberOfShots = 2;
-            float maxAngle = 60;
+            int numberOfShots = 4;
+            float maxAngle = 120;
             float angleDeviation = maxAngle / (numberOfShots + 1);
             for (int i = 1; i <= numberOfShots; i++)
             {
                 float rotation = -1 * (maxAngle / 2) + i * angleDeviation;
                 GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity);
                 Vector3 shotDir = Quaternion.Euler(0, 0, rotation) * shotDirection;
-                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized;
+                shot.GetComponent<Rigidbody2D>().velocity = new Vector2(shotDir.x, shotDir.y).normalized * projectileSpeed;
 
             }
 

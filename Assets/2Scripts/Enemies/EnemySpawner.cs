@@ -7,12 +7,9 @@ using Unity.VisualScripting;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //Initialize prefabs here
     [SerializeField]
     private GameObject spikyBall, goblin, spider, zombie, drake, bossPrefab;
-    //GameObject[] enemies;
     List<GameObject> enemies = new();
-    //List<GameObject> enemies= new List<GameObject>();
     [SerializeField] bool inStory = false;
     
     
@@ -20,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
 
     private float horMin, horMax, verMin, verMax;
 
-    // initialize stuff for waves
     [SerializeField]
     int waveCount = 1;
     [SerializeField]
@@ -28,8 +24,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     int enemiesInWave;
     
-    //private float SpawnModifier = 1.4f;
-    //private float spawnRate = 1.0f;
     [SerializeField]
     private float timeBetweenEnemies = 2f;
     private float enemyTimer = 0;
@@ -50,7 +44,6 @@ public class EnemySpawner : MonoBehaviour
     private bool spawnBoss =true;
     [SerializeField]
     private bool allEnemiesSpawned = false;
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -91,8 +84,6 @@ public class EnemySpawner : MonoBehaviour
                     enemies.Add(drake);
                     break;
             }
-            Debug.Log(enemies.Count);
-            Debug.Log(enemies);
             allEnemiesSpawned = false;
             killedEnemies = 0;
             waveCount++;
@@ -104,9 +95,7 @@ public class EnemySpawner : MonoBehaviour
                 timeBetweenEnemies *= 0.9f;
 
             }
-            //maxSpawningIterations = Mathf.Floor(maxSpawningIterations * 1.2f);
             enemiesInWave = Mathf.CeilToInt(startingEnemies * Mathf.Pow(enemyGrowth, waveCount));
-            //currentSpawningIterations = 0;
             spawnedEnemyCount = 0;
             enemyTimer = 0;
             currentEnemies = 0;
@@ -189,7 +178,6 @@ public class EnemySpawner : MonoBehaviour
         spawnedEnemyCount++;
         currentEnemies++;
         enemyTimer = 0;
-        //currentSpawningIterations++;
         if (waveCount == 10)
         {
             spawnedEnemyCount = 0;
@@ -199,7 +187,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnBoss = false;
             }                
         }
-        if(spawnedEnemyCount == enemiesInWave)
+        if(spawnedEnemyCount == enemiesInWave && spawnBoss == true)
         {
             allEnemiesSpawned = true;
         }
