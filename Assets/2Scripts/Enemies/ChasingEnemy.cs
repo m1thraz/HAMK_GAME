@@ -30,6 +30,7 @@ public class ChasingEnemy : MonoBehaviour
     private float slowDuration = 2;
     private float normalSpeed;
     EnemySpawner enemySpawner;
+    [SerializeField]
     private bool hardMode = false;
     private void Awake()
     {

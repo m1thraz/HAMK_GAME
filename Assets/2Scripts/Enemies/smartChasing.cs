@@ -17,6 +17,8 @@ public class smartChasing : MonoBehaviour
     private float slowDuration = 2;
     private float normalSpeed;
     EnemySpawner enemySpawner;
+    
+    [SerializeField]
     private bool hardMode;
     [SerializeField]
     float teleportIntervall = 7f;

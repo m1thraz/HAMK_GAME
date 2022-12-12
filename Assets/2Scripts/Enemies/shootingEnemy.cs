@@ -34,6 +34,7 @@ public class shootingEnemy : MonoBehaviour
     private bool slow;
     private float slowDuration = 2;
     private float normalSpeed;
+    [SerializeField]
     private bool hardMode = false;
     EnemySpawner enemySpawner;
 

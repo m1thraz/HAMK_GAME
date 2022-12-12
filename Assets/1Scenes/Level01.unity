@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 107665526}
   settingsMenu: {fileID: 810106283}
-  controlsMenu: {fileID: 1107654324}
+  controlsMenu: {fileID: 0}
   Player: {fileID: 1061358753}
   volumeSlider: {fileID: 2043129154}
 --- !u!114 &303867156
@@ -5325,6 +5325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef08c107d64f4a1ea6cce77cee5d186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armorCost: 10
   armorPanel: {fileID: 312661689}
   TextPrice: {fileID: 1005722416}
 --- !u!50 &1026368102
@@ -18325,9 +18326,9 @@ MonoBehaviour:
   drake: {fileID: 5466495931170279958, guid: 41ee2cfd583ea864094ffbc0ea708f77, type: 3}
   bossPrefab: {fileID: 2211259798156559186, guid: 80c1f50b5e0f53949b9cd0ecfc48e0b5, type: 3}
   inStory: 0
-  waveCount: 5
+  waveCount: 1
   startingEnemies: 5
-  enemyGrowth: 1.4
+  enemyGrowth: 1.3
   enemiesInWave: 0
   timeBetweenEnemies: 2
   activeWave: 1
@@ -22018,6 +22019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65fa3b63fef204027a268d7164697e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthCost: 10
   healthPanel: {fileID: 739359578}
   TextPrice: {fileID: 640876734}
 --- !u!50 &2043268462
