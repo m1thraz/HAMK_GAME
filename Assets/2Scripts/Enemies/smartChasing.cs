@@ -56,13 +56,21 @@ public class smartChasing : MonoBehaviour
             Vector2 playerPosition = player.transform.position;
             Vector2 playerDirection = playerMovement.getDirection();
             float distance = Vector2.Distance(transform.position, player.transform.position);
-
-            if (hardMode && teleportTimer >= teleportIntervall)
+            if (hardMode && teleportTimer >= teleportIntervall && Mathf.Abs(distance) <= 3  && playerDirection != Vector2.zero)
             {
-                transform.position = playerPosition + 2 * playerDirection;
+                Vector2 teleportPosition;
+                if (enemySpawner.inStory)
+                {
+                    teleportPosition = playerPosition + 3 * playerDirection;
+                }
+                else
+                {
+                    teleportPosition = playerPosition + 2 * playerDirection;
+                }
+                transform.position = teleportPosition;
                 teleportTimer = 0;
             }
-            if (playerDirection != Vector2.zero && Mathf.Abs(distance) >= 1)
+            if (playerDirection != Vector2.zero && Mathf.Abs(distance) >= 0.8)
             {
                 movingLocation = playerPosition + 1 * playerDirection;
             }

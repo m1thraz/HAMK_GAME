@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject spikyBall, goblin, spider, zombie, drake, bossPrefab;
     List<GameObject> enemies = new();
-    [SerializeField] bool inStory = false;
+    [SerializeField] 
+    public bool inStory = false;
     
     
 
