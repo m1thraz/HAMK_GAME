@@ -102,7 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMovespeed: 0.9
-  damage: 4
+  damage: 3
+  hardMode: 0
+  teleportIntervall: 7
 --- !u!114 &1384299028268680646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 7
   droppedCoin: {fileID: 2386944690914154871, guid: b729b3adcf8fe42fabcd1ea7fd3afc2f, type: 3}
+  endGameAdds: {fileID: 0}
 --- !u!50 &7619585532632837288
 Rigidbody2D:
   serializedVersion: 4
