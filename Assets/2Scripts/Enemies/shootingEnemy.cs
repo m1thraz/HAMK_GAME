@@ -60,7 +60,7 @@ public class shootingEnemy : MonoBehaviour
         health *= difficultyMultiplier;
         damage *= difficultyMultiplier;
         hardMode = true;
-        projectileSpeed *= 2;
+        projectileSpeed *= difficultyMultiplier;
 
 
     }
