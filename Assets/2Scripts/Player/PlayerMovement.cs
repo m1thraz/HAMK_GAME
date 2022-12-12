@@ -89,12 +89,6 @@ public class PlayerMovement : MonoBehaviour
     {
         TakeInput();
        
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            activateBigSpell();
-            Debug.Log("Bigspell++ " + biggerSpellCount);
-        }
         if(slow)
         {
             slowTimer += Time.deltaTime;
