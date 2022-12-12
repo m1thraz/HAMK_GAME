@@ -253,10 +253,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene(1);
-        }
+
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
