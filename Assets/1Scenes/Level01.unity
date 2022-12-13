@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5462,6 +5462,7 @@ MonoBehaviour:
   gameManager: {fileID: 2066208270}
   pauseMenu: {fileID: 107665526}
   settingsMenu: {fileID: 810106283}
+  controllMenu: {fileID: 1107654324}
   bigBullet: {fileID: 4063584610609680336, guid: bbe907457638b467f942f5d1d6f1e605, type: 3}
   bigBulletFreeze: {fileID: 4063584610609680336, guid: 739d51f9fafd445568778d49b60104b5, type: 3}
   isBiggerSpell: 0

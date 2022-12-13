@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pauseMenu;
     bool gamePaused = false;
     public GameObject settingsMenu;
+    public GameObject controllMenu;
 
     public GameObject bigBullet;
     public GameObject bigBulletFreeze;
@@ -622,6 +623,7 @@ public class PlayerMovement : MonoBehaviour
             pauseMenu.SetActive(false);
             gamePaused = false;
             settingsMenu.SetActive(false);
+            controllMenu.SetActive(false);
         }
     }
     IEnumerator MousePointerShot()
