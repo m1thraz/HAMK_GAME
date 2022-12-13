@@ -63,6 +63,8 @@ public class kingBoss : MonoBehaviour
     }
     public void onDeath()
     {
+        float score = player.GetComponent<PlayerLogic>().getScore();
+        PlayerPrefs.SetFloat("playScore", score);
         SceneManager.LoadScene(winScene);
         
     }
