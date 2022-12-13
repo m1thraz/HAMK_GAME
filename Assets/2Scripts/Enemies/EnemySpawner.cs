@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
         {
             waveSpawner();
         }
-        if (allEnemiesSpawned && killedEnemies == spawnedEnemyCount)
+        if (allEnemiesSpawned && killedEnemies >= spawnedEnemyCount)
         {
             switch (waveCount)
             {
