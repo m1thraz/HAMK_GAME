@@ -31,12 +31,7 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug function
-        if (Input.GetKey(KeyCode.L))
-        {
-            increaseLevel(100);
-            //Debug.Log("slider.value " + slider.value + " slidermax " + slider.maxValue);
-        }
+        
 
         if (slider.value < targetProgress)
         {

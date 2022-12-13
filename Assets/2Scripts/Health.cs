@@ -20,16 +20,7 @@ public class Health : MonoBehaviour
     void Update()
     {
 
-        //teststatement to test healing
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Heal(10);
-        }
-        //teststatement to test damage
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Damage(10);
-        }
+        
     }
  
     public void SetHealth(int maxHealth, int health)

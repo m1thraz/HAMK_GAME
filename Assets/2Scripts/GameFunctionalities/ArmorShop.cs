@@ -30,36 +30,7 @@ public class ArmorShop : MonoBehaviour
     void Update()
     {
 
-        // DEBUG FOR COIN INCREASE
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            playerLogic.increaseCoin(10);
-            Debug.Log("coins= " + playerLogic.getCoin());
-            
-
-        }
-
-
-
-        // Close Shop if not enough Coins
-        if (Input.GetKeyDown(KeyCode.F) && isShopOpen)
-        {
-            armorPanel.SetActive(false);
-            Time.timeScale = 1f;
-            isShopOpen = false;
-
-        }
-
-        // Buy Armor
-        if (Input.GetKeyDown(KeyCode.E) && isShopOpen)
-        {
-            if (buyArmor())
-            {
-                Time.timeScale = 1f;
-                armorPanel.SetActive(false);
-            }
-            
-        }
+        
 
     }
 

@@ -31,28 +31,7 @@ public class HealthShop : MonoBehaviour
     {
 
         
-        // Close Shop if not enough Coins
-        if (Input.GetKeyDown(KeyCode.F) && isShopOpenHealth)
-        {
-            
-            healthPanel.SetActive(false);
-            isShopOpenHealth =  false;
-            Time.timeScale = 1f;
-
-        }
-
-        // Buy Health
-        if (Input.GetKeyDown(KeyCode.E) && isShopOpenHealth)
-        {
-            Debug.Log("INSIDE HEALTH KEY E");
-            if (buyHealth())
-            {
-
-                Time.timeScale = 1f;
-                healthPanel.SetActive(false);
-            }
-
-        }
+        
 
     }
 
